@@ -1,15 +1,33 @@
-import React, { useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Signup from "./components/Signup/Signup";
 import Blogs from "./pages/Blogs";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
+import SignIn from "./components/SignIn/SignIn";
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:5000',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000",
-  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
 });
 
 function Main() {
@@ -18,6 +36,7 @@ function Main() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/blogs" element={<Blogs />} />
         </Route>

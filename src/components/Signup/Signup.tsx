@@ -1,7 +1,7 @@
-import { createUser } from "../../graphql/createUser";
 import React, { useState } from "react";
 import {useMutation} from "@apollo/client";
 import './signup.scss'
+import { createUser } from "../../graphql/mutations";
 
 function Signup() {
     const [email, setEmail] = useState("");
