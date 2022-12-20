@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import '../Signup/signup.scss'
+import '../SignUp/signup.scss'
 import { SIGN_IN } from "../../graphql/mutations";
 import { GET_LOGGED_USER } from "../../graphql/queries";
 
