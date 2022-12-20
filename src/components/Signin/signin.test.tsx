@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react"
-import Signin from "./Signin";
+import Signin from "./Signup";
 import { MockedProvider } from "@apollo/client/testing";
 import { createUser } from "../../graphql/createUser";
 

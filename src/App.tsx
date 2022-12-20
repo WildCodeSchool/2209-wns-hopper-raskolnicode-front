@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import Signin from "./components/Signin/Signin";
+import Signup from "./components/Signin/Signup";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  useMutation,
 } from "@apollo/client";
 
 const client = new ApolloClient({
@@ -17,7 +15,7 @@ const client = new ApolloClient({
 function Main() {
   return (
     <div>
-      <Signin />
+      <Signup />
     </div>
   );
 }
