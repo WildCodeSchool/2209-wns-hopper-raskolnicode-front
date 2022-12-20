@@ -2,7 +2,7 @@ import { createUser } from "../../graphql/createUser";
 import React, { useState } from "react";
 import {useMutation} from "@apollo/client";
 
-function Signin() {
+function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
@@ -49,4 +49,4 @@ function Signin() {
     );
   }
 
-  export default Signin;
+  export default Signup;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Signup from "./components/Signin/Signup";
+import Signup from "./components/Signup/Signup";
 import {
   ApolloClient,
   InMemoryCache,
