@@ -1,6 +1,7 @@
 import { createUser } from "../../graphql/createUser";
 import React, { useState } from "react";
 import {useMutation} from "@apollo/client";
+import './signup.scss'
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -24,28 +25,40 @@ function Signup() {
     }
   
     return (
-      <>
+      <main className='signupMain'>
         {error && (
           <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
         )}
-        <p>Email:</p>
-        <input
-          disabled={loading}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <p>Password:</p>
-        <input
-          disabled={loading}
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button disabled={loading} onClick={doSignup}>
-          Signup
-        </button>
-      </>
+        <div className="form">
+          <h3>Inscription</h3>
+          <div className="email">
+          <input
+            disabled={loading}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder='Votre email'
+          />
+          </div>
+          <div className="password">
+          <input
+            disabled={loading}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder='Votre mot de passe'
+          />
+          </div>
+          <div>
+          <button disabled={loading} onClick={doSignup}>
+            Inscription
+          </button>
+          </div>
+          <div>
+          <p>Avez-vous déja un <a href="X">compte?</a></p>
+          </div>
+        </div>
+      </main>
     );
   }
 
