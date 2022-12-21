@@ -4,18 +4,19 @@ import { createUser } from "../../graphql/mutations";
 import styles from "./signup.module.scss";
 
 function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [doSignupMutation, { data, loading, error }] = useMutation(createUser);
-
-  async function doSignup() {
-    try {
-      await doSignupMutation({
-        variables: {
-          data: {
-            email,
-            password,
+    const [email, setEmail] = useState("test@mail.com");
+    const [password, setPassword] = useState("test1234");
+  
+    const [doSignupMutation, { data, loading, error }] = useMutation(createUser);
+  
+    async function doSignup() {
+      try {
+        await doSignupMutation({
+          variables: {
+            data: {
+              email,
+              password,
+            },
           },
         },
       });
