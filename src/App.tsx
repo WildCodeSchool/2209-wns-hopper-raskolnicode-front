@@ -10,10 +10,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Signup from "./pages/Signup/Signup";
 import NotFound from "./pages/NotFound/NotFound";
-import Blog from "./pages/Blogs/Blog";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import SignIn from "./pages/SignIn/SignIn";
+import Blog from "./pages/Blogs/Blog";
+import Post from "./pages/Posts/Post";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -46,6 +47,7 @@ function Main() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/post" element={<Post />} />
         </Route>
       </Routes>
     </BrowserRouter>
