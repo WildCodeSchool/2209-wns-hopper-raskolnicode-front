@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import React, { useEffect, useState } from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, useQuery } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Signup from "./pages/Signup/Signup";
@@ -14,6 +9,7 @@ import Blog from "./pages/Blogs/Blog";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import SignIn from "./pages/SignIn/SignIn";
+import { GET_LOGGED_USER } from "./graphql/queries";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -37,15 +33,38 @@ const client = new ApolloClient({
 });
 
 function Main() {
+  const [user, setUser] = useState(null)
+
+  const { data, refetch } = useQuery(GET_LOGGED_USER)
+
+  function onTokenChange(token?: string) {
+    if (token) {
+      localStorage.setItem('token', token)
+      console.log('logged in')
+    } else {
+      localStorage.removeItem('token')
+      console.log('logged out')
+    }
+    refetch()
+  }
+
+  useEffect(() => {
+    if (data && data.loggedUser) {
+      setUser(data.loggedUser)
+    } else {
+      setUser(null)
+    }
+  })
+
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -61,3 +80,4 @@ function App() {
 }
 
 export default App;
+

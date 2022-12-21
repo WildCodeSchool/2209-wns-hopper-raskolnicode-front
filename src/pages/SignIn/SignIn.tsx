@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useLazyQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import '../Signup/signup.scss'
 import { SIGN_IN } from "../../graphql/mutations";
-import { GET_LOGGED_USER } from "../../graphql/queries";
+import { IUser } from "../../interfaces";
+import { useNavigate } from "react-router-dom";
 
+function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => void }) {
 
-function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [token, setToken] = useState(null)
+  // Redirects to dashboard if there's a user logged in
+  const navigate = useNavigate()
+  props.user && navigate('/')
 
-  const [getLoggedUser] = useLazyQuery(GET_LOGGED_USER)
+  const [email, setEmail] = useState("test@mail.com");
+  const [password, setPassword] = useState("test1234");
 
   const [doSignInMutation, { data, loading, error }] = useMutation(SIGN_IN);
 
@@ -24,59 +26,51 @@ function SignIn() {
           },
         },
       });
-      setToken(data.signIn)
-      localStorage.setItem('token', data.signIn)
-    } catch { }
+      if (data) {
+        props.onTokenChange(data.signIn)
+      }
+    } catch (error) { 
+      console.error(error)
+    }
   }
 
   useEffect(() => {
-    async function fetchLoggedUser() {
-      try {
-        if (token) {
-          const { data } = await getLoggedUser({
-            variables: { token }
-          })
-          console.log('getLoggedUser', data)
-          console.log('current Token', token)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-      
-    }
-    fetchLoggedUser()
-  }, [token])
+    doSignIn()
+  }, [])
 
   return (
     <main className='signupMain'>
-      {error && (
-        <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
-      )}
       <div className="form">
         <h3>Connexion</h3>
-        <div className="email">
-          <input
-            disabled={loading}
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder='Votre email'
-          />
-        </div>
-        <div className="password">
-          <input
-            disabled={loading}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder='Votre mot de passe'
-          />
-        </div>
-        <div>
-          <button disabled={loading} onClick={doSignIn}>
-            Me connecter
-          </button>
-        </div>
+        <form onSubmit={doSignIn}>
+          <div className="email">
+            <input
+              disabled={loading}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder='Votre email'
+            />
+          </div>
+          <div className="password">
+            <input
+              disabled={loading}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Votre mot de passe'
+            />
+          </div>
+          {
+            error &&
+            <p style={{ color: 'red' }}>Quelque chose s'est mal passé</p>
+          }
+          <div>
+            <button disabled={loading} onClick={doSignIn}>
+              Me connecter
+            </button>
+          </div>
+        </form>
         <div>
           <p>Avez-vous déja un <a href="X">compte?</a></p>
         </div>
