@@ -1,51 +1,43 @@
 import React from "react";
-import styles from "./Post.module.scss";
+import styles from "./post.module.scss";
 
 function Post() {
   return (
     <main>
-      <h1>Bienvenue sur le blog de Bidule</h1>
+      <h1>Du Côté de Chez Swann</h1>
       <div className={styles.mainpicture}>
         <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
-        <div className={styles.title}>
-          <h2>Du Côté de Chez Swann</h2>
-          <p>21 novembre 2023</p>
-        </div>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1200/500?random=2" alt="photos" />
-        <h2>A l'Ombre des Jeunes Filles en Fleurs</h2>
-        <p>1 septembre 2023</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1000/500?random=2" alt="photos" />
-        <h2>le sens de l'Histoire</h2>
-        <p>21 décembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/100/500?random=2" alt="photos" />
-        <h2>
-          Cet oubli si vivace qui recouvre si rapidement le passé le plus récent
-        </h2>
-        <p>12 novembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1200/420?random=2" alt="photos" />
-        <h2>Sans doute, nous avons beau changer de milieu, de genre de vie</h2>
-        <p>30 septembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1000/500?random=2" alt="photos" />
-        <h2>
-          Détendus ou brisés, les ressorts de la machine refoulante ne
-          fonctionnaient plus
-        </h2>
-        <p>2 août 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/100/500?random=2" alt="photos" />
-        <h2>Vous me prenez pour ma mère</h2>
-        <p>1 juillet 2022</p>
+        <p>21 novembre 2023</p>
+        <p>
+          Longtemps, je me suis couché de bonne heure. Parfois, à peine ma
+          bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le
+          temps de me dire : « Je m'endors. » Et, une demi-heure après, la
+          pensée qu'il était temps de chercher le sommeil m'éveillait ; je
+          voulais poser le volume que je croyais avoir encore dans les mains et
+          souffler ma lumière ; je n'avais pas cessé en dormant de faire des
+          réflexions sur ce que je venais de lire, mais ces réflexions avaient
+          pris un tour un peu particulier ; il me semblait que j'étais moi-même
+          ce dont parlait l'ouvrage : une église, un quatuor, la rivalité de
+          François Ier et de Charles Quint. Cette croyance survivait pendant
+          quelques secondes à mon réveil ; elle ne choquait pas ma raison mais
+          pesait comme des écailles sur mes yeux et les empêchait de se rendre
+          compte que le bougeoir n'était plus allumé. Puis elle commençait à me
+          devenir inintelligible, comme après la métempsycose les pensées d'une
+          existence antérieure ; le sujet du livre se détachait de moi, j'étais
+          libre de m'y appliquer ou non ; aussitôt je recouvrais la vue et
+          j'étais bien étonné de trouver autour de moi une obscurité, douce et
+          reposante pour mes yeux, mais peut-être plus encore pour mon esprit, à
+          qui elle apparaissait comme une chose sans cause, incompréhensible,
+          comme une chose vraiment obscure. Je me demandais quelle heure il
+          pouvait être ; j'entendais le sifflement des trains qui, plus ou moins
+          éloigné, comme le chant d'un oiseau dans une forêt, relevant les
+          distances, me décrivait l'étendue de la campagne déserte où le
+          voyageur se hâte vers la station prochaine ; et le petit chemin qu'il
+          suit va être gravé dans son souvenir par l'excitation qu'il doit à des
+          lieux nouveaux, à des actes inaccoutumés, à la causerie récente et aux
+          adieux sous la lampe étrangère qui le suivent encore dans le silence
+          de la nuit, à la douceur prochaine du retour.
+        </p>
       </div>
     </main>
   );
