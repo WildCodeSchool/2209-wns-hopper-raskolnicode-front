@@ -64,7 +64,6 @@ function Main() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blogs" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
