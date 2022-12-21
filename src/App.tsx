@@ -3,11 +3,12 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@ap
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Signup from "./components/Signup/Signup";
-import Blogs from "./pages/Blogs";
-import Home from "./pages/Home";
+import Signup from "./pages/Signup/Signup";
+import NotFound from "./pages/NotFound/NotFound";
+import Blogs from "./pages/Blogs/Blogs";
+import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
-import SignIn from "./components/SignIn/SignIn";
+import SignIn from "./pages/SignIn/SignIn";
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:5000',
@@ -36,6 +37,7 @@ function Main() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path='*' element={<NotFound />}/>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/blogs" element={<Blogs />} />
