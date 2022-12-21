@@ -60,8 +60,17 @@ function Main() {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
-          <Route path="/signup" element={<Signup />} />
+          {user ?<>
+
+          </> 
+          :
+          <>
+            <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
+            <Route path="/signup" element={<Signup />} />
+            
+          </> 
+          }
+          
           <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />

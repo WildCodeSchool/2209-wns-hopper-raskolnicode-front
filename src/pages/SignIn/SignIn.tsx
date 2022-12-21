@@ -9,7 +9,7 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
 
   // Redirects to dashboard if there's a user logged in
   const navigate = useNavigate()
-  props.user && navigate('/')
+  
 
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
@@ -18,7 +18,7 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
 
   async function doSignIn() {
     try {
-      await doSignInMutation({
+      const result = await doSignInMutation({
         variables: {
           data: {
             email,
@@ -26,17 +26,15 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
           },
         },
       });
-      if (data) {
-        props.onTokenChange(data.signIn)
+      if (result.data) {
+        props.onTokenChange(result.data.signIn)
+        navigate('/')
       }
     } catch (error) { 
       console.error(error)
     }
   }
 
-  useEffect(() => {
-    doSignIn()
-  }, [])
 
   return (
     <main className='signupMain'>
