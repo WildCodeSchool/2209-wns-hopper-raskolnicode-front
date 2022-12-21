@@ -3,6 +3,7 @@
   margin-right: auto;
   width: 90%;
 }
+
 img {
   width: 100%;
   height: 30em;
@@ -15,28 +16,14 @@ img {
   float: left;
   width: 64%;
   padding: 1%;
-  // background-color: red;
 }
 .secondarypicture {
   float: left;
   width: 31%;
   padding: 1%;
-  // background-color: green;
 }
-.three {
-  grid-column: 1;
-  grid-row: 2 / 5;
-  background-color: blue;
-}
-.four {
-  grid-column: 3;
-  grid-row: 3;
-}
-.five {
-  grid-column: 2;
-  grid-row: 4;
-}
-.six {
-  grid-column: 3;
-  grid-row: 4;
+
+h1 {
+  text-align: center;
+  margin: 2em;
 }
