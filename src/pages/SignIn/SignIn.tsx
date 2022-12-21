@@ -11,7 +11,7 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
   const navigate = useNavigate()
   props.user && navigate('/')
 
-  const [email, setEmail] = useState("soufiane@mail.com");
+  const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
 
   const [doSignInMutation, { data, loading, error }] = useMutation(SIGN_IN);
