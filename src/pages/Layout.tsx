@@ -2,10 +2,10 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 
-const Layout = () => {
+const Layout = (props: {onTokenChange: () => void}) => {
   return (
     <>
-      <Navbar />
+      <Navbar onTokenChange={props.onTokenChange}/>
       <hr />
       <Outlet />
     </>
