@@ -1,11 +1,14 @@
-import React from "react";
-import { IUser } from "../../interfaces";
+import React, { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
-const Home = (props: { user: IUser | null, onTokenChange: (token?: string) => void}) => {
+const Home = (props: { onTokenChange: (token?: string) => void}) => {
+  
+  // Getting current user from context
+  const user = useContext(UserContext)
+
   return (
     <div>
-      <h1>Welcome to StarBlog</h1>
-      { props.user ? <button onClick={() => props.onTokenChange()}>Se déconnecter</button> : <a href="/login">Me connecter</a> }
+      <h1>Welcome to StarBlog { user && user.email }</h1>
     </div>
   );
 };

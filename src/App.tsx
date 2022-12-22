@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -17,6 +17,7 @@ import Blog from "./pages/Blogs/Blog";
 import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 import Login from "./pages/Login/Login";
+import { UserContext } from "./UserContext";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -64,31 +65,33 @@ function Main() {
   });
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          {user ? (
-            <></>
-          ) : (
-            <>
-              <Route
-                path="/login"
-                element={<Login user={user} onTokenChange={onTokenChange} />}
-              />
-              <Route path="/signup" element={<Signup />} />
-            </>
-          )}
+    <UserContext.Provider value={user}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout onTokenChange={onTokenChange} />}>
+            {user ? (
+              <></>
+            ) : (
+              <>
+                <Route
+                  path="/login"
+                  element={<Login onTokenChange={onTokenChange} />}
+                />
+                <Route path="/signup" element={<Signup />} />
+              </>
+            )}
 
-          <Route
-            path="/"
-            element={<Home user={user} onTokenChange={onTokenChange} />}
-          />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/post" element={<Post />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route
+              path="/"
+              element={<Home onTokenChange={onTokenChange} />}
+            />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/post" element={<Post />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 
