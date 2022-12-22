@@ -22,7 +22,6 @@ function Navbar(props: {onTokenChange: () => void}) {
           }
 
         </div>
-        
     </main>
   );
 }
