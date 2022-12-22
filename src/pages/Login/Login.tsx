@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./Login.module.scss";
 import { SIGN_IN } from "../../graphql/mutations";
@@ -6,7 +6,6 @@ import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 
 function Login(props: {
-  user: IUser | null;
   onTokenChange: (token?: string) => void;
 }) {
   // Redirects to dashboard if there's a user logged in
