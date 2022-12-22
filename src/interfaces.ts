@@ -1,1 +1,5 @@
-// put interfaces here
+export interface IUser {
+  id: number,
+  email: string,
+  password: string
+}

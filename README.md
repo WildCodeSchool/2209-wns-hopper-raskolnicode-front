@@ -1,4 +1,4 @@
-# React TS Starter!
+# React TS Starter
 
 This boilerplate contains:
 

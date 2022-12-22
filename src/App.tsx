@@ -1,73 +1,84 @@
-import React, { useState } from "react";
-import "./App.css";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  useMutation,
-} from "@apollo/client";
-import { createUser } from "./graphql/createUser";
+import React, { useEffect, useState } from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, useQuery } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Signup from "./pages/Signup/Signup";
+import NotFound from "./pages/NotFound/NotFound";
+import Blog from "./pages/Blogs/Blog";
+import Home from "./pages/Home/Home";
+import Layout from "./pages/Layout";
+import SignIn from "./pages/SignIn/SignIn";
+import { GET_LOGGED_USER } from "./graphql/queries";
 
-function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const httpLink = createHttpLink({
+  uri: "http://localhost:5000",
+});
 
-  const [doSignupMutation, { data, loading, error }] = useMutation(createUser);
-
-  async function doSignup() {
-    try {
-      await doSignupMutation({
-        variables: {
-          data: {
-            email,
-            password,
-          },
-        },
-      });
-      setEmail("");
-      setPassword("");
-    } catch {}
-  }
-
-  return (
-    <>
-      {error && (
-        <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
-      )}
-      <p>Email:</p>
-      <input
-        disabled={loading}
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <p>Password:</p>
-      <input
-        disabled={loading}
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button disabled={loading} onClick={doSignup}>
-        Signup
-      </button>
-    </>
-  );
-}
-
-function Main() {
-  return (
-    <div>
-      <Signup />
-    </div>
-  );
-}
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+function Main() {
+  const [user, setUser] = useState(null)
+
+  const { data, refetch } = useQuery(GET_LOGGED_USER)
+
+  function onTokenChange(token?: string) {
+    if (token) {
+      localStorage.setItem('token', token)
+      console.log('logged in')
+    } else {
+      localStorage.removeItem('token')
+      console.log('logged out')
+    }
+    refetch()
+  }
+
+  useEffect(() => {
+    if (data && data.loggedUser) {
+      setUser(data.loggedUser)
+    } else {
+      setUser(null)
+    }
+  })
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          {user ?<>
+
+          </> 
+          :
+          <>
+            <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
+            <Route path="/signup" element={<Signup />} />
+            
+          </> 
+          }
+          
+          <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 function App() {
   return (
@@ -78,3 +89,4 @@ function App() {
 }
 
 export default App;
+
