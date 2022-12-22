@@ -13,10 +13,10 @@ import Signup from "./pages/Signup/Signup";
 import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
-import SignIn from "./pages/SignIn/SignIn";
 import Blog from "./pages/Blogs/Blog";
 import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
+import Login from "./pages/Login/Login";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -72,8 +72,8 @@ function Main() {
           ) : (
             <>
               <Route
-                path="/signin"
-                element={<SignIn user={user} onTokenChange={onTokenChange} />}
+                path="/login"
+                element={<Login user={user} onTokenChange={onTokenChange} />}
               />
               <Route path="/signup" element={<Signup />} />
             </>

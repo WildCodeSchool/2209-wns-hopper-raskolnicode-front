@@ -5,7 +5,7 @@ import { SIGN_IN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 
-function SignIn(props: {
+function Login(props: {
   user: IUser | null;
   onTokenChange: (token?: string) => void;
 }) {
@@ -78,4 +78,4 @@ function SignIn(props: {
   );
 }
 
-export default SignIn;
+export default Login;

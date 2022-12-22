@@ -5,7 +5,7 @@ const Home = (props: { user: IUser | null, onTokenChange: (token?: string) => vo
   return (
     <div>
       <h1>Welcome to StarBlog</h1>
-      { props.user ? <button onClick={() => props.onTokenChange()}>Se déconnecter</button> : <a href="/signin">Me connecter</a> }
+      { props.user ? <button onClick={() => props.onTokenChange()}>Se déconnecter</button> : <a href="/login">Me connecter</a> }
     </div>
   );
 };

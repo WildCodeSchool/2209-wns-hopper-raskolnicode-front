@@ -9,7 +9,7 @@ function Navbar() {
         
         <div className={styles.link}>
         <Link className={styles.linknav} to={'/signup'}>Inscription</Link>
-        <Link className={styles.linknav} to={'/signin'}>Connection</Link>
+        <Link className={styles.linknav} to={'/login'}>Connection</Link>
         </div>
         
     </main>
