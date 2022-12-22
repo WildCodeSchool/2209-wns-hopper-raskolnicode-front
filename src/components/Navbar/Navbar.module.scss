@@ -1,12 +1,11 @@
 .navbarmain{
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-    margin-right: 30em;
-    margin-left: 30em;
+    margin-right: auto;
+    margin-left: auto;
     .logo{
-        width: 180px;
-        height: 140px;
-        margin: 0px;
+height: 5em;
     }
     .link{
         display:flex;
