@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "../Signup/Signup.module.scss";
+import styles from "./Login.module.scss";
 import { SIGN_IN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -36,10 +36,9 @@ function Login(props: {
   }
 
   return (
-    <main className={styles.signupMain}>
-      <div className={styles.form}>
+    <main className={styles.logingMain}>
+        <form onSubmit={doSignIn} className={styles.form}>
         <h3>Connexion</h3>
-        <form onSubmit={doSignIn}>
           <div className={styles.email}>
             <input
               disabled={loading}
@@ -66,13 +65,13 @@ function Login(props: {
               Me connecter
             </button>
           </div>
-        </form>
-        <div>
+          <div>
           <p>
             Avez-vous déja un <a href="X">compte?</a>
           </p>
         </div>
-      </div>
+        </form>
+        
     </main>
   );
 }
