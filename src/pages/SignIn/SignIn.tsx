@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import '../Signup/signup.scss'
+import "../Signup/Signup.module.scss";
 import { SIGN_IN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 
-function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => void }) {
-
+function SignIn(props: {
+  user: IUser | null;
+  onTokenChange: (token?: string) => void;
+}) {
   // Redirects to dashboard if there's a user logged in
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
@@ -27,17 +28,16 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
         },
       });
       if (result.data) {
-        props.onTokenChange(result.data.signIn)
-        navigate('/')
+        props.onTokenChange(result.data.signIn);
+        navigate("/");
       }
-    } catch (error) { 
-      console.error(error)
+    } catch (error) {
+      console.error(error);
     }
   }
 
-
   return (
-    <main className='signupMain'>
+    <main className="signupMain">
       <div className="form">
         <h3>Connexion</h3>
         <form onSubmit={doSignIn}>
@@ -47,7 +47,7 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder='Votre email'
+              placeholder="Votre email"
             />
           </div>
           <div className="password">
@@ -56,13 +56,12 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder='Votre mot de passe'
+              placeholder="Votre mot de passe"
             />
           </div>
-          {
-            error &&
-            <p style={{ color: 'red' }}>Quelque chose s'est mal passé</p>
-          }
+          {error && (
+            <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
+          )}
           <div>
             <button disabled={loading} onClick={doSignIn}>
               Me connecter
@@ -70,7 +69,9 @@ function SignIn(props: { user: IUser | null, onTokenChange: (token?: string) => 
           </div>
         </form>
         <div>
-          <p>Avez-vous déja un <a href="X">compte?</a></p>
+          <p>
+            Avez-vous déja un <a href="X">compte?</a>
+          </p>
         </div>
       </div>
     </main>
