@@ -1,34 +1,25 @@
-main {
-  margin-left: auto;
-  margin-right: auto;
-  width: 75%;
-}
+.blogmain {
+  img {
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+  }
 
-img {
-  width: 100%;
-  height: 15em;
-  object-fit: cover;
-  object-position: center;
-  margin: auto;
-}
+  .mainpicture {
+    float: left;
+    width: 64%;
+    padding: 1%;
+  }
+  .secondarypicture {
+    float: left;
+    width: 31%;
+    padding: 1%;
+  }
 
-.mainpicture {
-  float: left;
-  width: 64%;
-  padding: 1%;
-}
-.secondarypicture {
-  float: left;
-  width: 31%;
-  padding: 1%;
-}
-
-h1 {
-  text-align: center;
-  margin: 2em;
-}
-
-p {
-  font-style: italic;
-  font-size: 0.8em;
+  h1 {
+    text-align: center;
+    margin: 2em;
+  }
 }

@@ -3,11 +3,11 @@ import styles from "./Post.module.scss";
 
 function Post() {
   return (
-    <main>
+    <main className={styles.postmain}>
       <h1>Du Côté de Chez Swann</h1>
       <div className={styles.mainpicture}>
         <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
-        <p>21 novembre 2023</p>
+        <p className="dateline">21 novembre 2023</p>
         <p>
           Longtemps, je me suis couché de bonne heure. Parfois, à peine ma
           bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le
