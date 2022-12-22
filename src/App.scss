@@ -1,6 +1,12 @@
+$textcolor: #000001;
+$textcolorwhite: #fef6c9;
+$textcolorgrey: #4f4346;
+$primarycolor: #345995;
+$secondarycolor: #8eb8e5;
+
 body {
   font-family: "IBM Plex Sans", sans-serif;
-  color: #000001;
+  color: $textcolor;
   margin: 0;
   text-decoration: none;
 }
@@ -30,5 +36,5 @@ h4 {
 
 p {
   margin: 0 0 1.5em;
-  font-size: 1.4em;
+  font-size: 2em;
 }
