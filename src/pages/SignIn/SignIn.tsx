@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import "../Signup/signup.module.scss";
+import styles from "../Signup/signup.module.scss";
 import { SIGN_IN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -37,11 +37,11 @@ function SignIn(props: {
   }
 
   return (
-    <main className="signupMain">
-      <div className="form">
+    <main className={styles.signupMain}>
+      <div className={styles.form}>
         <h3>Connexion</h3>
         <form onSubmit={doSignIn}>
-          <div className="email">
+          <div className={styles.email}>
             <input
               disabled={loading}
               type="email"
@@ -50,7 +50,7 @@ function SignIn(props: {
               placeholder="Votre email"
             />
           </div>
-          <div className="password">
+          <div className={styles.password}>
             <input
               disabled={loading}
               type="password"

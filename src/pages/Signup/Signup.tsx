@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import "./signup.module.scss";
+import styles from "./signup.module.scss";
 import { createUser } from "../../graphql/mutations";
 
 function Signup() {
@@ -25,13 +25,13 @@ function Signup() {
   }
 
   return (
-    <main className="signupMain">
+    <main className={styles.signupMain}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
-      <div className="form">
+      <div className={styles.form}>
         <h3>Inscription</h3>
-        <div className="email">
+        <div className={styles.email}>
           <input
             disabled={loading}
             type="email"
@@ -40,7 +40,7 @@ function Signup() {
             placeholder="Votre email"
           />
         </div>
-        <div className="password">
+        <div className={styles.password}>
           <input
             disabled={loading}
             type="password"
