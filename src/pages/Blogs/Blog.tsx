@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Blog.module.scss";
 
-function HomeBlog() {
+function Blog() {
   return (
     <main>
       <h1>Bienvenue sur le blog de Bidule</h1>
@@ -56,4 +56,4 @@ function HomeBlog() {
   );
 }
 
-export default HomeBlog;
+export default Blog;
