@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "../Signup/signup.module.scss";
+import styles from "../Signup/Signup.module.scss";
 import { SIGN_IN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";

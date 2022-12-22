@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./signup.module.scss";
+import styles from "./Signup.module.scss";
 import { createUser } from "../../graphql/mutations";
 
 function Signup() {
