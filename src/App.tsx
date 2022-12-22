@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, useQuery } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  useQuery,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Signup from "./pages/Signup/Signup";
 import NotFound from "./pages/NotFound/NotFound";
-import Blog from "./pages/Blogs/Blog";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import SignIn from "./pages/SignIn/SignIn";
+import Blog from "./pages/Blogs/Blog";
+import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 
 const httpLink = createHttpLink({
@@ -33,46 +40,51 @@ const client = new ApolloClient({
 });
 
 function Main() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
-  const { data, refetch } = useQuery(GET_LOGGED_USER)
+  const { data, refetch } = useQuery(GET_LOGGED_USER);
 
   function onTokenChange(token?: string) {
     if (token) {
-      localStorage.setItem('token', token)
-      console.log('logged in')
+      localStorage.setItem("token", token);
+      console.log("logged in");
     } else {
-      localStorage.removeItem('token')
-      console.log('logged out')
+      localStorage.removeItem("token");
+      console.log("logged out");
     }
-    refetch()
+    refetch();
   }
 
   useEffect(() => {
     if (data && data.loggedUser) {
-      setUser(data.loggedUser)
+      setUser(data.loggedUser);
     } else {
-      setUser(null)
+      setUser(null);
     }
-  })
+  });
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          {user ?<>
+          {user ? (
+            <></>
+          ) : (
+            <>
+              <Route
+                path="/signin"
+                element={<SignIn user={user} onTokenChange={onTokenChange} />}
+              />
+              <Route path="/signup" element={<Signup />} />
+            </>
+          )}
 
-          </> 
-          :
-          <>
-            <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
-            <Route path="/signup" element={<Signup />} />
-            
-          </> 
-          }
-          
-          <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
+          <Route
+            path="/"
+            element={<Home user={user} onTokenChange={onTokenChange} />}
+          />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/post" element={<Post />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
@@ -89,4 +101,3 @@ function App() {
 }
 
 export default App;
-
