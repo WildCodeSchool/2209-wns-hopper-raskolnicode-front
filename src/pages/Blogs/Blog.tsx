@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Blog.module.scss";
+import styles from "./blog.module.scss";
+import "../../App.scss";
 
 function Blog() {
   return (
@@ -7,10 +8,8 @@ function Blog() {
       <h1>Bienvenue sur le blog de Bidule</h1>
       <div className={styles.mainpicture}>
         <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
-        <div className={styles.title}>
-          <h2>Du Côté de Chez Swann</h2>
-          <p>21 novembre 2023</p>
-        </div>
+        <h2>Du Côté de Chez Swann</h2>
+        <p>21 novembre 2023</p>
       </div>
       <div className={styles.secondarypicture}>
         <img src="https://picsum.photos/1200/500?random=2" alt="photos" />
