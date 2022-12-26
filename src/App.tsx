@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import Blog from "./pages/Blogs/Blog";
+import CreateBlog from "./pages/Blogs/createBlog";
 import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 import Login from "./pages/Login/Login";
@@ -81,11 +82,9 @@ function Main() {
               </>
             )}
 
-            <Route
-              path="/"
-              element={<Home onTokenChange={onTokenChange} />}
-            />
+            <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/create" element={<CreateBlog />} />
             <Route path="/post" element={<Post />} />
             <Route path="*" element={<NotFound />} />
           </Route>
