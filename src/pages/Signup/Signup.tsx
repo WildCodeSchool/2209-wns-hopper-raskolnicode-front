@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./Signup.module.scss";
-import { createUser } from "../../graphql/mutations";
+import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
 
-  const [doSignupMutation, { data, loading, error }] = useMutation(createUser);
+  const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
   async function doSignup() {
     try {
