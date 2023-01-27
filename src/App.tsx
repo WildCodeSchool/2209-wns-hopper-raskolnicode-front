@@ -50,7 +50,7 @@ function Main() {
     }
   }, [error])
 
-  function onTokenChange(token?: string) {
+  async function onTokenChange(token?: string) {
     // console.log(token)
     if (token) {
       localStorage.setItem("token", token);
@@ -60,7 +60,15 @@ function Main() {
       console.log("logged out");
     }
     console.log('refetching')
-    refetch();
+    try {
+      const { data } = await refetch();
+      setUser(data?.loggedUser);
+    } catch (err: any) {
+      if (err.message.includes("Access denied!")) {
+        setUser(null)
+      }
+    }
+
   }
 
   useEffect(() => {
