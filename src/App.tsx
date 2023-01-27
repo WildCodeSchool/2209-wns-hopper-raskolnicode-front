@@ -51,6 +51,7 @@ function Main() {
   }, [error])
 
   function onTokenChange(token?: string) {
+    console.log(token)
     if (token) {
       localStorage.setItem("token", token);
       console.log("logged in");
@@ -62,11 +63,7 @@ function Main() {
   }
 
   useEffect(() => {
-    if (data && data.loggedUser) {
-      setUser(data.loggedUser);
-    } else {
-      setUser(null);
-    }
+      setUser(data?.loggedUser);
   });
 
   return (

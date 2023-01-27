@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./Login.module.scss";
-import { SIGN_IN } from "../../graphql/mutations";
+import { LOGIN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function Login(props: {
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
 
-  const [doSignInMutation, { data, loading, error }] = useMutation(SIGN_IN);
+  const [doSignInMutation, { data, loading, error }] = useMutation(LOGIN);
 
   async function doSignIn() {
     try {
