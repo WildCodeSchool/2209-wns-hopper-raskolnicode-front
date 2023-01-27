@@ -25,7 +25,8 @@
   // Create Blog CSS
 
   form {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20em;
     width: 70%;
     min-height: 500px;
@@ -36,29 +37,10 @@
     padding: 20px;
     align-self: center;
 
-    div {
-      display: grid;
-    }
-    a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-    }
-    h3 {
-      font-size: 24px;
-      text-align: center;
-      align-self: center;
-      margin-top: 20px;
-      margin-bottom: 20p;
-    }
-    p {
-      margin: 0px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    input {
-      width: 80%;
-      height: 30px;
+    input,
+    textarea {
+      width: 95%;
+      padding: 0.5em;
       margin-right: auto;
       margin-left: auto;
     }

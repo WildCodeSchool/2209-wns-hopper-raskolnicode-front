@@ -9,7 +9,16 @@ export const CREATE_USER = gql`
 `;
 
 export const SIGN_IN = gql`
-mutation SignIn($data: UserInput!) {
-  signIn(data: $data)
-}
-`
+  mutation SignIn($data: UserInput!) {
+    signIn(data: $data)
+  }
+`;
+
+export const CREATE_BLOG = gql`
+  mutation CreateBlog {
+    createBlog {
+      title
+      description
+    }
+  }
+`;
