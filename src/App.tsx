@@ -43,10 +43,16 @@ const client = new ApolloClient({
 
 function Main() {
   const [user, setUser] = useState(null);
+  const { data, refetch, error } = useQuery(GET_LOGGED_USER);
 
-  const { data, refetch } = useQuery(GET_LOGGED_USER);
+  useEffect(() => {
+    if (error) {
+      setUser(null)
+    }
+  }, [error])
 
-  function onTokenChange(token?: string) {
+  async function onTokenChange(token?: string) {
+    // console.log(token)
     if (token) {
       localStorage.setItem("token", token);
       console.log("logged in");
@@ -54,16 +60,22 @@ function Main() {
       localStorage.removeItem("token");
       console.log("logged out");
     }
-    refetch();
+    console.log('refetching')
+    try {
+      const { data } = await refetch();
+      setUser(data?.loggedUser);
+    } catch (err: any) {
+      if (err.message.includes("Access denied!")) {
+        setUser(null)
+      }
+    }
+
   }
 
   useEffect(() => {
-    if (data && data.loggedUser) {
-      setUser(data.loggedUser);
-    } else {
-      setUser(null);
-    }
-  });
+    console.log('useEffect loggedUser', data?.loggedUser)
+    setUser(data?.loggedUser);
+  }, [data]);
 
   return (
     <UserContext.Provider value={user}>

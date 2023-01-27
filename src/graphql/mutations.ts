@@ -8,9 +8,9 @@ export const CREATE_USER = gql`
   }
 `;
 
-export const SIGN_IN = gql`
-  mutation SignIn($data: UserInput!) {
-    signIn(data: $data)
+export const LOGIN = gql`
+  mutation login($data: UserInput!) {
+    login(data: $data)
   }
 `;
 

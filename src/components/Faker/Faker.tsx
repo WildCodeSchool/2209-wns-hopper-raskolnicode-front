@@ -10,6 +10,8 @@ const Faker = () => {
     entity: '',
     quantity: 10
   })
+  const [message, setMessage] = useState<string|null>(null)
+  const [error, setError] = useState<string|null>(null)
 
   const updateFakerForm = (e: any) => {
     const inputName = e.target.name
@@ -21,26 +23,36 @@ const Faker = () => {
 
   const submitFaker = async (e: any) => {
     e.preventDefault()
+    setMessage(null)
+    setError(null)
     switch (fakerForm.entity) {
       case 'user':
-        for (let i = 0; i < fakerForm.quantity; i++) {
-          const randomUser = {
-            email: faker.internet.email(),
-            password: 'random1234'
-          }
-          await createUser({
-            variables: {
-              data: {
-                email: randomUser.email,
-                password: randomUser.password,
+        try {
+          for (let i = 0; i < fakerForm.quantity; i++) {
+            const randomUser = {
+              email: faker.internet.email(),
+              password: 'random1234'
+            }
+            await createUser({
+              variables: {
+                data: {
+                  email: randomUser.email,
+                  password: randomUser.password,
+                },
               },
-            },
-          })
+            })
+          }
+          setMessage(`✅ ${fakerForm.quantity} user(s) créé(s)`)
+        } catch (err) {
+          setError(`⚠️ ${fakerForm.quantity} une erreur`)
         }
         break
       default:
         console.log("No entity has been selected")
+        setError(`⚠️ merci de choisir une entité`)
+        break;
     }
+    setFakerForm({ ...fakerForm, entity: '' })
   }
 
   return (
@@ -69,6 +81,8 @@ const Faker = () => {
             className='py-0 mx-1'
             style={{ height: '2rem', width: 'fit-content' }}
           >Fake</Button>
+          { message && <p className='mb-0 text-success' style={{ height: '2rem', width: 'fit-content' }}>{message}</p> } 
+          { error && <p className='mb-0 text-danger' style={{ height: '2rem', width: 'fit-content' }}>{error}</p> }
         </Row>
       </Form>
       {/* <pre>{JSON.stringify(fakerForm, null, 2)}</pre> */}
