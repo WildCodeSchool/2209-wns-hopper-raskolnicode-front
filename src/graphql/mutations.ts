@@ -14,8 +14,8 @@ mutation login($data: UserInput!) {
 }
 `
 
-export const LOGOUT = gql`
-mutation logout() {
-  logout()
-}
-`
+// export const LOGOUT = gql`
+// mutation logout() {
+//   logout()
+// }
+// `

@@ -51,7 +51,7 @@ function Main() {
   }, [error])
 
   function onTokenChange(token?: string) {
-    console.log(token)
+    // console.log(token)
     if (token) {
       localStorage.setItem("token", token);
       console.log("logged in");
@@ -59,12 +59,14 @@ function Main() {
       localStorage.removeItem("token");
       console.log("logged out");
     }
+    console.log('refetching')
     refetch();
   }
 
   useEffect(() => {
-      setUser(data?.loggedUser);
-  });
+    console.log('useEffect loggedUser', data?.loggedUser)
+    setUser(data?.loggedUser);
+  }, [data]);
 
   return (
     <UserContext.Provider value={user}>

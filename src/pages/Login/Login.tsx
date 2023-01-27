@@ -27,7 +27,7 @@ function Login(props: {
         },
       });
       if (result.data) {
-        props.onTokenChange(result.data.signIn);
+        props.onTokenChange(result.data.login);
         navigate("/");
       }
     } catch (error) {
