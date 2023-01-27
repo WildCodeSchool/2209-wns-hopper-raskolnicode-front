@@ -8,7 +8,7 @@ function Navbar(props: {onTokenChange: () => void}) {
 
   return (
     <main className={styles.navbarmain}>
-        <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./logo.png" alt="" /></Link>
+        <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./blackLogo.png" alt="" /></Link>
         
         <div className={styles.link}>
           {
