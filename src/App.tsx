@@ -42,8 +42,13 @@ const client = new ApolloClient({
 
 function Main() {
   const [user, setUser] = useState(null);
+  const { data, refetch, error } = useQuery(GET_LOGGED_USER);
 
-  const { data, refetch } = useQuery(GET_LOGGED_USER);
+  useEffect(() => {
+    if (error) {
+      setUser(null)
+    }
+  }, [error])
 
   function onTokenChange(token?: string) {
     if (token) {
