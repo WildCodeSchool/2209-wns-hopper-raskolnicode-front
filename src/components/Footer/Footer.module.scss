@@ -1,0 +1,27 @@
+.footermain{
+    background-color: rgb(53, 53, 53);
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 2em;
+    margin-top: 1em;
+
+    img{
+        width: 20%;
+        max-height: 10em;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+.linknav {
+    text-decoration: underline;
+    color: white;
+  }
+.linknav:hover{
+    color: grey;
+    
+}
+.containerLink{
+    display: flex;
+    justify-content: space-evenly;
+}
