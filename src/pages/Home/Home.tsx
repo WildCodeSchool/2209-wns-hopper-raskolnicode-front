@@ -87,56 +87,56 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
             <img src="https://picsum.photos/1200/400?random=2" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=4" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=6" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=9" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=13" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=7" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=12" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
 
           <div className={styles.card}>
             <img src="https://picsum.photos/1200/400?random=3" alt="" />
             <h4>Easy ways to use alternative to plastic</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
-            <p>12 August</p>
+            <p className={styles.dateCreated}>12 August</p>
           </div>
         </div>
       </section>

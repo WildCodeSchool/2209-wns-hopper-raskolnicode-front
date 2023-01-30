@@ -1,4 +1,13 @@
 .homeMain{
+    
+    padding-bottom: 3rem;
+
+
+    .carroussel h2, .articlelist h2 {
+        margin-bottom: 2vw;
+        position: relative;
+        bottom: 7px;
+    }
 
     .banniere{
         display: flex;
@@ -8,7 +17,6 @@
         .contentBanniere{
             display: grid;
             align-content: center;
-            margin-left: 3em;
         }
 
         h2{
@@ -23,9 +31,18 @@
 
         }
 
+        button {
+            position: relative;
+            left: 2vw;
+            top: 10px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
 
         .banniere_box_img {
             height: 35rem;
+            margin-left: 8%;
 
             img{
                 // margin: 0 0 5em 0;
@@ -44,11 +61,7 @@
         align-self: center;
         width: 15em;
         margin:10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 8px;
-        padding-bottom: 10px;
-        max-height: 40px;
+        padding: 15px 10px;
         border-radius: 5px;
         color: white;
         background: #345995;
@@ -56,6 +69,9 @@
         }
 
     }
+
+
+    
 
     section.articlelist{
         text-align: center;
@@ -80,6 +96,16 @@
             p{
                 padding: 10px;
             }
+
+            .dateCreated {
+                border: 1px solid black;
+                border-style: inset;
+                display: inline-block;
+                position: relative;
+                margin-left: 3%;
+                word-spacing: 5px;
+            }
+
             h4{
                 padding: 10px;
             }
@@ -100,6 +126,8 @@
 .carroussel{
     text-align: center;
 
+
+
     .d-block  {
         width: 100%;
     }
@@ -113,6 +141,27 @@
 
 
 
+@media (max-width: 1650px) {
+    .homeMain{
+
+    section.articlelist{
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        .listCard{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:3%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+    }
+}
+
+}
+
 @media (max-width: 1250px) {
     .homeMain{
 
@@ -122,6 +171,10 @@
             gap: 3rem;
             width: 90%;
             margin: auto;
+
+            .banniere_box_img {
+                margin: auto;
+            }
 
             .banniere_box_img img {
                 margin-left: 0;
@@ -208,6 +261,15 @@
 
     .banniere {
         gap: 0;
+
+
+        .banniere_box_img {
+            height: 30rem;
+        }
+    }
+
+    .contentBanniere button {
+        left: 0;
     }
 
 }
@@ -222,7 +284,7 @@
     .banniere {
         display: flex;
         flex-direction: column;
-    }
+    
 
 
     .banniere_box_img {
@@ -235,11 +297,39 @@
 
     .banniere_box_img img {
         margin: auto;
+        max-height: 30rem;
     }
 
-}
+    .contentBanniere {
+        margin: 1.5rem auto 3rem auto;
+    h2 {
+        text-align: center;
+        max-width: 470px;
+        margin-bottom: 1rem;
+    }
+    
+    button {
+        margin: auto;
+    }
+
+}}
 }
 
+}
+
+
+
+@media (max-width: 700px) {
+    .homeMain{
+
+    section.articlelist{
+        .listCard{
+            grid-template-columns: repeat(1,1fr);
+            gap: 1.5%;
+        }
+    }
+}
+}
 
 
 
@@ -261,11 +351,7 @@
             align-self: center;
             font-size: 14px;
             margin:10px;
-            padding-left: 15px;
-            padding-right: 15px;
-            padding-top: 8px;
-            padding-bottom: 10px;
-            max-height: 40px;
+            padding: 10px 10px;
             border-radius: 5px;
             color: white;
             background: #345995;
