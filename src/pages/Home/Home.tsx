@@ -16,7 +16,7 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
           <img src="./imgbanniere.png" alt="" />
         </div>
         <div className={styles.contentBanniere}>
-          <h2>Créez votre <br></br>blog super facilement</h2>
+          <h1>Créez votre <br></br>blog super facilement</h1>
           <button>Commencer mon blog</button>
         </div>
       </section>
@@ -32,7 +32,9 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
           />
           <Carousel.Caption>
             <h3>Alan's Blog</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <p className={styles.carrousselDescription}>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -44,7 +46,9 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
 
           <Carousel.Caption>
             <h3>Félicie's Blog</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className={styles.carrousselDescription}>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -56,7 +60,7 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
 
           <Carousel.Caption>
             <h3>Soufiane's Blog</h3>
-            <p>
+            <p className={styles.carrousselDescription}>
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
           </Carousel.Caption>
@@ -70,8 +74,8 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
 
           <Carousel.Caption>
             <h3>Clément's Blog</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            <p className={styles.carrousselDescription}>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
