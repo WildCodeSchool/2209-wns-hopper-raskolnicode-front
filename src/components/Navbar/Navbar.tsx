@@ -7,32 +7,23 @@ function Navbar(props: { onTokenChange: () => void }) {
   const user = useContext(UserContext);
 
   return (
-    <main className={styles.navbarmain}>
-      <Link className={styles.linklogo} to={"/"}>
-        <img className={styles.logo} src="./logo.png" alt="" />
-      </Link>
+    <nav className={styles.navbarmain}>
+        <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./logo.png" alt="" /></Link>
+        
+        <div className={styles.link}>
+          {
+            user ?
+            <Link className={styles.linknav} to={''} onClick={() => props.onTokenChange()}>Déconnexion</Link>
+            :
+            <>
+            <Link className={styles.linknav} to={'/signup'}>Inscription</Link>
+            <Link className={styles.linknav} to={'/login'}>Connexion</Link>
+            </>
+          }
 
-      <div className={styles.link}>
-        {user ? (
-          <Link
-            className={styles.linknav}
-            to={""}
-            onClick={() => props.onTokenChange()}
-          >
-            Déconnexion
-          </Link>
-        ) : (
-          <>
-            <Link className={styles.linknav} to={"/signup"}>
-              Inscription
-            </Link>
-            <Link className={styles.linknav} to={"/login"}>
-              Connexion
-            </Link>
-          </>
-        )}
-      </div>
-    </main>
+        </div>
+    </nav>
+
   );
 }
 

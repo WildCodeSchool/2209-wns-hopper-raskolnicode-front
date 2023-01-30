@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
 
   return (
-    <main className={styles.footermain}>
+    <footer className={styles.footermain}>
         <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./whiteLogo.png" alt="" /></Link>
         <p>Copyright © 2023 StarBlog, Inc.</p>
 
@@ -12,7 +12,7 @@ function Footer() {
         <Link className={styles.linknav} to={'/mentions'}>Mentions légale</Link>
         <Link className={styles.linknav} to={'/politique'}>Politique de confidentialité</Link>
         </div>
-    </main>
+    </footer>
   );
 }
 

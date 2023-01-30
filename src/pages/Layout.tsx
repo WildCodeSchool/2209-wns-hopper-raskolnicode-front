@@ -8,7 +8,7 @@ const Layout = (props: {onTokenChange: () => void}) => {
   return (
     <>
       <Navbar onTokenChange={props.onTokenChange}/>
-      <hr className="mb-0"/>
+      <hr className="mb-0" style={{margin: "0"}}/>
       <Outlet />
       <Faker />
       <Footer/>
