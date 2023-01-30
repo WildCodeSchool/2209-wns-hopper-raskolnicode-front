@@ -7,7 +7,7 @@ function Navbar(props: {onTokenChange: () => void}) {
   const user = useContext(UserContext)
 
   return (
-    <main className={styles.navbarmain}>
+    <nav className={styles.navbarmain}>
         <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./logo.png" alt="" /></Link>
         
         <div className={styles.link}>
@@ -22,7 +22,7 @@ function Navbar(props: {onTokenChange: () => void}) {
           }
 
         </div>
-    </main>
+    </nav>
   );
 }
 

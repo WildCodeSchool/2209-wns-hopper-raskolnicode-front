@@ -12,7 +12,9 @@ const Home = (props: { onTokenChange: (token?: string) => void}) => {
   return (
     <main className={styles.homeMain}>
       <section className={styles.banniere}>
-        <img src="./imgbanniere.png" alt="" />
+        <div className={styles.banniere_box_img}>
+          <img src="./imgbanniere.png" alt="" />
+        </div>
         <div className={styles.contentBanniere}>
           <h2>Créez votre <br></br>blog super facilement</h2>
           <button>Commencer mon blog</button>
