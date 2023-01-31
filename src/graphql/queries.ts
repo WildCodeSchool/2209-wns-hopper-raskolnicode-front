@@ -6,6 +6,13 @@ query LoggedUser {
     id
     email
     password
+    role
   }
-}
-`
+}`
+
+export const HAS_SUPERADMIN = gql`
+query HasSuperAdmin {
+  hasSuperAdmin {
+    id
+  }
+}`

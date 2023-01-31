@@ -4,6 +4,7 @@ interface UserContextInterface {
   id: number;
   email: string;
   password: string;
+  role: string;
 }
 
 export const UserContext = createContext<UserContextInterface | null>(null) 

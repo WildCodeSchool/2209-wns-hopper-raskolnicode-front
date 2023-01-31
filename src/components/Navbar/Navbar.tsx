@@ -5,6 +5,7 @@ import { UserContext } from "../../UserContext";
 
 function Navbar(props: { onTokenChange: () => void }) {
   const user = useContext(UserContext);
+  console.log('user Navbar', user)
 
   return (
     <nav className={styles.navbarmain}>
