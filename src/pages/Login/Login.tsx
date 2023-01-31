@@ -66,11 +66,11 @@ function Login(props: {
               Me connecter
             </button>
           </div>
-          <div>
+          {/* <div>
           <p className={styles.forbidenMdpLink}>
             Avez-vous déja un <a href="X">compte?</a>
           </p>
-        </div>
+        </div> */}
         </form>
         
     </main>

@@ -10,7 +10,7 @@
         grid-template-columns: 1fr;
         margin-top: 40px;
         width: 430px;
-        min-height: 500px;
+        min-height: 550px;
         margin-right: auto;
         margin-left: auto;
         border-radius: 20px;
@@ -60,6 +60,7 @@
             border: 0.3px solid black;
             color: white;
             max-height: 3.1rem;
+            font-size: clamp(0.9rem, 2.2vw, 1.2rem);
             margin-right: auto;
             margin-left: auto;
             background: linear-gradient(to right ,blue, rgb(0, 173, 226));
@@ -72,17 +73,33 @@
 
     .logingMain{
 
-    
+    min-height: 60vh;
 
     .form {
         width: 90%;
         max-width: 430px;
         border-radius: 9px;
+        min-height: 470px;
+        padding: 0;
     }
 
-    .forbidenMdpLink {
-        
+    button {
+        max-height: 3rem;
+        padding: 6px 12px;
     }
 
     }
+}
+
+
+@media (max-width: 360px) {
+    .logingMain{
+        min-height: 55vh;
+        .form {
+            min-height: 430px;
+        }
+    
+        }
+
+
 }
