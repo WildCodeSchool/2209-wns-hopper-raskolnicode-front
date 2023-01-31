@@ -20,7 +20,8 @@ describe("Navbar", () => {
     const user = {
       id: 1,
       email: "jane@mail.fr",
-      password: "supersecret"
+      password: "supersecret",
+      role: "USER"
     }
     render(
       <UserContext.Provider value={user}>

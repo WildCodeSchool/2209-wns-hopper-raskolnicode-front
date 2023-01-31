@@ -8,6 +8,14 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const CREATE_SUPERADMIN = gql`
+mutation CreateSuperAdmin($data: UserInput!) {
+  createSuperAdmin(data: $data) {
+    id
+  }
+}
+`;
+
 export const LOGIN = gql`
 mutation login($data: UserInput!) {
   login(data: $data)
