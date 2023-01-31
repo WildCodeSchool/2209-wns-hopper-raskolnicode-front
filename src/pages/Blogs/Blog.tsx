@@ -1,11 +1,19 @@
 import React from "react";
+import Card from "../../components/Card/Card";
 import styles from "./Blog.module.scss";
 
 function Blog() {
   return (
     <main className={styles.blogmain}>
       <h1>Bienvenue sur le blog de Bidule</h1>
-      <div className={styles.mainpicture}>
+      <Card
+        title="test de description"
+        description="test de description"
+        image="futur lien image"
+        updated_at="date de MAJ"
+      />
+
+      {/* <div className={styles.mainpicture}>
         <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
         <h2>Du Côté de Chez Swann</h2>
         <p className="dateline">21 novembre 2023</p>
@@ -44,7 +52,7 @@ function Blog() {
         <img src="https://picsum.photos/100/500?random=2" alt="photos" />
         <h2>Vous me prenez pour ma mère</h2>
         <p className="dateline">1 juillet 2022</p>
-      </div>
+      </div> */}
     </main>
   );
 }
