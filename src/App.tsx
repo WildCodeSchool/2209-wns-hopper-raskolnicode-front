@@ -18,6 +18,7 @@ import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 import Login from "./pages/Login/Login";
 import { UserContext } from "./UserContext";
+import Privacy from "./pages/Home/Privacy";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -46,9 +47,9 @@ function Main() {
 
   useEffect(() => {
     if (error) {
-      setUser(null)
+      setUser(null);
     }
-  }, [error])
+  }, [error]);
 
   async function onTokenChange(token?: string) {
     // console.log(token)
@@ -59,20 +60,19 @@ function Main() {
       localStorage.removeItem("token");
       console.log("logged out");
     }
-    console.log('refetching')
+    console.log("refetching");
     try {
       const { data } = await refetch();
       setUser(data?.loggedUser);
     } catch (err: any) {
       if (err.message.includes("Access denied!")) {
-        setUser(null)
+        setUser(null);
       }
     }
-
   }
 
   useEffect(() => {
-    console.log('useEffect loggedUser', data?.loggedUser)
+    console.log("useEffect loggedUser", data?.loggedUser);
     setUser(data?.loggedUser);
   }, [data]);
 
@@ -93,12 +93,10 @@ function Main() {
               </>
             )}
 
-            <Route
-              path="/"
-              element={<Home onTokenChange={onTokenChange} />}
-            />
+            <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/post" element={<Post />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
