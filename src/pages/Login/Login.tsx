@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./Login.module.scss";
 import { LOGIN } from "../../graphql/mutations";
@@ -61,13 +61,13 @@ function Login(props: {
           {error && (
             <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
           )}
-          <div>
+          <div className={styles.buttonBox}>
             <button disabled={loading} onClick={doSignIn}>
               Me connecter
             </button>
           </div>
           <div>
-          <p>
+          <p className={styles.forbidenMdpLink}>
             Avez-vous déja un <a href="X">compte?</a>
           </p>
         </div>
