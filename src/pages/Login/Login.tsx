@@ -16,7 +16,8 @@ function Login(props: {
 
   const [doSignInMutation, { data, loading, error }] = useMutation(LOGIN);
 
-  async function doSignIn() {
+  async function doSignIn(e: any) {
+    e.preventDefault()
     try {
       const result = await doSignInMutation({
         variables: {
@@ -37,7 +38,7 @@ function Login(props: {
 
   return (
     <main className={styles.logingMain}>
-        <form onSubmit={doSignIn} className={styles.form}>
+        <form onSubmit={e => doSignIn(e)} className={styles.form}>
         <h3>Connexion</h3>
           <div className={styles.email}>
             <input
