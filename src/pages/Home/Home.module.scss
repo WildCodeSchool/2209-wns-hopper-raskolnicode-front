@@ -1,6 +1,11 @@
 .homeMain {
   padding-bottom: 3rem;
 
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   h1 {
     text-align: center;
     margin: 2em;
@@ -86,6 +91,14 @@
     }
   }
 }
+@media (max-width: 1650px) {
+  .homeMain {
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
 
 @media (max-width: 1250px) {
   .homeMain {
@@ -133,6 +146,10 @@
         width: 100%;
         height: 80%;
       }
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }
@@ -203,6 +220,10 @@
 @media (max-width: 700px) {
   .homeMain {
     padding-bottom: 0;
+    .container {
+      // display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 

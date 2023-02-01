@@ -3,11 +3,14 @@ import { UserContext } from "../../UserContext";
 import styles from "./Home.module.scss";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "../../components/Card/Card";
+import Card, { IBlogProps } from "../../components/Card/Card";
+import { GET_BLOGS } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
 
 const Home = (props: { onTokenChange: (token?: string) => void }) => {
   // Getting current user from context
   const user = useContext(UserContext);
+  const { loading, data } = useQuery<{ blogs: IBlogProps[] }>(GET_BLOGS);
 
   return (
     <main className={styles.homeMain}>
@@ -84,12 +87,19 @@ const Home = (props: { onTokenChange: (token?: string) => void }) => {
         </Carousel>
       </section>
       <h1>Parcourir les blogs</h1>
-      <Card
-        title="test de description"
-        description="test de description"
-        image="futur lien image"
-        updated_at="date de MAJ"
-      />
+      <section className={styles.container}>
+        {loading === true && "Chargement..."}
+        {data?.blogs.map((blog) => {
+          return (
+            <Card
+              title={blog.name}
+              description={blog.description}
+              image="futur lien image"
+              updated_at={blog.updated_at}
+            />
+          );
+        })}
+      </section>
     </main>
   );
 };
