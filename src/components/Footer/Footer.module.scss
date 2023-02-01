@@ -51,18 +51,21 @@ footer {
 
     .logoImageBox {
         margin: auto;
-        width: 40%;
+        width: 55%;
         max-height: 6vh;
+
+        .linklogo {
+            margin-right: 12%;
+        }
 
 
     }
 
     .containerLink {
         flex-direction: column-reverse;
-        width: 60%;
+        width: 45%;
         margin: 0.4rem auto auto auto;
         text-align: left;
-        left: 15%;
         position: relative;        
         line-height: 27px;
         position: relative;
