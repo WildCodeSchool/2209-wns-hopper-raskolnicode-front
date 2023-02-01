@@ -38,7 +38,7 @@ function Login(props: {
   }
 
   return (
-    <main className={styles.logingMain}>
+    <main className={styles.signMain}>
         <form onSubmit={e => doSignIn(e)} className={styles.form}>
         <h3>Connexion</h3>
           <div className={styles.email}>
