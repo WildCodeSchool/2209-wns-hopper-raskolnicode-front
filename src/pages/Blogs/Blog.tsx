@@ -6,12 +6,14 @@ function Blog() {
   return (
     <main className={styles.blogmain}>
       <h1>Bienvenue sur le blog de Bidule</h1>
-      <Card
-        title="test de description"
-        description="test de description"
-        image="futur lien image"
-        updated_at="date de MAJ"
-      />
+      <section className={styles.container}>
+        <Card
+          title="test de description"
+          description="test de description"
+          image="futur lien image"
+          updated_at="date de MAJ"
+        />
+      </section>
 
       {/* <div className={styles.mainpicture}>
         <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
