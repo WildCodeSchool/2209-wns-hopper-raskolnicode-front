@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./Login.module.scss";
+// import styles from "./Login.module.scss";
+import styles from "./../../components/formSign/formSign.module.scss"
 import { LOGIN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +38,7 @@ function Login(props: {
   }
 
   return (
-    <main className={styles.logingMain}>
+    <main className={styles.signMain}>
         <form onSubmit={e => doSignIn(e)} className={styles.form}>
         <h3>Connexion</h3>
           <div className={styles.email}>
@@ -61,16 +62,16 @@ function Login(props: {
           {error && (
             <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
           )}
-          <div>
+          <div className={styles.buttonBox}>
             <button disabled={loading} onClick={doSignIn}>
               Me connecter
             </button>
           </div>
-          <div>
-          <p>
+          {/* <div>
+          <p className={styles.forbidenMdpLink}>
             Avez-vous déja un <a href="X">compte?</a>
           </p>
-        </div>
+        </div> */}
         </form>
         
     </main>
