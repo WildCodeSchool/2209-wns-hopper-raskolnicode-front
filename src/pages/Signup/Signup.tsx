@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./Signup.module.scss";
+import styles from "./../../components/formSign/formSign.module.scss"
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
@@ -25,11 +25,11 @@ function Signup() {
   }
 
   return (
-    <main className={styles.signupMain}>
+    <main className={styles.signMain}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
-      <div className={styles.form}>
+      <form className={styles.form}>
         <h3>Inscription</h3>
         <div className={styles.email}>
           <input
@@ -49,7 +49,7 @@ function Signup() {
             placeholder="Votre mot de passe"
           />
         </div>
-        <div>
+        <div className={styles.buttonBox}>
           <button disabled={loading} onClick={doSignup}>
             Inscription
           </button>
@@ -59,7 +59,7 @@ function Signup() {
             Avez-vous déja un <a href="X">compte?</a>
           </p>
         </div>
-      </div>
+      </form>
     </main>
   );
 }

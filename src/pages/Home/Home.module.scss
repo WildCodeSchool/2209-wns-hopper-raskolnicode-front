@@ -11,6 +11,11 @@
     margin: 2em;
   }
 
+  h2 {
+    font-size: 2em;
+    font-weight: 200;
+  }
+
   .carroussel h2,
   .banniere {
     display: flex;
@@ -276,4 +281,8 @@
   .homeMain .banniere .banniere_box_img {
     height: 12rem;
   }
+}
+
+.bodyPrivacy {
+  padding: 2rem;
 }
