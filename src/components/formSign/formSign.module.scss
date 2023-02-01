@@ -1,6 +1,6 @@
 .signMain{
 
-    min-height: 70vh;
+    min-height: 82vh;
     display: flex;
     // align-content: center;
     align-items: center;
@@ -85,7 +85,7 @@
 
     .signMain{
 
-    min-height: 60vh;
+    min-height: 95vh;
 
     .form {
         width: 90%;
@@ -106,7 +106,7 @@
 
 @media (max-width: 360px) {
     .signMain{
-        min-height: 55vh;
+        min-height: 70vh;
         .form {
             min-height: 430px;
         }
