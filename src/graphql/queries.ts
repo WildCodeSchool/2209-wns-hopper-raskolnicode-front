@@ -53,3 +53,12 @@ export const GET_POSTS_BY_BLOG = gql`
     }
   }
 `;
+
+export const GET_USERS = gql`
+query Users {
+  getUsers {
+    id
+    email
+    role
+  }
+}`
