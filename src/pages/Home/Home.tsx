@@ -31,7 +31,9 @@ const Home = (props: { onTokenChange: (token?: string) => void }) => {
           <h1>
             Créez votre <br></br>blog super facilement
           </h1>
-          <button>Commencer mon blog</button>
+          <Link to={user ? '/blog/create' : '/login'}>
+            <button>Commencer mon blog</button>
+          </Link>
         </div>
       </section>
       <section className={styles.carroussel}>

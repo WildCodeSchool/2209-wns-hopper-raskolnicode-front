@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import styles from "./../../components/formSign/formSign.module.scss"
+import styles from "../../styles/forms/forms.module.scss"
 import { CREATE_SUPERADMIN } from "../../graphql/mutations";
 import { Link } from "react-router-dom";
 import { HAS_SUPERADMIN } from "../../graphql/queries";
@@ -28,7 +28,7 @@ const SuperAdminSignup = () => {
   }
 
   return (
-    <main className={styles.signupMain}>
+    <main className={styles.main}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
