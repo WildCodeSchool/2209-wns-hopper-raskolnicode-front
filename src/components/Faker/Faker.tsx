@@ -1,14 +1,11 @@
 import { useMutation, useQuery } from '@apollo/client'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Form, Row } from 'react-bootstrap'
-import { CREATE_BLOG, CREATE_BLOG_BY_USER, CREATE_USER, CREATE_USER_BY_ROLE } from '../../graphql/mutations'
+import { CREATE_BLOG_BY_USER, CREATE_USER_BY_ROLE } from '../../graphql/mutations'
 import { faker } from '@faker-js/faker'
 import { GET_USERS } from '../../graphql/queries'
-import { UserContext } from '../../UserContext'
 
 const Faker = () => {
-
-  const user = useContext(UserContext)
 
   type FakerFormProps = {
     entity: string,
@@ -46,13 +43,6 @@ const Faker = () => {
   mutations['blog'] = blogMutation
 
   const { data: users } = useQuery(GET_USERS);
-
-  type Fake = {
-    email: string,
-    password: string,
-    role?: string,
-    userId?: number
-  }
 
   const createUser = async () => {
     return {
@@ -103,7 +93,6 @@ const Faker = () => {
     e.preventDefault()
     setMessage({})
     generateFakes(entity)
-    // setFakerForm({ ...fakerForm, entity: '' })
   }
 
   return (
