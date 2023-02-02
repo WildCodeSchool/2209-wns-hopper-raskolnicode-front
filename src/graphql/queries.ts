@@ -41,15 +41,25 @@ export const GET_BLOGS = gql`
   }
 `;
 
-export const GET_POSTS_BY_BLOG = gql`
-  query GetPosts {
-    getPosts {
-      summary
-      title
+export const GET_BLOG = gql`
+  query GetBlog($postId: ID!, $getBlogId: ID!) {
+    getBlog(id: $getBlogId) {
       id
-      content
-      image
+      name
+      description
       updated_at
+      user {
+        id
+        email
+      }
+      posts {
+        id
+        title
+        summary
+        content
+        image
+        updated_at
+      }
     }
   }
 `;

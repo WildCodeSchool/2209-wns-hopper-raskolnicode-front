@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
 import Card from "../../components/Card/Card";
-import { GET_POSTS_BY_BLOG } from "../../graphql/queries";
+import { GET_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
 
 export type PostProps = {
@@ -12,9 +12,7 @@ export type PostProps = {
 };
 
 function Blog() {
-  const { loading, data } = useQuery<{ getPosts: PostProps[] }>(
-    GET_POSTS_BY_BLOG
-  );
+  const { loading, data } = useQuery<{ getPosts: PostProps[] }>(GET_BLOG);
   return (
     <main className={styles.blogmain}>
       <h1>Bienvenue</h1>
