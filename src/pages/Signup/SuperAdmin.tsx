@@ -27,6 +27,7 @@ const SuperAdminSignup = () => {
     } catch { }
   }
 
+  
   return (
     <main className={styles.signupMain}>
       {error && (

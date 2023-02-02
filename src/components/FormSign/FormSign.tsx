@@ -17,7 +17,7 @@ const FormSign = (props: ISign) : JSX.Element => {
   const [createSuperAdmin, { data, loading, error }] = useMutation(CREATE_SUPERADMIN);
   const { data: adminData } = useQuery(HAS_SUPERADMIN)
 
-  async function doSignup() {
+  async function doSign() {
     try {
       await createSuperAdmin({
         variables: {
@@ -66,7 +66,7 @@ const FormSign = (props: ISign) : JSX.Element => {
                 />
               </div>
               <div className={styles.buttonBox}>
-                <button disabled={loading} onClick={doSignup}>
+                <button disabled={loading} onClick={doSign}>
                   {props.signAction}
                 </button>
               </div>
