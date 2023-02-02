@@ -107,7 +107,7 @@ const Faker = () => {
   }
 
   return (
-    <div className='bg-dark text-white p-2'>
+    <div className='bg-secondary text-white p-2'>
       <Form onSubmit={e => submitFaker(e, fakerForm.entity)} className='px-2'>
         <Row>
           <Form.Select
