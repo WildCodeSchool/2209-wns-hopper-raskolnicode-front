@@ -1,63 +1,103 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import React, { useState } from 'react'
 import { Button, Form, Row } from 'react-bootstrap'
-import { CREATE_USER } from '../../graphql/mutations'
+import { CREATE_BLOG_BY_USER, CREATE_USER_BY_ROLE } from '../../graphql/mutations'
 import { faker } from '@faker-js/faker'
+import { GET_USERS } from '../../graphql/queries'
 
 const Faker = () => {
 
-  const [fakerForm, setFakerForm] = useState({
+  type FakerFormProps = {
+    entity: string,
+    role?: string,
+    userId?: number,
+    quantity: number
+  }
+
+  const [fakerForm, setFakerForm] = useState<FakerFormProps>({
     entity: '',
+    role: undefined,
+    userId: undefined,
     quantity: 10
   })
-  const [message, setMessage] = useState<string|null>(null)
-  const [error, setError] = useState<string|null>(null)
+
+  type MessageProps = {
+    success?: string,
+    error?: string
+  }
+
+  const [message, setMessage] = useState<MessageProps>({})
 
   const updateFakerForm = (e: any) => {
+    console.log(e.target.value)
     const inputName = e.target.name
     const inputValue = e.target.value
     setFakerForm({ ...fakerForm, [inputName]: inputValue })
   }
 
-  const [createUser] = useMutation(CREATE_USER);
+  const [userMutation] = useMutation(CREATE_USER_BY_ROLE);
+  const [blogMutation] = useMutation(CREATE_BLOG_BY_USER);
 
-  const submitFaker = async (e: any) => {
-    e.preventDefault()
-    setMessage(null)
-    setError(null)
-    switch (fakerForm.entity) {
-      case 'user':
-        try {
-          for (let i = 0; i < fakerForm.quantity; i++) {
-            const randomUser = {
-              email: faker.internet.email(),
-              password: 'random1234'
-            }
-            await createUser({
-              variables: {
-                data: {
-                  email: randomUser.email,
-                  password: randomUser.password,
-                },
-              },
-            })
-          }
-          setMessage(`✅ ${fakerForm.quantity} user(s) créé(s)`)
-        } catch (err) {
-          setError(`⚠️ ${fakerForm.quantity} une erreur`)
-        }
-        break
-      default:
-        console.log("No entity has been selected")
-        setError(`⚠️ merci de choisir une entité`)
-        break;
+  const mutations: any = []
+  mutations['user'] = userMutation
+  mutations['blog'] = blogMutation
+
+  const { data: users } = useQuery(GET_USERS);
+
+  const createUser = async () => {
+    return {
+      email: faker.internet.email(),
+      password: 'test1234',
+      role: fakerForm.role,
     }
-    setFakerForm({ ...fakerForm, entity: '' })
+  }
+
+  const createBlog = async () => {
+    return {
+      name: `The ${faker.word.adjective()} blog`,
+      description: faker.lorem.sentence(),
+      userId: fakerForm.userId && +fakerForm.userId
+    }
+  }
+
+  const generateFakes = async (entity: string) => {
+    try {
+      for (let i = 0; i < fakerForm.quantity; i++) {
+        let data
+        switch (entity) {
+          case 'user':
+            data = await createUser()
+            break
+          case 'blog':
+            console.log('its a blog')
+            data = await createBlog()
+            break
+        }
+        console.log('data', data)
+        await mutations[entity]({
+          variables: { data },
+        })
+      }
+      setMessage({ success: `✅ ${fakerForm.quantity} ${fakerForm.entity}(s) créé(s)` })
+    } catch (err) {
+      if (fakerForm.entity === '') {
+        setMessage({ error: 'Sélectionnez une entité' })
+      } else {
+        setMessage({ error: `⚠️ Une erreur s'est produite` })
+      }
+
+    }
+  }
+
+  const submitFaker = async (e: any, entity: string) => {
+    e.preventDefault()
+    setMessage({})
+    generateFakes(entity)
   }
 
   return (
-    <div className='bg-dark text-white p-2'>
-      <Form onSubmit={e => submitFaker(e)} className='px-2'>
+    <div className='bg-secondary text-white p-2'>
+      <Form onSubmit={e => submitFaker(e, fakerForm.entity)} className='px-2'>
         <Row>
           <Form.Select
             className='py-0 mx-1'
@@ -67,7 +107,38 @@ const Faker = () => {
             style={{ height: '2rem', width: 'fit-content' }}>
             <option>Entité</option>
             <option value="user">User</option>
+            <option value="blog">Blog</option>
           </Form.Select>
+          {
+            fakerForm.entity === "user" &&
+            <Form.Select
+              className='py-0 mx-1'
+              name='role'
+              value={fakerForm.role}
+              onChange={e => updateFakerForm(e)}
+              style={{ height: '2rem', width: 'fit-content' }}>
+              <option value="">Rôle</option>
+              <option value="SUPERADMIN">Super Admin</option>
+              <option value="ADMIN">Admin</option>
+              <option value="USER">Utilisateur</option>
+            </Form.Select>
+          }
+          {
+            fakerForm.entity === "blog" &&
+            <Form.Select
+              className='py-0 mx-1'
+              name='userId'
+              value={fakerForm.userId}
+              onChange={e => updateFakerForm(e)}
+              style={{ height: '2rem', width: 'fit-content' }}>
+              <option>Utilisateur</option>
+              {
+                users?.getUsers.map((user: any, idx: number) =>
+                  <option key={idx} value={user.id}>{`${user.email} (id : ${user.id}) [${user.role}]`}</option>
+                )
+              }
+            </Form.Select>
+          }
           <Form.Control
             type="number"
             name="quantity"
@@ -81,8 +152,8 @@ const Faker = () => {
             className='py-0 mx-1'
             style={{ height: '2rem', width: 'fit-content' }}
           >Fake</Button>
-          { message && <p className='mb-0 text-success' style={{ height: '2rem', width: 'fit-content' }}>{message}</p> } 
-          { error && <p className='mb-0 text-danger' style={{ height: '2rem', width: 'fit-content' }}>{error}</p> }
+          {message.success && <p className='mb-0 text-success' style={{ height: '2rem', width: 'fit-content' }}>{message.success}</p>}
+          {message.error && <p className='mb-0 text-danger' style={{ height: '2rem', width: 'fit-content' }}>{message.error}</p>}
         </Row>
       </Form>
       {/* <pre>{JSON.stringify(fakerForm, null, 2)}</pre> */}
