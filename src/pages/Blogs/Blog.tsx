@@ -1,18 +1,36 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import Card from "../../components/Card/Card";
+import { GET_POSTS_BY_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
 
+export type PostProps = {
+  title: string;
+  image: string;
+  summary: string;
+  updated_at: string;
+};
+
 function Blog() {
+  const { loading, data } = useQuery<{ getPosts: PostProps[] }>(
+    GET_POSTS_BY_BLOG
+  );
   return (
     <main className={styles.blogmain}>
-      <h1>Bienvenue sur le blog de Bidule</h1>
+      <h1>Bienvenue</h1>
       <section className={styles.container}>
-        <Card
-          title="test de description"
-          description="test de description"
-          image="futur lien image"
-          updated_at="date de MAJ"
-        />
+        {loading === true && "Chargement..."}
+        {data?.getPosts.map((post) => {
+          return (
+            <Card
+              title={post.title}
+              description={post.summary}
+              image={post.image}
+              updated_at={post.updated_at}
+              onClick={() => {}}
+            />
+          );
+        })}
       </section>
 
       {/* <div className={styles.mainpicture}>

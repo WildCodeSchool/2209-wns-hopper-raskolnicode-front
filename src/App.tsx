@@ -91,12 +91,15 @@ function Main() {
                   element={<Login onTokenChange={onTokenChange} />}
                 />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/super-admin" element={<SuperAdminSignup />}></Route>
+                <Route
+                  path="/super-admin"
+                  element={<SuperAdminSignup />}
+                ></Route>
               </>
             )}
 
             <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:blogId" element={<Blog />} />
             <Route path="/post" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
