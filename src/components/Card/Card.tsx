@@ -1,18 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
 
-export interface IBlogProps {
-  image: string;
+export type CardProps = {
   title: string;
   description: string;
   updated_at: string;
-}
+  image: string;
+  onClick?: () => void;
+};
 
-function Card(props: IBlogProps): JSX.Element {
+function Card(props: CardProps): JSX.Element {
   return (
     <section className={styles.articlelist}>
       <div className={styles.listCard}>
-        <div className={styles.card}>
+        <div className={styles.card} onClick={props.onClick}>
           <img
             src="https://picsum.photos/1200/400?random=2"
             alt={props.title}
