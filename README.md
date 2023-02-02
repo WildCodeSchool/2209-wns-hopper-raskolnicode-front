@@ -1,5 +1,9 @@
 # React TS Starter
 
+Start up :
+Create a Super Admin by going to /super-admin.
+This user will allow you to get all access to the app.
+
 This boilerplate contains:
 
 - React with TypeScript

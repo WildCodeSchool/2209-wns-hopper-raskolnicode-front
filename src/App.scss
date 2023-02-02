@@ -4,6 +4,11 @@ $textcolorgrey: #4f4346;
 $primarycolor: #345995;
 $secondarycolor: #8eb8e5;
 
+a {
+  color: inherit !important; /* blue colors for links too */
+  text-decoration: inherit !important; /* no underline */
+}
+
 body {
   font-family: "IBM Plex Sans", sans-serif;
   color: $textcolor;
@@ -14,7 +19,7 @@ body {
 main {
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 100%;
 }
 
 h1,

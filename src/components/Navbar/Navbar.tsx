@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.scss'
-import { useContext } from 'react';
-import { UserContext } from '../../UserContext';
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.scss";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
-function Navbar(props: {onTokenChange: () => void}) {
-  const user = useContext(UserContext)
+function Navbar(props: { onTokenChange: () => void }) {
+  const user = useContext(UserContext);
+  console.log('user Navbar', user)
 
   return (
-    <main className={styles.navbarmain}>
+    <nav className={styles.navbarmain}>
         <Link className={styles.linklogo} to={'/'}><img className={styles.logo} src="./logo.png" alt="" /></Link>
         
         <div className={styles.link}>
@@ -22,7 +23,8 @@ function Navbar(props: {onTokenChange: () => void}) {
           }
 
         </div>
-    </main>
+    </nav>
+
   );
 }
 
