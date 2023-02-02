@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./../../components/formSign/formSign.module.scss"
+import styles from "./../../components/FormSign/formSign.module.scss"
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
