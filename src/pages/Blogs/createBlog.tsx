@@ -1,61 +1,58 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
-import styles from "./Blog.module.scss";
+import styles from "../../styles/forms/forms.module.scss"
 
 function CreateBlog() {
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   const [doCreateBlogMutation, { data, loading, error }] =
     useMutation(CREATE_BLOG);
 
-  async function doCreateBlog() {
+  async function doCreateBlog(e: any) {
+    e.preventDefault()
+
+    console.log('blog', { name, description })
     try {
       await doCreateBlogMutation({
         variables: {
           data: {
-            title,
+            name,
             description,
           },
         },
       });
-      setTitle("");
+      setName("");
       setDescription("");
-    } catch {}
+    } catch { }
   }
 
   return (
-    <main className={styles.blogmain}>
-      {error && (
-        <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
-      )}
-      <div className={styles.form}>
-        <h1>Créez votre blog</h1>
-        <form>
-          <label>
-            <div>Titre</div>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Titre"
-            />
-          </label>
-          <label>
-            <div>Description</div>
-            <textarea
-              rows={5}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description"
-            />
-          </label>
-          <button disabled={loading} onClick={doCreateBlog}>
-            Créer
-          </button>
-        </form>
-      </div>
+    <main className={styles.main} >
+      <form onSubmit={e => doCreateBlog(e)} className={styles.form}>
+        <h3>Créer mon blog</h3>
+        <input
+          disabled={loading}
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Nom du blog"
+        />
+        <textarea
+          disabled={loading}
+          // type="textarea"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
+        />
+        {error && (
+          <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
+        )}
+        <div className={styles.buttonBox}>
+          <button disabled={loading}>Créer</button>
+        </div>
+      </form>
     </main>
   );
 }

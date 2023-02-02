@@ -98,8 +98,8 @@ function Main() {
                 ></Route>
               </>
             )}
-
             <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
+            <Route path="/blog/create" element={<CreateBlog />} />
             <Route path="/blog/:blogId" element={<Blog />} />
             <Route path="/post" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
