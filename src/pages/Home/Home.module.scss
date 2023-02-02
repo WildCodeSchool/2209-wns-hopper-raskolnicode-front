@@ -24,22 +24,30 @@
     margin-top: 3rem;
 
     .contentBanniere {
-      display: grid;
+      display: flex;
       align-content: center;
+      flex-direction: column;
       margin-left: 3vw;
+      justify-content: flex-start;
+      margin-top: 2vw;
     }
+
 
     h1 {
       margin-bottom: 0;
-      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-size: 2.5rem;
       font-weight: 900;
-      max-width: 320px;
+      width: 320px;
       // margin: 4rem auto 3rem auto;
     }
 
-    h2,
-    button {
-      margin-left: 3%;
+    h1,
+    a  {
+      margin-left: 0;
+    }
+
+    a button {
+      margin-left: 1rem;
     }
 
     button {
@@ -102,14 +110,42 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
+    .contentBanniere {
+      a button {
+        margin-left: 5%;
+      }
+    }
   }
+}
+
+
+@media (max-width: 1450px) {
+
+ .contentBanniere {
+
+  a button {
+    margin-left: 9rem;
+  }
+
+ }
+ 
+
+
+
 }
 
 @media (max-width: 1250px) {
   .homeMain {
     margin-bottom: 7rem;
 
-    .banniere {
+    .banniere 
+    
+    .banniere_box_img {
+      height: 22rem;
+
+      h1 {
+        font-size: 2.3rem;
+      }
       display: flex;
       justify-content: space-evenly;
       gap: 3rem;
@@ -125,25 +161,25 @@
       }
 
       .contentBanniere {
-        display: grid;
+        margin: auto auto 10% 5%;
         align-content: center;
-      }
+      
 
       button {
         text-decoration: none;
         align-self: center;
-        font-size: 14px;
-        margin: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 8px;
-        padding-bottom: 10px;
+        font-size: 15px;
+        margin: 15px auto 0 1.7rem;
+        padding: 15px 15px;
         border-radius: 5px;
         color: white;
         background: #345995;
         border: none;
+        letter-spacing: 0.5px;
       }
     }
+
+  }
     .carroussel {
       text-align: center;
 
@@ -164,19 +200,28 @@
     .banniere {
       gap: 0;
 
-      .banniere_box_img {
-        height: 21rem;
-        margin-bottom: 2rem;
+      h1 {
+        margin-top: 2rem;
       }
-    }
 
-    .contentBanniere button {
-      margin-left: 0;
+      .banniere_box_img {
+        height: 18rem;
+        margin-bottom: 2rem;
+        margin-left: 10%;
+      }
+    
+
+    .contentBanniere { 
+    
+    
+    a button {
+      margin: 15px auto 0 2.7rem;
       left: 0;
     }
   }
 }
-
+}
+}
 @media (max-width: 750px) {
   .homeMain {
     margin-bottom: 0rem;
@@ -186,9 +231,9 @@
       flex-direction: column;
 
       h1 {
-        max-width: 376px;
+        max-width: 100%;
         text-align: center;
-        margin-bottom: 9px;
+        margin: 0.7rem auto 0 auto;
       }
 
       .banniere_box_img {
@@ -236,8 +281,17 @@
     .banniere {
       margin-bottom: 2em;
 
+      h1 {
+        font-size: 2rem;
+      }
+
       .banniere_box_img {
         height: 14rem;
+      }
+
+      a {
+        margin-left: 1rem;
+
       }
 
       .contentBanniere {
