@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "../../components/Card/Card";
 import { GET_BLOGS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export type BlogProps = {
   name: string;

@@ -42,7 +42,7 @@ export const GET_BLOGS = gql`
 `;
 
 export const GET_BLOG = gql`
-  query GetBlog($postId: ID!, $getBlogId: ID!) {
+  query GetBlog($getBlogId: ID!) {
     getBlog(id: $getBlogId) {
       id
       name
@@ -65,10 +65,11 @@ export const GET_BLOG = gql`
 `;
 
 export const GET_USERS = gql`
-query Users {
-  getUsers {
-    id
-    email
-    role
+  query Users {
+    getUsers {
+      id
+      email
+      role
+    }
   }
-}`
+`;
