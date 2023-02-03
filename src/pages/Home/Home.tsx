@@ -31,7 +31,7 @@ const Home = (props: { onTokenChange: (token?: string) => void }) => {
           <h1>
             Créez votre <br></br>blog super facilement
           </h1>
-          <Link to={user ? '/blog/create' : '/login'}>
+          <Link to={user ? "/blog/create" : "/login"}>
             <button>Commencer mon blog</button>
           </Link>
         </div>
