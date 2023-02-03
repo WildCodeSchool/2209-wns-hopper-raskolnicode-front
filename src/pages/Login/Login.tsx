@@ -1,7 +1,6 @@
 import React, { FormEventHandler, useState } from "react";
 import { useMutation } from "@apollo/client";
-// import styles from "./Login.module.scss";
-import styles from "./../../components/formSign/formSign.module.scss"
+import styles from "../../styles/forms/forms.module.scss"
 import { LOGIN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +37,7 @@ function Login(props: {
   }
 
   return (
-    <main className={styles.signMain}>
+    <main className={styles.main}>
         <form onSubmit={e => doSignIn(e)} className={styles.form}>
         <h3>Connexion</h3>
           <div className={styles.email}>

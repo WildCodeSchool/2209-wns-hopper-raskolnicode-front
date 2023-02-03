@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./../../components/formSign/formSign.module.scss"
+import styles from "../../styles/forms/forms.module.scss"
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
@@ -25,7 +25,7 @@ function Signup() {
   }
 
   return (
-    <main className={styles.signMain}>
+    <main className={styles.main}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
