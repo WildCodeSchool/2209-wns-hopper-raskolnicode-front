@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "../../components/Card/Card";
 import { GET_BLOGS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export type BlogProps = {
   name: string;
@@ -31,7 +31,7 @@ const Home = (props: { onTokenChange: (token?: string) => void }) => {
           <h1>
             Créez votre <br></br>blog super facilement
           </h1>
-          <Link to={user ? '/blog/create' : '/login'}>
+          <Link to={user ? "/blog/create" : "/login"}>
             <button>Commencer mon blog</button>
           </Link>
         </div>
