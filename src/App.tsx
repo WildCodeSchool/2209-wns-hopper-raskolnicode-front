@@ -1,15 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, useQuery } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import React, { createContext, useEffect, useState } from "react";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  useQuery,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Signup from "./pages/Signup/Signup";
 import NotFound from "./pages/NotFound/NotFound";
-import Blog from "./pages/Blogs/Blog";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
-import SignIn from "./pages/SignIn/SignIn";
+import Blog from "./pages/Blogs/Blog";
+import CreateBlog from "./pages/Blogs/createBlog";
+import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
+import Login from "./pages/Login/Login";
+import { UserContext } from "./UserContext";
+import Privacy from "./pages/Home/Privacy";
+import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -33,50 +44,72 @@ const client = new ApolloClient({
 });
 
 function Main() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
+  const { data, refetch, error } = useQuery(GET_LOGGED_USER);
 
-  const { data, refetch } = useQuery(GET_LOGGED_USER)
-
-  function onTokenChange(token?: string) {
-    if (token) {
-      localStorage.setItem('token', token)
-      console.log('logged in')
-    } else {
-      localStorage.removeItem('token')
-      console.log('logged out')
+  useEffect(() => {
+    if (error) {
+      setUser(null);
     }
-    refetch()
+  }, [error]);
+
+  async function onTokenChange(token?: string) {
+    // console.log(token)
+    if (token) {
+      localStorage.setItem("token", token);
+      console.log("logged in");
+    } else {
+      localStorage.removeItem("token");
+      console.log("logged out");
+    }
+    console.log("refetching");
+    try {
+      const { data } = await refetch();
+      setUser(data?.loggedUser);
+    } catch (err: any) {
+      if (err.message.includes("Access denied!")) {
+        setUser(null);
+      }
+    }
   }
 
   useEffect(() => {
-    if (data && data.loggedUser) {
-      setUser(data.loggedUser)
-    } else {
-      setUser(null)
-    }
-  })
+    console.log("useEffect loggedUser", data?.loggedUser);
+    setUser(data?.loggedUser);
+  }, [data]);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          {user ?<>
-
-          </> 
-          :
-          <>
-            <Route path="/signin" element={<SignIn user={user} onTokenChange={onTokenChange} />} />
-            <Route path="/signup" element={<Signup />} />
-            
-          </> 
-          }
-          
-          <Route path="/" element={<Home user={user} onTokenChange={onTokenChange} />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <UserContext.Provider value={user}>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout onTokenChange={onTokenChange} />}>
+            {user ? (
+              <></>
+            ) : (
+              <>
+                <Route
+                  path="/login"
+                  element={<Login onTokenChange={onTokenChange} />}
+                />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/super-admin"
+                  element={<SuperAdminSignup />}
+                ></Route>
+              </>
+            )}
+            <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
+            {
+              user && <Route path="/blog/create" element={<CreateBlog />} />
+            }
+            <Route path="/blog/:blogId" element={<Blog />} />
+            <Route path="/post" element={<Post />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 
@@ -89,4 +122,3 @@ function App() {
 }
 
 export default App;
-
