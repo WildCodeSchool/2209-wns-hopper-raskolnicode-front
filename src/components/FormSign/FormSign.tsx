@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import styles from "./formSign.module.scss"
 import { CREATE_SUPERADMIN } from "../../graphql/mutations";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { HAS_SUPERADMIN } from "../../graphql/queries";
 
 import { ISign } from "../../interfaces";
@@ -40,7 +40,7 @@ const FormSign = (props: ISign) : JSX.Element => {
       <div className={styles.form}>
         <h3>{props.title}</h3>
         {
-          adminData?.hasSuperAdmin ?
+          adminData?.hasSuperAdmin?
             <>
               <p className="text-center text-danger">{props.adminFirstMessage}</p>
               <p className="text-center">{props.adminSecondMessage}</p>

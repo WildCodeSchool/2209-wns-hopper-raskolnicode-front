@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Card.module.scss";
 
 export interface IBlogProps {
-  image: string;
   title: string;
+  image: string;
   description: string;
   updated_at: string;
 }
