@@ -9,7 +9,8 @@ function Signup() {
 
   const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
-  async function doSignup() {
+  async function doSignup(e: any) {
+    e.preventDefault(e)
     try {
       await doSignupMutation({
         variables: {
@@ -50,7 +51,7 @@ function Signup() {
           />
         </div>
         <div className={styles.buttonBox}>
-          <button disabled={loading} onClick={doSignup}>
+          <button type="button" disabled={loading} onClick={doSignup}>
             Inscription
           </button>
         </div>
