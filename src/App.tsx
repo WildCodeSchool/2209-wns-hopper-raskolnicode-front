@@ -100,7 +100,7 @@ function Main() {
                 ></Route>
               </>
             )}
-            <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
+            <Route path="/" element={<Home />} />
             {
               user && <Route path="/blog/create" element={<CreateBlog />} />
             }
