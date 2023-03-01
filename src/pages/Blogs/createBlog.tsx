@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
-import styles from "../../styles/forms/forms.module.scss"
+import styles from "../../components/FormSign/formSign.module.scss";
 
 function CreateBlog() {
   const [name, setName] = useState("");
