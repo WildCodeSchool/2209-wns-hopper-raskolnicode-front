@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./../../components/FormSign/formSign.module.scss"
+
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
@@ -10,6 +11,8 @@ function Signup() {
   const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
   async function doSignup(e: any) {
+
+    e.preventDefault(e)
     try {
       e.preventDefault()
       await doSignupMutation({
@@ -26,7 +29,7 @@ function Signup() {
   }
 
   return (
-    <main className={styles.signMain}>
+    <main className={styles.main}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
@@ -51,7 +54,7 @@ function Signup() {
           />
         </div>
         <div className={styles.buttonBox}>
-          <button disabled={loading} onClick={doSignup}>
+          <button type="button" disabled={loading} onClick={doSignup}>
             Inscription
           </button>
         </div>

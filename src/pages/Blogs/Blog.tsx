@@ -1,60 +1,59 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
+import { useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
+import { GET_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
 
+type getBlog = {
+  id: number;
+  name: string;
+  description: string;
+  updated_at: string;
+  user: {
+    id: number;
+    email: string;
+  };
+  posts: {
+    id: number;
+    title: string;
+    summary: string;
+    content: string;
+    image: string;
+    updated_at: string;
+  }[];
+};
+
 function Blog() {
+  const { blogId } = useParams();
+
+  const { loading, data } = useQuery<{ getBlog: getBlog }>(GET_BLOG, {
+    variables: {
+      getBlogId: blogId,
+    },
+  });
+
+  console.log(data);
+
   return (
     <main className={styles.blogmain}>
-      <h1>Bienvenue sur le blog de Bidule</h1>
+      <h1>Bienvenue {blogId}</h1>
       <section className={styles.container}>
-        <Card
-          title="test de description"
-          description="test de description"
-          image="futur lien image"
-          updated_at="date de MAJ"
-        />
+        {loading === true && "Chargement..."}
+        {data?.getBlog.posts.map((post) => {
+          return (
+            <div key={post.id}>
+              <Card
+                title={post.title}
+                description={post.summary}
+                image={post.image}
+                updated_at={post.updated_at}
+                onClick={() => {}}
+              />
+            </div>
+          );
+        })}
       </section>
-
-      {/* <div className={styles.mainpicture}>
-        <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
-        <h2>Du Côté de Chez Swann</h2>
-        <p className="dateline">21 novembre 2023</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1200/500?random=2" alt="photos" />
-        <h2>A l'Ombre des Jeunes Filles en Fleurs</h2>
-        <p className="dateline">1 septembre 2023</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1000/500?random=2" alt="photos" />
-        <h2>le sens de l'Histoire</h2>
-        <p className="dateline">21 décembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/100/500?random=2" alt="photos" />
-        <h2>
-          Cet oubli si vivace qui recouvre si rapidement le passé le plus récent
-        </h2>
-        <p className="dateline">12 novembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1200/420?random=2" alt="photos" />
-        <h2>Sans doute, nous avons beau changer de milieu, de genre de vie</h2>
-        <p className="dateline">30 septembre 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/1000/500?random=2" alt="photos" />
-        <h2>
-          Détendus ou brisés, les ressorts de la machine refoulante ne
-          fonctionnaient plus
-        </h2>
-        <p className="dateline">2 août 2022</p>
-      </div>
-      <div className={styles.secondarypicture}>
-        <img src="https://picsum.photos/100/500?random=2" alt="photos" />
-        <h2>Vous me prenez pour ma mère</h2>
-        <p className="dateline">1 juillet 2022</p>
-      </div> */}
     </main>
   );
 }

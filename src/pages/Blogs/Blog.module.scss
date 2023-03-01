@@ -28,4 +28,42 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
+
+  // Create Blog CSS
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20em;
+    width: 70%;
+    min-height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    align-self: center;
+
+    input,
+    textarea {
+      width: 95%;
+      padding: 0.5em;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    button {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      width: 30%;
+      max-height: 40px;
+      border-radius: 5px;
+      border: 0.3px solid black;
+      color: white;
+      margin-right: auto;
+      margin-left: auto;
+      background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    }
+  }
 }

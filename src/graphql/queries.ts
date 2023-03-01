@@ -21,13 +21,55 @@ export const HAS_SUPERADMIN = gql`
 
 export const GET_BLOGS = gql`
   query GetBlogs {
-    blogs {
+    getBlogs {
+      id
       description
       name
       user {
         email
       }
       updated_at
+      posts {
+        id
+        summary
+        title
+        content
+        image
+        updated_at
+      }
+    }
+  }
+`;
+
+export const GET_BLOG = gql`
+  query GetBlog($getBlogId: ID!) {
+    getBlog(id: $getBlogId) {
+      id
+      name
+      description
+      updated_at
+      user {
+        id
+        email
+      }
+      posts {
+        id
+        title
+        summary
+        content
+        image
+        updated_at
+      }
+    }
+  }
+`;
+
+export const GET_USERS = gql`
+  query Users {
+    getUsers {
+      id
+      email
+      role
     }
   }
 `;

@@ -14,10 +14,10 @@ const Layout = (props: { onTokenChange: () => void }) => {
     <>
       <Navbar onTokenChange={props.onTokenChange} />
       <hr className="mb-0" style={{ margin: "0" }} />
-      <Outlet />
       {
         user?.role === "SUPERADMIN" && <Faker />
       }
+      <Outlet />
       <Footer />
     </>
   );
