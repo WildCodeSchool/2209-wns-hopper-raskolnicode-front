@@ -103,7 +103,7 @@ function Home () {
         {data?.getBlogs.map((blog) => {
           return (
             <Card
-              title={blog.name}
+              title={blog.title}
               description={blog.description}
               image="futur lien image"
               updated_at={blog.updated_at}

@@ -89,7 +89,9 @@ function Main() {
               <>
                 <Route
                   path="/login"
-                  element={<Login onTokenChange={onTokenChange} />}
+                  element={<Login onTokenChange={onTokenChange} />
+
+                  }
                 />
                 <Route path="/signup" element={<Signup />} />
                 <Route
