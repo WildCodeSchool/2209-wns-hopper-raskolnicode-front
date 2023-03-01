@@ -7,11 +7,12 @@ export interface IUser {
 
 export interface ISign {
   title: string;
-  alternativeOption: string;
   adminFirstMessage?: string;
   adminSecondMessage?: string;
   signAction: string;
-  onSign?: () => void
+  onSign?: () => void;
+  onTokenChange: (token?: string) => void;
+  alternativeOption: string;
 
   // onCancelClicked: () => void;
   // onWilderUpdated: () => void;

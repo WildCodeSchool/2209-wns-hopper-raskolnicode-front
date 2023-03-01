@@ -9,8 +9,9 @@ function Signup() {
 
   const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
-  async function doSignup() {
+  async function doSignup(e: any) {
     try {
+      e.preventDefault()
       await doSignupMutation({
         variables: {
           data: {

@@ -20,7 +20,6 @@ import Login from "./pages/Login/Login";
 import { UserContext } from "./UserContext";
 import Privacy from "./pages/Home/Privacy";
 import SuperAdminSignup from "./pages/Signup/SuperAdmin";
-import Logintest from "./pages/Logintest/Logintest";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
@@ -90,16 +89,8 @@ function Main() {
                 <Route
                   path="/login"
                   element={<Login onTokenChange={onTokenChange} />
-                
-                }
-                />
-                          <Route
-                  path="/logintest"
-                  element={<Logintest
-                    // onTokenChange={onTokenChange}
-                     />
-                
-                }
+
+                  }
                 />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/super-admin" element={<SuperAdminSignup />}></Route>

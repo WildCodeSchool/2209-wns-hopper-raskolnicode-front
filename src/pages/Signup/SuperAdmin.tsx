@@ -27,9 +27,10 @@ const SuperAdminSignup = () => {
     } catch { }
   }
 
-  
+
+
   return (
-    <main className={styles.signupMain}>
+    <main className={styles.signMain}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
@@ -61,7 +62,7 @@ const SuperAdminSignup = () => {
                   placeholder="Votre mot de passe"
                 />
               </div>
-              <div>
+              <div className={styles.buttonBox}>
                 <button disabled={loading} onClick={doSignup}>
                   Inscription
                 </button>
