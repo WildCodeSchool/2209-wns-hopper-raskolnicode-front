@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "../../styles/forms/forms.module.scss"
+import styles from "./../../components/FormSign/formSign.module.scss"
+
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
@@ -10,8 +11,10 @@ function Signup() {
   const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
   async function doSignup(e: any) {
+
     e.preventDefault(e)
     try {
+      e.preventDefault()
       await doSignupMutation({
         variables: {
           data: {

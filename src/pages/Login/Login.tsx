@@ -1,6 +1,7 @@
 import React, { FormEventHandler, useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "../../styles/forms/forms.module.scss"
+// import styles from "./Login.module.scss";
+import styles from "./../../components/FormSign/formSign.module.scss"
 import { LOGIN } from "../../graphql/mutations";
 import { IUser } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
