@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import styles from "../../styles/forms/forms.module.scss"
+import styles from "./../../components/FormSign/formSign.module.scss"
 import { CREATE_SUPERADMIN } from "../../graphql/mutations";
 import { Link } from "react-router-dom";
 import { HAS_SUPERADMIN } from "../../graphql/queries";
@@ -26,6 +26,8 @@ const SuperAdminSignup = () => {
       setPassword("");
     } catch { }
   }
+
+
 
   return (
     <main className={styles.main}>
@@ -60,7 +62,7 @@ const SuperAdminSignup = () => {
                   placeholder="Votre mot de passe"
                 />
               </div>
-              <div>
+              <div className={styles.buttonBox}>
                 <button disabled={loading} onClick={doSignup}>
                   Inscription
                 </button>

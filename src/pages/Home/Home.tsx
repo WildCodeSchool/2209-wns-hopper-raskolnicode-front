@@ -15,7 +15,7 @@ export type BlogProps = {
   id: number;
 };
 
-const Home = (props: { onTokenChange: (token?: string) => void }) => {
+function Home () {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -101,7 +101,7 @@ function Main() {
                 ></Route>
               </>
             )}
-            <Route path="/" element={<Home onTokenChange={onTokenChange} />} />
+            <Route path="/" element={<Home />} />
             {user && <Route path="/blog/create" element={<CreateBlog />} />}
             <Route path="/blog/:blogId" element={<Blog />} />
             <Route path="/post" element={<Post />} />
