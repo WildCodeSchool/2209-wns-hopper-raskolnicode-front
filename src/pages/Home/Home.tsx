@@ -103,7 +103,7 @@ const Home = (props: { onTokenChange: (token?: string) => void }) => {
         {data?.getBlogs.map((blog) => {
           return (
             <Card
-              title={blog.title}
+              title={blog.name}
               description={blog.description}
               image="futur lien image"
               updated_at={blog.updated_at}
