@@ -30,7 +30,7 @@ const SuperAdminSignup = () => {
 
 
   return (
-    <main className={styles.signMain}>
+    <main className={styles.main}>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
