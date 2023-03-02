@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../components/FormSign/formSign.module.scss";
+import uploadStyles from "./createBlog.module.scss"
 
 function CreateBlog() {
   const [name, setName] = useState("");
@@ -49,6 +50,18 @@ function CreateBlog() {
         {error && (
           <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
         )}
+
+        <div className={uploadStyles.upload_container}>
+          <div className={uploadStyles.description_box}>
+            <h2>Image</h2>
+          </div>
+          <div className={uploadStyles.buttonBox}>
+            <button>Télécharger</button>
+          </div>
+
+        </div>
+
+
         <div className={styles.buttonBox}>
           <button disabled={loading}>Créer</button>
         </div>

@@ -1,0 +1,30 @@
+.upload_container {
+    width: 80%;
+    margin: auto;
+    .description_box {
+        h2 {
+            font-size: 1rem;
+        }
+
+        
+    }
+
+    .buttonBox {
+        display: flex;
+        align-content: center;
+        width: 60%;
+        max-width: 7rem;
+        button {
+            padding: 5px 13px;
+            border-radius: 5px;
+            border: 0.3px solid black;
+            color: white;
+            max-height: 3.1rem;
+            font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+            margin-left: 0;
+            background: linear-gradient(to right, blue, rgb(0, 173, 226));
+            letter-spacing: 0.8px;
+            min-width: 37%;
+        }
+    }
+}
