@@ -1,30 +1,31 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import styles from "./../../components/FormSign/formSign.module.scss"
-
+import styles from "./../../components/FormSign/formSign.module.scss";
 import { CREATE_USER } from "../../graphql/mutations";
 
 function Signup() {
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
+  const [pseudo, setPseudo] = useState("Testdu34");
 
   const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
 
   async function doSignup(e: any) {
-
-    e.preventDefault(e)
+    e.preventDefault(e);
     try {
-      e.preventDefault()
+      e.preventDefault();
       await doSignupMutation({
         variables: {
           data: {
             email,
+            pseudo,
             password,
           },
         },
       });
       setEmail("");
       setPassword("");
+      setPseudo("");
     } catch {}
   }
 
@@ -42,6 +43,15 @@ function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Votre email"
+          />
+        </div>
+        <div className={styles.pseudo}>
+          <input
+            disabled={loading}
+            type="pseudo"
+            value={pseudo}
+            onChange={(e) => setPseudo(e.target.value)}
+            placeholder="Votre pseudo"
           />
         </div>
         <div className={styles.password}>
