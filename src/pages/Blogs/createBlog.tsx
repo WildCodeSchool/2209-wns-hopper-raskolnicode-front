@@ -55,10 +55,15 @@ function CreateBlog() {
 
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
-            <img src="/assets/images/icons/picturecon.png" alt="element to understand that is for download"/><h2>Image</h2>
+            <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
           </div>
           <div className={uploadStyles.buttonBox}>
             <button>Télécharger</button>
+          </div>
+
+          <div className={uploadStyles.box_actualiser_img}>
+            <img src="" />
+
           </div>
 
         </div>
