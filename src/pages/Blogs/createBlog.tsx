@@ -55,14 +55,16 @@ function CreateBlog() {
 
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
-            <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
-          </div>
-          <div className={uploadStyles.buttonBox}>
-            <button>Télécharger</button>
+            <div className={uploadStyles.img_box}>
+              <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
+            </div>
+            <div className={uploadStyles.buttonBox}>
+              <button>Télécharger</button>
+            </div>
           </div>
 
           <div className={uploadStyles.box_actualiser_img}>
-            <img src="" />
+            <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
 
           </div>
 

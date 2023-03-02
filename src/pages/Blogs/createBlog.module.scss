@@ -1,35 +1,64 @@
 .upload_container {
     width: 80%;
+    display: flex!important;
+    flex-direction: row;
     margin: auto;
+    justify-content: space-between;
+    height: 6rem;
+margin-top: 1rem;
+
     .description_box {
-        display: flex!important;
-        flex-direction: row;
+        display: flex !important;
+        flex-direction: column;
         height: 2rem;
-        width: 20%;
         align-items: center;
 
+        .img_box {
+
+            display: flex;
+            flex-direction: row;
+
+
+
+            img {
+                width: auto;
+                height: 100%;
+                max-height: 2rem;
+                height: 100%;
+
+
+            }
+
+            h2 {
+                font-size: 1rem;
+                margin: auto;
+                margin-left: 1rem;
+            }
+
+        }
+
+
+
+
+
+
+    }
+
+
+    .box_actualiser_img {
+        width: 8rem;
 
         img {
-            width: auto;
-            height: 100%;
-            max-height: 2rem;
-          
+            width: 100%;
+            aspect-ratio: 4 / 2;
         }
-
-        h2 {
-            font-size: 1rem;
-            margin: auto;
-            margin-left: 1rem;
-        }
-
-        
     }
 
     .buttonBox {
         display: flex;
         align-content: center;
-        width: 60%;
-        max-width: 7rem;
+        max-width: 10rem;
+
         button {
             padding: 5px 13px;
             border-radius: 5px;
