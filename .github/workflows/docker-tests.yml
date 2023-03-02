@@ -1,11 +1,12 @@
 name: docker-ci
 
-on: push
+on:
+  push:
+    branches:
+      - "dev"
 
 jobs:
   docker:
-    needs: test-client
-    if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -17,9 +18,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Check out code
+        uses: actions/checkout@v4
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
-          context: "{{defaultContext}}:client"
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/2209-wns-hopper-raskolnicode-front:latest
