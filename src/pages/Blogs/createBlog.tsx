@@ -4,6 +4,8 @@ import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../components/FormSign/formSign.module.scss";
 import uploadStyles from "./createBlog.module.scss"
 
+
+
 function CreateBlog() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -53,7 +55,7 @@ function CreateBlog() {
 
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
-            <h2>Image</h2>
+            <img src="/assets/images/icons/picturecon.png" alt="element to understand that is for download"/><h2>Image</h2>
           </div>
           <div className={uploadStyles.buttonBox}>
             <button>Télécharger</button>
