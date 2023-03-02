@@ -59,7 +59,9 @@ function CreateBlog() {
               <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
             </div>
             <div className={uploadStyles.buttonBox}>
-              <button>Télécharger</button>
+            <input type="file" id="Telecharher"  name="telecharger"      accept=".jpg, .jpeg, .png"/>
+            
+          
             </div>
           </div>
 
