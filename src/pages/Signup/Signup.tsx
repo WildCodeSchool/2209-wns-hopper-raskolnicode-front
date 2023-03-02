@@ -25,6 +25,7 @@ function Signup() {
       });
       setEmail("");
       setPassword("");
+      setPseudo("");
     } catch {}
   }
 
@@ -44,13 +45,13 @@ function Signup() {
             placeholder="Votre email"
           />
         </div>
-        <div className={styles.email}>
+        <div className={styles.pseudo}>
           <input
             disabled={loading}
             type="pseudo"
-            value={email}
+            value={pseudo}
             onChange={(e) => setPseudo(e.target.value)}
-            placeholder="Votre pseudi"
+            placeholder="Votre pseudo"
           />
         </div>
         <div className={styles.password}>

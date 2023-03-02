@@ -6,6 +6,7 @@ export const GET_LOGGED_USER = gql`
       id
       email
       password
+      pseudo
       role
     }
   }
@@ -26,7 +27,9 @@ export const GET_BLOGS = gql`
       description
       name
       user {
+        id
         email
+        pseudo
       }
       updated_at
       posts {
@@ -51,6 +54,7 @@ export const GET_BLOG = gql`
       user {
         id
         email
+        pseudo
       }
       posts {
         id
@@ -69,6 +73,7 @@ export const GET_USERS = gql`
     getUsers {
       id
       email
+      pseudo
       role
     }
   }
