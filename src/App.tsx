@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+
+import {Cloudinary} from "@cloudinary/url-gen";
+
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -22,9 +26,16 @@ import { UserContext } from "./UserContext";
 import Privacy from "./pages/Home/Privacy";
 import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 
+
+
 const httpLink = createHttpLink({
   uri: "http://localhost:5000",
 });
+
+
+
+console.log(process.env.REACT_APP_CLOUDNAME) // remove this after you've confirmed it is working
+
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -116,6 +127,14 @@ function Main() {
 }
 
 function App() {
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: "dzri64odc"
+    }
+  });
+
+
   return (
     <ApolloProvider client={client}>
       <Main />

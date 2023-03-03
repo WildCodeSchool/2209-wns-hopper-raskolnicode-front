@@ -3,12 +3,43 @@ import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../components/FormSign/formSign.module.scss";
 import uploadStyles from "./createBlog.module.scss"
+import { preview } from "@cloudinary/url-gen/actions/videoEdit";
 
+
+
+interface FileInputChangeEvent extends Event {
+  target: HTMLInputElement & EventTarget
+}
 
 
 function CreateBlog() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [previewSource, setPreviewSource] = useState("");
+
+
+  const handleInputChange = (e: FileInputChangeEvent | any) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (file) {
+      previewFile(file);
+    }
+
+  }
+
+
+  const previewFile = (file: File) => {
+    const reader: any = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = (): void => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+
 
   const [doCreateBlogMutation, { data, loading, error }] =
     useMutation(CREATE_BLOG);
@@ -31,10 +62,15 @@ function CreateBlog() {
     } catch { }
   }
 
+
+
   return (
     <main className={styles.main} >
       <form onSubmit={e => doCreateBlog(e)} className={styles.form}>
-        <h3>Créer mon blog</h3>
+
+        <h3>Créez votre blog</h3>
+
+
         <input
           disabled={loading}
           type="text"
@@ -59,9 +95,16 @@ function CreateBlog() {
               <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
             </div>
             <div className={uploadStyles.buttonBox}>
-            <input type="file" id="Telecharher"  name="telecharger"      accept=".jpg, .jpeg, .png"/>
-            
-          
+              <input
+                type="file"
+                id="Telecharher"
+                name="telecharger"
+                accept=".jpg, .jpeg, .png"
+                onChange={handleInputChange}
+                value={fileInputState}
+              />
+
+
             </div>
           </div>
 
@@ -76,6 +119,8 @@ function CreateBlog() {
         <div className={styles.buttonBox}>
           <button disabled={loading}>Créer</button>
         </div>
+
+
       </form>
     </main>
   );
