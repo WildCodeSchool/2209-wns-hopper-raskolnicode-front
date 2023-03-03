@@ -10,8 +10,13 @@ margin-top: 1rem;
     .description_box {
         display: flex !important;
         flex-direction: column;
-        height: 2rem;
+        height: 6rem;
         align-items: center;
+
+        input#Telecharher {
+            display: flex;
+            margin-left: 0;
+        }
 
         .img_box {
 
@@ -51,6 +56,24 @@ margin-top: 1rem;
         img {
             width: 100%;
             aspect-ratio: 4 / 2;
+        }
+    }
+
+    .uploaded_preview {
+
+        height: 7rem;
+        width: auto;
+        max-height: 7rem;
+        margin-bottom: 0.5rem;
+
+
+        img {
+            max-height: 7rem;
+            height: auto;
+            width: auto;
+            object-fit: fill;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
         }
     }
 

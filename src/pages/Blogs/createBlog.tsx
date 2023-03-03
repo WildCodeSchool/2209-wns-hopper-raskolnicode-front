@@ -91,9 +91,23 @@ function CreateBlog() {
 
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
-            <div className={uploadStyles.img_box}>
-              <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
-            </div>
+
+
+            {!previewSource ? (
+              <div className={uploadStyles.img_box}>
+                <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
+              </div>
+            ) :
+              <div className={uploadStyles.uploaded_preview}>
+                <img  src={previewSource} alt="chosen"
+                  style={{ height: "300px" }} />
+              </div>
+            }
+
+
+
+
+
             <div className={uploadStyles.buttonBox}>
               <input
                 type="file"
