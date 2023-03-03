@@ -60,8 +60,38 @@ function CreateBlog() {
       setName("");
       setDescription("");
     } catch { }
+
+    if (!previewSource) return;
+    else {
+      const uploadImage = async (base64EncodedImage: string) => {
+        console.log(base64EncodedImage);
+        try {
+          await fetch("/api/upload", {
+            method: "POST",
+            body: JSON.stringify({data: base64EncodedImage}),
+            headers: {'Content-type': 'application/json'}
+          })
+        } catch(error) {
+          console.error(error)
+        }
+      }
+      uploadImage(previewSource);
+    }
+
   }
 
+
+
+  // const handleSubmitFile = (e) => {
+  //   e.preventDefault();
+  //   if(!selectedFile) return;
+  //   uploadImage(previewSource);
+
+  // }
+
+  // const uploadImage = (base64EncodedImage): any =>  {
+  //   console.log(base64EncodedImage);
+  // }
 
 
   return (
@@ -99,7 +129,7 @@ function CreateBlog() {
               </div>
             ) :
               <div className={uploadStyles.uploaded_preview}>
-                <img  src={previewSource} alt="chosen"
+                <img src={previewSource} alt="chosen"
                   style={{ height: "300px" }} />
               </div>
             }
