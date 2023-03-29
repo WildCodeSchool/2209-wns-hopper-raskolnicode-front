@@ -1,41 +1,42 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./../../components/FormSign/formSign.module.scss";
-import { CREATE_USER } from "../../graphql/mutations";
+import { LOGIN } from "../../graphql/mutations";
+import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Login(props: { onTokenChange: (token?: string) => void }) {
+  // Redirects to dashboard if there's a user logged in
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
-  const [pseudo, setPseudo] = useState("Testdu34");
 
-  const [doSignupMutation, { data, loading, error }] = useMutation(CREATE_USER);
+  const [doSignInMutation, { data, loading, error }] = useMutation(LOGIN);
 
-  async function doSignup(e: any) {
-    e.preventDefault(e);
+  async function doSignIn(e: any) {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      await doSignupMutation({
+      const result = await doSignInMutation({
         variables: {
           data: {
             email,
-            pseudo,
             password,
           },
         },
       });
-      setEmail("");
-      setPassword("");
-      setPseudo("");
-    } catch {}
+      if (result.data) {
+        props.onTokenChange(result.data.login);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
     <main className={styles.main}>
-      {error && (
-        <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
-      )}
-      <form className={styles.form}>
-        <h3>Inscription</h3>
+      <form onSubmit={(e) => doSignIn(e)} className={styles.form}>
+        <h3>Connexion</h3>
         <div className={styles.email}>
           <input
             disabled={loading}
@@ -43,15 +44,6 @@ function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Votre email"
-          />
-        </div>
-        <div className={styles.pseudo}>
-          <input
-            disabled={loading}
-            type="pseudo"
-            value={pseudo}
-            onChange={(e) => setPseudo(e.target.value)}
-            placeholder="Votre pseudo"
           />
         </div>
         <div className={styles.password}>
@@ -63,19 +55,20 @@ function Signup() {
             placeholder="Votre mot de passe"
           />
         </div>
+        {error && <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>}
         <div className={styles.buttonBox}>
-          <button type="button" disabled={loading} onClick={doSignup}>
-            Inscription
+          <button disabled={loading} onClick={doSignIn}>
+            Me connecter
           </button>
         </div>
-        <div>
-          <p>
+        {/* <div>
+          <p className={styles.forbidenMdpLink}>
             Avez-vous déja un <a href="X">compte?</a>
           </p>
-        </div>
+        </div> */}
       </form>
     </main>
   );
 }
 
-export default Signup;
+export default Login;
