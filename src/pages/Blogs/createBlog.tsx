@@ -19,6 +19,7 @@ function CreateBlog() {
 
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState<File>();
+  const [imageStorage, setImageStorage] = useState("");
   const [previewSource, setPreviewSource] = useState("");
 
 
@@ -47,13 +48,14 @@ function CreateBlog() {
   async function doCreateBlog(e: any) {
     e.preventDefault()
 
-    console.log('blog', { name, description })
+    console.log('blog', { name, description, imageStorage })
     try {
       await doCreateBlogMutation({
         variables: {
           data: {
             name,
             description,
+            image_storage: imageStorage,
           },
         },
       });
