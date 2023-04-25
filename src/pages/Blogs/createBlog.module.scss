@@ -1,18 +1,38 @@
 
-.box_actualiser_img {
+.box_actualiser_img, .uploaded_preview {
     display: flex;
     width: 80%;
     margin: 1rem auto;
     align-items: flex-end;
-    max-height: 4rem;
-
+    margin: 1rem auto auto 0;
 
     img {
         width: 60%;
         aspect-ratio: 4 / 2;
+        max-height: 4rem;
+        margin-bottom: .5rem;
+
     }
 }
 
+
+// .uploaded_preview {
+
+//     height: 7rem;
+//     width: auto;
+//     max-height: 7rem;
+//     margin-bottom: 0.5rem;
+
+
+//     img {
+//         max-height: 7rem;
+//         height: auto;
+//         width: auto;
+//         object-fit: fill;
+//         margin-right: 2rem;
+//         margin-bottom: 2rem;
+//     }
+// }
 
 
 
@@ -24,7 +44,7 @@
     justify-content: space-between;
     height: 5rem;
     padding: 0.5rem 0rem;
-    width: 90%;
+    width: 80%;
     margin: 0rem auto;
     
 
@@ -65,24 +85,6 @@
     
   
 
-
-    .uploaded_preview {
-
-        height: 7rem;
-        width: auto;
-        max-height: 7rem;
-        margin-bottom: 0.5rem;
-
-
-        img {
-            max-height: 7rem;
-            height: auto;
-            width: auto;
-            object-fit: fill;
-            margin-right: 2rem;
-            margin-bottom: 2rem;
-        }
-    }
 
     .buttonBox {
         display: flex;

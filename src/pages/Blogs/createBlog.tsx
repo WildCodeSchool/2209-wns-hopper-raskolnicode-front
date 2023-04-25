@@ -19,7 +19,7 @@ function CreateBlog() {
 
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState<File>();
-  const [imageStorage, setImageStorage] = useState("");
+  const [imagePath, setImagePath] = useState("");
   const [previewSource, setPreviewSource] = useState("");
 
 
@@ -48,14 +48,14 @@ function CreateBlog() {
   async function doCreateBlog(e: any) {
     e.preventDefault()
 
-    console.log('blog', { name, description, imageStorage })
+    console.log('blog', { name, description, imagePath })
     try {
       await doCreateBlogMutation({
         variables: {
           data: {
             name,
             description,
-            image_storage: imageStorage,
+            image_path: imagePath,
           },
         },
       });
@@ -98,7 +98,12 @@ function CreateBlog() {
 
   return (
     <main className={styles.main} >
+
+      
       <form onSubmit={e => doCreateBlog(e)} className={styles.form}>
+
+        
+
 
         <h3>Créez votre blog</h3>
 
@@ -122,19 +127,16 @@ function CreateBlog() {
         )}
 
 
-        <div className={uploadStyles.box_actualiser_img}>
-          <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
 
-        </div>
 
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
 
 
             {!previewSource ? (
-              <div className={uploadStyles.img_box}>
-                <img src="/assets/images/icons/picturecon.png" alt="download indication" /><h2>Image</h2>
-              </div>
+        <div className={uploadStyles.box_actualiser_img}>
+        <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
+      </div>
             ) :
               <div className={uploadStyles.uploaded_preview}>
                 <img src={previewSource} alt="chosen"
