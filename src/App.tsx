@@ -22,13 +22,13 @@ import { UserContext } from "./UserContext";
 import Privacy from "./pages/Home/Privacy";
 import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
-import { API_URL } from "./config";
+import API_URL from "./config";
 
 const httpLink = createHttpLink({
   uri: API_URL,
 });
 
-console.log('APIURL', API_URL)
+console.log("APIURL", API_URL);
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
