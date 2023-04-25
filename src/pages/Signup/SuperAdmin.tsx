@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import styles from "./../../components/FormSign/formSign.module.scss"
+import styles from "./../../components/FormSign/formSign.module.scss";
 import { CREATE_SUPERADMIN } from "../../graphql/mutations";
 import { Link } from "react-router-dom";
 import { HAS_SUPERADMIN } from "../../graphql/queries";
@@ -8,9 +8,11 @@ import { HAS_SUPERADMIN } from "../../graphql/queries";
 const SuperAdminSignup = () => {
   const [email, setEmail] = useState("superadmin@mail.com");
   const [password, setPassword] = useState("test1234");
+  const [pseudo, setPseudo] = useState("Superadmin");
 
-  const [createSuperAdmin, { data, loading, error }] = useMutation(CREATE_SUPERADMIN);
-  const { data: adminData } = useQuery(HAS_SUPERADMIN)
+  const [createSuperAdmin, { data, loading, error }] =
+    useMutation(CREATE_SUPERADMIN);
+  const { data: adminData } = useQuery(HAS_SUPERADMIN);
 
   async function doSignup() {
     try {
@@ -18,16 +20,16 @@ const SuperAdminSignup = () => {
         variables: {
           data: {
             email,
+            pseudo,
             password,
           },
         },
       });
       setEmail("");
       setPassword("");
-    } catch { }
+      setPseudo("");
+    } catch {}
   }
-
-
 
   return (
     <main className={styles.main}>
@@ -36,47 +38,59 @@ const SuperAdminSignup = () => {
       )}
       <div className={styles.form}>
         <h3>Création d'un Super Admin</h3>
-        {
-          adminData?.hasSuperAdmin ?
-            <>
-              <p className="text-center text-danger">Vous ne pouvez créer qu'un seul Super Admin depuis cette page</p>
-              <p className="text-center">Veuillez vous <Link to={'/login'}>connecter</ Link></p>
-            </>
-            :
-            <>
-              <div className={styles.email}>
-                <input
-                  disabled={loading}
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Votre email"
-                />
-              </div>
-              <div className={styles.password}>
-                <input
-                  disabled={loading}
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Votre mot de passe"
-                />
-              </div>
-              <div className={styles.buttonBox}>
-                <button disabled={loading} onClick={doSignup}>
-                  Inscription
-                </button>
-              </div>
-              <div>
-                <p>
-                  Avez-vous déja un <a href="X">compte?</a>
-                </p>
-              </div>
-            </>
-        }
+        {adminData?.hasSuperAdmin ? (
+          <>
+            <p className="text-center text-danger">
+              Vous ne pouvez créer qu'un seul Super Admin depuis cette page
+            </p>
+            <p className="text-center">
+              Veuillez vous <Link to={"/login"}>connecter</Link>
+            </p>
+          </>
+        ) : (
+          <>
+            <div className={styles.email}>
+              <input
+                disabled={loading}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Votre email"
+              />
+            </div>
+            <div className={styles.pseudo}>
+              <input
+                disabled={loading}
+                type="pseudo"
+                value={pseudo}
+                onChange={(e) => setPseudo(e.target.value)}
+                placeholder="Votre pseudo"
+              />
+            </div>
+            <div className={styles.password}>
+              <input
+                disabled={loading}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Votre mot de passe"
+              />
+            </div>
+            <div className={styles.buttonBox}>
+              <button disabled={loading} onClick={doSignup}>
+                Inscription
+              </button>
+            </div>
+            <div>
+              <p>
+                Avez-vous déja un <a href="X">compte?</a>
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </main>
   );
-}
+};
 
-export default SuperAdminSignup
+export default SuperAdminSignup;

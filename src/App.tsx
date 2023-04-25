@@ -25,16 +25,14 @@ import Login from "./pages/Login/Login";
 import { UserContext } from "./UserContext";
 import Privacy from "./pages/Home/Privacy";
 import SuperAdminSignup from "./pages/Signup/SuperAdmin";
+import Profile from "./pages/Profile/Profile";
+import API_URL from "./config";
 
 
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000",
+  uri: API_URL,
 });
-
-
-
-console.log(process.env.REACT_APP_CLOUDNAME) // remove this after you've confirmed it is working
 
 
 const authLink = setContext((_, { headers }) => {
@@ -95,14 +93,14 @@ function Main() {
         <Routes>
           <Route element={<Layout onTokenChange={onTokenChange} />}>
             {user ? (
-              <></>
+              <>
+                <Route path="/profile" element={<Profile />} />
+              </>
             ) : (
               <>
                 <Route
                   path="/login"
-                  element={<Login onTokenChange={onTokenChange} />
-
-                  }
+                  element={<Login onTokenChange={onTokenChange} />}
                 />
                 <Route path="/signup" element={<Signup />} />
                 <Route
@@ -112,9 +110,7 @@ function Main() {
               </>
             )}
             <Route path="/" element={<Home />} />
-            {
-              user && <Route path="/blog/create" element={<CreateBlog />} />
-            }
+            {user && <Route path="/blog/create" element={<CreateBlog />} />}
             <Route path="/blog/:blogId" element={<Blog />} />
             <Route path="/post" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
