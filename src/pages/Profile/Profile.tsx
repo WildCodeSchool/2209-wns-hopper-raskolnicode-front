@@ -1,41 +1,58 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
+import { UPDATE_USER } from "../../graphql/mutations";
 import { GET_LOGGED_USER } from "../../graphql/queries";
+import styles from "./Profile.module.scss";
 
 function Profile() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email] = useState("");
+  const [pseudo, setPseudo] = useState("");
   const { loading, data } = useQuery(GET_LOGGED_USER);
 
+  const [doUpdateUserMutation] = useMutation(UPDATE_USER);
+
+  async function doUpdtateUser(e: any) {
+    e.preventDefault();
+    console.log("pseudo", pseudo);
+    try {
+      await doUpdateUserMutation({
+        variables: {
+          pseudo,
+        },
+      });
+    } catch {}
+  }
+
   return (
-    <>
+    <div className={styles.main}>
       <h1>Mon compte</h1>
-      <form>
+
+      <form onSubmit={(e) => doUpdtateUser(e)} className={styles.form}>
         <label>
-          Email :
+          Email
           <input
             disabled={loading}
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
             placeholder={data?.loggedUser.email}
           />
         </label>
-        {/* <button disabled={loading} onClick={doSignup}>
-          Sauvegarder
-        </button> */}
         <label>
-          Nouveau mot de passe :
+          <div>Pseudonyme</div>
           <input
             type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="De préférence compliqué"
+            value={pseudo}
+            onChange={(e) => setPseudo(e.target.value)}
+            placeholder={data?.loggedUser.pseudo}
           />
         </label>
-        <input type="submit" value="Sauvegarder" />
+        <div className={styles.buttonBox}>
+          <button disabled={loading} className={styles.button}>
+            <div>Sauvegarder</div>
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 
