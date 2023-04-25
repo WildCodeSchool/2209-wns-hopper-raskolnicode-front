@@ -4,3 +4,8 @@ export interface IUser {
   pseudo?: string;
   password: string;
 }
+
+export interface AlertInfo {
+  message: string
+  variant: string
+}

@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import styles from "./../../components/FormSign/formSign.module.scss";
 import { LOGIN } from "../../graphql/mutations";
@@ -10,27 +10,27 @@ function Login(props: { onTokenChange: (token?: string) => void }) {
 
   const [email, setEmail] = useState("test@mail.com");
   const [password, setPassword] = useState("test1234");
+  const [error, setError] = useState('')
 
-  const [doSignInMutation, { data, loading, error }] = useMutation(LOGIN);
+  const [doSignInMutation, { loading }] = useMutation(LOGIN);
 
   async function doSignIn(e: any) {
     e.preventDefault();
-    try {
-      const result = await doSignInMutation({
+      await doSignInMutation({
         variables: {
           data: {
             email,
             password,
           },
         },
-      });
-      if (result.data) {
-        props.onTokenChange(result.data.login);
-        navigate("/");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      }).then(res => {
+        if (res.data.login) {
+          props.onTokenChange(res.data.login);
+          navigate("/");
+        } else {
+          setError('Veuillez vérifier votre adresse mail et votre mot de passe')
+        }
+      })
   }
 
   return (
@@ -55,7 +55,7 @@ function Login(props: { onTokenChange: (token?: string) => void }) {
             placeholder="Votre mot de passe"
           />
         </div>
-        {error && <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>}
+        {error && <p className="text-danger text-center">{error}</p>}
         <div className={styles.buttonBox}>
           <button disabled={loading} onClick={doSignIn}>
             Me connecter

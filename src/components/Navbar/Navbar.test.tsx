@@ -7,9 +7,10 @@ import { UserContext } from "../../UserContext";
 describe("Navbar", () => {
 
   const onTokenChange = jest.fn()
+  const handleAlert = jest.fn()
 
   it('shows the login and signin buttons when we are disconnected', () => {
-    render(<Navbar onTokenChange={onTokenChange} />, { wrapper: BrowserRouter })
+    render(<Navbar onTokenChange={onTokenChange} handleAlert={handleAlert} />, { wrapper: BrowserRouter })
     const signUpButton = screen.getByText(/Inscription/i)
     const loginButton = screen.getByText(/Connexion/i)
     expect(signUpButton).toBeInTheDocument();
@@ -25,7 +26,7 @@ describe("Navbar", () => {
     }
     render(
       <UserContext.Provider value={user}>
-        <Navbar onTokenChange={onTokenChange} />
+        <Navbar onTokenChange={onTokenChange} handleAlert={handleAlert} />
       </UserContext.Provider>, { wrapper: BrowserRouter }
     )
     const logoutButton = screen.getByText(/Déconnexion/i);
