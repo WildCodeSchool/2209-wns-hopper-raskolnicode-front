@@ -68,10 +68,10 @@ function CreateBlog() {
         try {
           await fetch("/api/upload", {
             method: "POST",
-            body: JSON.stringify({data: base64EncodedImage}),
-            headers: {'Content-type': 'application/json'}
+            body: JSON.stringify({ data: base64EncodedImage }),
+            headers: { 'Content-type': 'application/json' }
           })
-        } catch(error) {
+        } catch (error) {
           console.error(error)
         }
       }
@@ -119,6 +119,12 @@ function CreateBlog() {
           <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
         )}
 
+
+        <div className={uploadStyles.box_actualiser_img}>
+          <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
+
+        </div>
+
         <div className={uploadStyles.upload_container}>
           <div className={uploadStyles.description_box}>
 
@@ -152,15 +158,11 @@ function CreateBlog() {
             </div>
           </div>
 
-          <div className={uploadStyles.box_actualiser_img}>
-            <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
-
-          </div>
 
         </div>
 
 
-        <div className={styles.buttonBox}>
+        <div className={uploadStyles.buttonBox}>
           <button disabled={loading}>Créer</button>
         </div>
 
