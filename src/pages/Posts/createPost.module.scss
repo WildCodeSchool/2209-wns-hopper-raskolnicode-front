@@ -10,7 +10,7 @@
         display: grid;
         grid-template-columns: 1fr;
         margin-top: 40px;
-        width: 430px;
+        width: 80%;
         min-height: 550px;
         margin-right: auto;
         margin-left: auto;
@@ -49,10 +49,11 @@
             width: 80%;
             margin: 0 auto;
             outline: none;
+            margin-bottom: 1rem;
         }
 
         input {
-            height: 30px;
+            height: 20px;
             border-left: hidden;
             border-right: hidden;
             border-top: hidden;
