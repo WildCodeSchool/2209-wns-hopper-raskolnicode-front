@@ -1,3 +1,5 @@
+// Update profil
+
 .main {
   min-height: 82vh;
   display: flex;
@@ -7,21 +9,17 @@
   position: relative;
 
   .form {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 40px;
-    width: 43em;
-    min-height: 550px;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    width: 23em;
+    min-height: 250px;
     margin-right: auto;
     margin-left: auto;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 20px;
     align-self: center;
-
-    div {
-      display: grid;
-    }
+    display: grid;
 
     a {
       text-decoration: none;
@@ -30,20 +28,31 @@
     }
 
     label {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
+      margin-top: 1em;
 
-    input,
-    textarea {
-      width: 80%;
-      margin: 0 auto;
-      outline: none;
+      display: grid;
+      grid-template-columns: 1fr;
     }
 
     input {
       height: 30px;
+      width: 20em;
+    }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #345995;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #345995;
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #345995;
     }
 
     .buttonBox {
@@ -60,7 +69,7 @@
         font-size: clamp(0.9rem, 2.2vw, 1.2rem);
         margin-right: auto;
         margin-left: auto;
-        background: linear-gradient(to right, #953434, #ff6b00);
+        background: linear-gradient(to right, blue, rgb(0, 173, 226));
         letter-spacing: 0.8px;
       }
     }
@@ -99,5 +108,41 @@
     .form {
       min-height: 430px;
     }
+  }
+}
+
+// List of blogs
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1650px) {
+  .home {
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .contentBanniere {
+      a button {
+        margin-left: 5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .home {
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

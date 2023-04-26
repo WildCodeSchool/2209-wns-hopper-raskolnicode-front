@@ -9,13 +9,14 @@ import { useQuery } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 
 export type BlogProps = {
+  user: any;
   name: string;
   description: string;
   updated_at: string;
   id: number;
 };
 
-function Home () {
+function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
@@ -106,7 +107,7 @@ function Home () {
               title={blog.name}
               description={blog.description}
               image="futur lien image"
-              updated_at={blog.updated_at}
+              updated_at={blog.user.pseudo}
               onClick={() => {
                 navigate(`/blog/${blog.id}`);
               }}
@@ -116,6 +117,6 @@ function Home () {
       </section>
     </main>
   );
-};
+}
 
 export default Home;
