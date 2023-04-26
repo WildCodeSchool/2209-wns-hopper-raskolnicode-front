@@ -3,7 +3,6 @@ import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../components/FormSign/formSign.module.scss";
 import uploadStyles from "./createBlog.module.scss"
-import { preview } from "@cloudinary/url-gen/actions/videoEdit";
 
 
 
@@ -27,6 +26,8 @@ function CreateBlog() {
     const file = (e.target as HTMLInputElement).files?.[0];
     if (file) {
       previewFile(file);
+      setSelectedFile(file);
+      setFileInputState(e.target.value);
     }
 
   }
@@ -44,44 +45,7 @@ function CreateBlog() {
 
   const [doCreateBlogMutation, { data, loading, error }] =
     useMutation(CREATE_BLOG);
-
-  async function doCreateBlog(e: any) {
-    e.preventDefault()
-
-    console.log('blog', { name, description, imagePath })
-    try {
-      await doCreateBlogMutation({
-        variables: {
-          data: {
-            name,
-            description,
-            image_path: imagePath,
-          },
-        },
-      });
-      setName("");
-      setDescription("");
-    } catch { }
-
-    if (!previewSource) return;
-    else {
-      const uploadImage = async (base64EncodedImage: string) => {
-        console.log(base64EncodedImage);
-        try {
-          await fetch("/api/upload", {
-            method: "POST",
-            body: JSON.stringify({ data: base64EncodedImage }),
-            headers: { 'Content-type': 'application/json' }
-          })
-        } catch (error) {
-          console.error(error)
-        }
-      }
-      uploadImage(previewSource);
-    }
-
-  }
-
+    
 
 
   // const handleSubmitFile = (e) => {
@@ -96,14 +60,57 @@ function CreateBlog() {
   // }
 
 
+  async function doCreateBlog(e: any) {
+    e.preventDefault()
+
+    // console.log('blog', { name, description, imagePath })
+    try {
+      await doCreateBlogMutation({
+        variables: {
+          data: {
+            name,
+            description,
+            image_path: imagePath,
+          },
+        },
+      });
+      setName("");
+      setDescription("");
+    } catch { }
+
+
+
+
+    if (!previewSource) return;
+    else {
+      const uploadImage = async (base64EncodedImage: string) => {
+        // console.log(base64EncodedImage);
+        try {
+          await fetch("/api/upload", {
+            method: "POST",
+            body: JSON.stringify({ data: base64EncodedImage }),
+            headers: { 'Content-type': 'application/json' }
+          })
+          setFileInputState("");
+          setPreviewSource("");
+          
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      // uploadImage(previewSource);
+    }
+
+  }
+
+
+
+
   return (
     <main className={styles.main} >
 
-      
+
       <form onSubmit={e => doCreateBlog(e)} className={styles.form}>
-
-        
-
 
         <h3>Créez votre blog</h3>
 
@@ -134,9 +141,9 @@ function CreateBlog() {
 
 
             {!previewSource ? (
-        <div className={uploadStyles.box_actualiser_img}>
-        <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
-      </div>
+              <div className={uploadStyles.box_actualiser_img}>
+                <img src="/assets/images/defaults/defaultuploaded.jpg" alt="uploaded file" />
+              </div>
             ) :
               <div className={uploadStyles.uploaded_preview}>
                 <img src={previewSource} alt="chosen"

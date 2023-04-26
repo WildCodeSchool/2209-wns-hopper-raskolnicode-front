@@ -126,7 +126,7 @@ function App() {
 
   const cld = new Cloudinary({
     cloud: {
-      cloudName: "dzri64odc"
+      cloudName: "raskol"
     }
   });
 
