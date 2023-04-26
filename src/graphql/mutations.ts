@@ -25,6 +25,7 @@ mutation login($data: UserInput!) {
 export const CREATE_BLOG = gql`
 mutation CreateBlog($data: BlogInput!) {
   createBlog(data: $data) {
+    id
     name
   }
 }`
@@ -42,6 +43,7 @@ mutation CreateUser($data: UserInput!) {
 export const CREATE_BLOG_BY_USER = gql`
 mutation CreateBlogByUser($data: BlogInput!) {
   createBlogByUser(data: $data) {
+    id
     name
     description
     user {

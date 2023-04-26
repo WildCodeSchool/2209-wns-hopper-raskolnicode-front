@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import { GET_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
+import AdBanner from "./AdBanner";
 
 type getBlog = {
   id: number;
@@ -33,10 +34,9 @@ function Blog() {
     },
   });
 
-  console.log(data);
-
   return (
     <main className={styles.blogmain}>
+      {/* place here condition if !user.isPremium */} <AdBanner /> 
       <h1>Bienvenue {blogId}</h1>
       <section className={styles.container}>
         {loading === true && "Chargement..."}
