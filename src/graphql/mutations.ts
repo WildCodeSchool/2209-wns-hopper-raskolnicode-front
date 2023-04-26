@@ -52,3 +52,10 @@ mutation CreateBlogByUser($data: BlogInput!) {
     }
   }
 }`
+
+export const CREATE_POST = gql`
+mutation CreatePost($blogId: ID!, $data: PostInput!) {
+  createPost(blogId: $blogId, data: $data) {
+    id
+  }
+}`
