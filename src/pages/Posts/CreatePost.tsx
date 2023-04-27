@@ -30,7 +30,7 @@ const CreatePost = () => {
           title,
           summary,
           content,
-          picture,
+          picture_link: picture,
           isArchived,
         },
       },
