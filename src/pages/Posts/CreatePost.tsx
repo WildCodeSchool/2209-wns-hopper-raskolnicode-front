@@ -9,7 +9,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
-  const [image] = useState("");
+  const [picture, setPicture] = useState("");
   const [isArchived, setIsArchived] = useState(false)
 
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const CreatePost = () => {
     e.preventDefault()
 
     /*** CLOUDINARY IMAGE UPLOAD ***/
-    // setImage(link from cloudinary)
+    // setPicture(link from cloudinary)
 
     await doCreatePostMutation({
       variables: {
@@ -30,7 +30,7 @@ const CreatePost = () => {
           title,
           summary,
           content,
-          image,
+          picture,
           isArchived,
         },
       },

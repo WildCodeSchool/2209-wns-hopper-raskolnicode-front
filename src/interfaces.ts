@@ -28,7 +28,7 @@ export type IPost = {
   content: string
   created_at: string
   id: number
-  image: string
+  picture: Picture
   isArchived: boolean
   summary: string
   title: string
@@ -51,4 +51,29 @@ export type Comment = {
   post: IPost
   text: string
   user: IUser
+}
+
+export type getBlog = {
+  id: number;
+  name: string;
+  description: string;
+  updated_at: string;
+  user: {
+    id: number;
+    email: string;
+  };
+  posts: {
+    id: number;
+    title: string;
+    summary: string;
+    content: string;
+    picture: Picture;
+    updated_at: string;
+  }[];
+};
+
+export type Picture = {
+  id: number,
+  name: string,
+  link: string
 }

@@ -105,7 +105,6 @@ function Home () {
             <Card
               title={blog.name}
               description={blog.description}
-              image="futur lien image"
               updated_at={blog.updated_at}
               onClick={() => {
                 navigate(`/blog/${blog.id}`);

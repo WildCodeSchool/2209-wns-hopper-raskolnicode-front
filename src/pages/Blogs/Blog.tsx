@@ -7,26 +7,7 @@ import styles from "./Blog.module.scss";
 import AdBanner from "./AdBanner";
 import Actions from "./Actions";
 import { UserContext } from "../../UserContext";
-import { IBlog } from "../../interfaces";
-
-type getBlog = {
-  id: number;
-  name: string;
-  description: string;
-  updated_at: string;
-  user: {
-    id: number;
-    email: string;
-  };
-  posts: {
-    id: number;
-    title: string;
-    summary: string;
-    content: string;
-    image: string;
-    updated_at: string;
-  }[];
-};
+import { getBlog } from "../../interfaces";
 
 function Blog() {
 
@@ -63,7 +44,7 @@ function Blog() {
               <Card
                 title={post.title}
                 description={post.summary}
-                image={post.image}
+                picture={post.picture}
                 updated_at={post.updated_at}
                 onClick={() => { }}
               />
