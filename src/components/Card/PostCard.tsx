@@ -13,10 +13,18 @@ function PostCard({ post }: CardProps): JSX.Element {
       <div className={styles.listCard}>
         <Link to={`articles/${post.id}`}>
           <div className={styles.card}>
-            <img
-              src="https://picsum.photos/1200/400?random=2"
-              alt={post.picture?.name}
-            />
+            {
+              post.picture ?
+                <img
+                  src={post.picture.link}
+                  alt={post.picture.name}
+                />
+                :
+                <img
+                  src='/default-card-img.png'
+                  alt='Introuvable'
+                />
+            }
             <h4>{post.title}</h4>
             <p>{post.summary}</p>
             <p className={styles.dateCreated}>{post.updated_at}</p>
