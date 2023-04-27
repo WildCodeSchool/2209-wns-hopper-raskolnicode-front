@@ -23,17 +23,23 @@ function Profile() {
           pseudo,
         },
       });
+      
+      
       setAlert({ message: 'Informations mises à jour !', type: 'success' });
+      setTimeout(() => {
+        setAlert({ message: '', type: '' });
+      }, 3000);
       // window.location.reload();
-
     }
 
     catch {
       setAlert({ message: 'Une erreur est apparue', type: 'error' });
+      setTimeout(() => {
+        setAlert({ message: '', type: '' });
+      }, 3000);
 
     }
   }
-
 
   // async function doUpdateBlog(e: any) {
   //   e.preventDefault();
@@ -71,53 +77,60 @@ function Profile() {
 
   return (
     <div className={styles.main}>
-      <h1>Mon compte</h1>
 
-      {
-        alert.message && (
-          <div className={`alert ${alert.type === 'success' ? styles.alertSuccess : styles.alertDanger}  ${styles.alert}`} role="alert">
-            {alert.message}
-          </div>
-        )
-      }
+      <section className={styles.accountSection}>
+        <h1>Mon compte</h1>
 
-      <form onSubmit={(e) => doUpdtateUser(e)} className={styles.form}>
-        <div className={styles.globalContainer}>
-          <div className={styles.boxForm}>
-            <div className={styles.infoBox}>
-              <label>Email</label>
-              <p>{data?.loggedUser.email}</p>
+        {
+          alert.message && (
+            <div className={`alert ${alert.type === 'success' ? styles.alertSuccess : styles.alertDanger}  ${styles.alert}`} role="alert">
+              {alert.message}
             </div>
-          </div>
+          )
+        }
 
-          <div className={styles.boxForm}>
-            <div className={styles.infoBox}>
-              <label className={styles.pseudoLabel}>Pseudonyme</label>
-              <input className={`${isEditable ? '' : styles.editableDisable}`}
-                type="text"
-                value={pseudo}
-                onChange={(e) => setPseudo(e.target.value)}
-                placeholder={data?.loggedUser.pseudo}
-                disabled={!isEditable}
-              />
+        <form onSubmit={(e) => doUpdtateUser(e)} className={styles.form}>
+          <div className={styles.globalContainer}>
+            <div className={styles.boxForm}>
+              <div className={styles.infoBox}>
+                <label>Email</label>
+                <p>{data?.loggedUser.email}</p>
+              </div>
             </div>
-            <div className={styles.editBox}>
-              <button className="btn btn-outline-secondary" onClick={toggleEdit}>{isEditable ? 'Valider' : 'Editer'}</button>
-            </div>
-          </div>
 
-        </div>
-        <div className={styles.buttonBox}>
-          <button disabled={loading} className={styles.button}>
-            <div>Sauvegarder</div>
-          </button>
-        </div>
-      </form>
+            <div className={styles.boxForm}>
+              <div className={styles.infoBox}>
+                <label className={styles.pseudoLabel}>Pseudonyme</label>
+                <input className={`${isEditable ? '' : styles.editableDisable}`}
+                  type="text"
+                  value={pseudo}
+                  onChange={(e) => setPseudo(e.target.value)}
+                  placeholder={data?.loggedUser.pseudo}
+                  disabled={!isEditable}
+                />
+              </div>
+              <div className={styles.editBox}>
+                <button className="btn btn-outline-secondary" onClick={toggleEdit}>{isEditable ? 'Valider' : 'Editer'}</button>
+              </div>
+            </div>
+
+          </div>
+          <div className={styles.buttonBox}>
+            <button disabled={loading} className={styles.button}>
+              <div>Sauvegarder</div>
+            </button>
+          </div>
+        </form>
+      </section>
+
+
+
       <div>
 
 
-        <h1>Mes blogs</h1>
-        <section>
+        <section className={styles.blogSection}>
+
+          <h1>Mes blogs</h1>
           <div className={styles.blogContainer}>
             {loading === true && "Chargement..."}
             {data?.loggedUser.blogs.map((blog: any) => {
@@ -135,6 +148,7 @@ function Profile() {
               );
             })}
           </div>
+
         </section>
 
       </div>

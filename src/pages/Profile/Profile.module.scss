@@ -175,6 +175,12 @@
       }
     }
   }
+
+  .blogSection, .accountSection {
+    margin-top: 2vw;
+  }
+
+
 }
 
 
@@ -182,8 +188,7 @@
 @media (max-width: 1850px) {
 
   .main {
-
-
+    
     .blogContainer {
       grid-template-columns: repeat(3, 1fr);
 
