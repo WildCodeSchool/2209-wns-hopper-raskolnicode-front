@@ -26,56 +26,62 @@ function Signup() {
       setEmail("");
       setPassword("");
       setPseudo("");
-    } catch {}
+    } catch { }
   }
 
   return (
-    <main className={styles.main}>
+    <>
+      <main className={styles.main}>
+        <form className={styles.form}>
+          <h3>Inscription</h3>
+          <div className={styles.email}>
+            <input
+              disabled={loading}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Votre email"
+            />
+          </div>
+          <div className={styles.pseudo}>
+            <input
+              disabled={loading}
+              type="pseudo"
+              value={pseudo}
+              onChange={(e) => setPseudo(e.target.value)}
+              placeholder="Votre pseudo"
+            />
+          </div>
+          <div className={styles.password}>
+            <input
+              disabled={loading}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Votre mot de passe"
+            />
+          </div>
+          {error && (
+            <p className="text-danger">Une erreur s'est produite</p>
+          )}
+          <div className={styles.buttonBox}>
+            <button type="button" disabled={loading} onClick={doSignup}>
+              Inscription
+            </button>
+          </div>
+          <div>
+            <p>
+              Avez-vous déja un <a href="X">compte?</a>
+            </p>
+          </div>
+        </form>
+      </main>
       {error && (
         <pre style={{ color: "red" }}>{JSON.stringify(error, null, 4)}</pre>
       )}
-      <form className={styles.form}>
-        <h3>Inscription</h3>
-        <div className={styles.email}>
-          <input
-            disabled={loading}
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Votre email"
-          />
-        </div>
-        <div className={styles.pseudo}>
-          <input
-            disabled={loading}
-            type="pseudo"
-            value={pseudo}
-            onChange={(e) => setPseudo(e.target.value)}
-            placeholder="Votre pseudo"
-          />
-        </div>
-        <div className={styles.password}>
-          <input
-            disabled={loading}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Votre mot de passe"
-          />
-        </div>
-        <div className={styles.buttonBox}>
-          <button type="button" disabled={loading} onClick={doSignup}>
-            Inscription
-          </button>
-        </div>
-        <div>
-          <p>
-            Avez-vous déja un <a href="X">compte?</a>
-          </p>
-        </div>
-      </form>
-    </main>
+    </>
   );
+
 }
 
 export default Signup;

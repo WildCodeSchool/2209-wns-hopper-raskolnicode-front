@@ -43,7 +43,11 @@ export const GET_BLOGS = gql`
         summary
         title
         content
-        image
+        picture {
+          id
+          name
+          link
+        }
         updated_at
       }
     }
@@ -67,7 +71,11 @@ export const GET_BLOG = gql`
         title
         summary
         content
-        image
+        picture {
+          id
+          name
+          link
+        }
         updated_at
       }
     }

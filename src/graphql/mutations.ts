@@ -31,33 +31,40 @@ export const LOGIN = gql`
 `;
 
 export const CREATE_BLOG = gql`
-  mutation CreateBlog($data: BlogInput!) {
-    createBlog(data: $data) {
-      name
-    }
+
+mutation CreateBlog($data: BlogInput!) {
+  createBlog(data: $data) {
+    id
+    name
   }
-`;
+}`
 
 export const CREATE_USER_BY_ROLE = gql`
-  mutation CreateUser($data: UserInput!) {
-    createUserByRole(data: $data) {
-      id
-      email
-      password
-      role
-    }
+mutation CreateUser($data: UserInput!) {
+  createUserByRole(data: $data) {
+    id
+    email
+    password
+    role
   }
-`;
+}`
 
 export const CREATE_BLOG_BY_USER = gql`
-  mutation CreateBlogByUser($data: BlogInput!) {
-    createBlogByUser(data: $data) {
-      name
-      description
-      user {
-        id
-        email
-      }
+mutation CreateBlogByUser($data: BlogInput!) {
+  createBlogByUser(data: $data) {
+    id
+    name
+    description
+    user {
+      id
+      email
     }
   }
-`;
+}`
+
+export const CREATE_POST = gql`
+mutation CreatePost($blogId: ID!, $data: PostInput!) {
+  createPost(blogId: $blogId, data: $data) {
+    id
+  }
+}`

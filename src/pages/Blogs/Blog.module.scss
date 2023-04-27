@@ -66,4 +66,19 @@
       background: linear-gradient(to right, blue, rgb(0, 173, 226));
     }
   }
+
+  .ad_banner {
+    background-color: rgb(64, 138, 248);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+
+    p {
+      margin: 0;
+
+      a {
+        color: white
+      }
+    }
+  }
 }

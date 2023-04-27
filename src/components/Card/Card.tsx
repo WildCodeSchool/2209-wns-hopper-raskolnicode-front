@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Card.module.scss";
+import { Picture } from "../../interfaces";
 
 export type CardProps = {
   title: string;
   description: string;
   updated_at: string;
-  image: string;
+  picture?: Picture;
   onClick?: () => void;
 };
 
