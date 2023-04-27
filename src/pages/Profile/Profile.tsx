@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import { UPDATE_USER } from "../../graphql/mutations";
@@ -28,6 +28,14 @@ function Profile() {
   const toggleEdit = () => {
     setIsEditable(!isEditable);
   };
+
+
+  useEffect(() => {
+    if (data?.loggedUser?.pseudo) {
+      setPseudo(data.loggedUser.pseudo);
+    }
+  }, [data]);
+
 
   return (
     <div className={styles.main}>
