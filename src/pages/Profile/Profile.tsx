@@ -12,6 +12,7 @@ function Profile() {
   const { loading, data } = useQuery(GET_LOGGED_USER);
   const [doUpdateUserMutation] = useMutation(UPDATE_USER);
   const navigate = useNavigate();
+  const [isEditable, setIsEditable] = useState(false);
 
   async function doUpdtateUser(e: any) {
     e.preventDefault();
@@ -21,28 +22,46 @@ function Profile() {
           pseudo,
         },
       });
-    } catch {}
+    } catch { }
   }
+
+  const toggleEdit = () => {
+    setIsEditable(!isEditable);
+  };
 
   return (
     <div className={styles.main}>
       <h1>Mon compte</h1>
 
       <form onSubmit={(e) => doUpdtateUser(e)} className={styles.form}>
-        <label>
-          Email
-          <p>{data?.loggedUser.email}</p>
-        </label>
-        <label>
-          <div>Pseudonyme</div>
+        <div className={styles.globalContainer}>
+          <div className={styles.boxForm}>
+            <div className={styles.infoBox}>
+              <label>Email</label>
+              <p>{data?.loggedUser.email}</p>
+            </div>
+            {/* <div className={styles.editBox}>
+            <button className="btn btn-secondary">Editer</button>
+            </div> */}
+          </div>
 
-          <input
-            type="text"
-            value={pseudo}
-            onChange={(e) => setPseudo(e.target.value)}
-            placeholder={data?.loggedUser.pseudo}
-          />
-        </label>
+          <div className={styles.boxForm}>
+            <div className={styles.infoBox}>
+              <label className={styles.pseudoLabel}>Pseudonyme</label>
+              <input className={`${isEditable ? '' : styles.editableDisable}`}
+                type="text"
+                value={pseudo}
+                onChange={(e) => setPseudo(e.target.value)}
+                placeholder={data?.loggedUser.pseudo}
+                disabled={!isEditable}
+              />
+            </div>
+            <div className={styles.editBox}>
+              <button className="btn btn-outline-secondary" onClick={toggleEdit}>{isEditable ? 'Valider' : 'Editer'}</button>
+            </div>
+          </div>
+
+        </div>
         <div className={styles.buttonBox}>
           <button disabled={loading} className={styles.button}>
             <div>Sauvegarder</div>
