@@ -12,33 +12,30 @@ import { getBlog } from "../../interfaces";
 function Blog() {
 
   const { blogId } = useParams();
-  const [blog, setBlog] = useState<any>(null)
   const user = useContext(UserContext);
 
-  const  { loading, data } = useQuery<{ getBlog: getBlog }>(GET_BLOG, {
+  const  { loading, data, refetch } = useQuery<{ getBlog: getBlog }>(GET_BLOG, {
     variables: {
       getBlogId: blogId,
     },
-    onCompleted: setBlog
   });
-  
 
   useEffect(() => {
-    console.log('BLOG STATE', blog)
-  }, [blog])
+    refetch()
+  }, [])
 
-  console.log('user', user)
-  // console.log('blog', data?.getBlog)
+  const blog = data?.getBlog
+  
   return (
     <main className={styles.blogmain}>
       {/* place here condition if !user.isPremium */} <AdBanner />
       {
-        blog?.getBlog.user.id === user?.id && <Actions blogId={blogId} />
+        blog?.user.id === user?.id && <Actions blogId={blogId} />
       }
       <h1>Bienvenue {blogId}</h1>
       <section className={styles.container}>
         {loading === true && "Chargement..."}
-        {data?.getBlog.posts.map((post) => {
+        {blog?.posts.map((post) => {
           return (
             <div key={post.id}>
               <Card
