@@ -10,8 +10,7 @@ import { AlertInfo } from "../interfaces";
 const Layout = (props: { onTokenChange: () => void }) => {
 
   const user = useContext(UserContext);
-  console.log(user?.role)
-
+  
   const [alert, setAlert] = useState<AlertInfo|null>(null)
   
   useEffect(() => {

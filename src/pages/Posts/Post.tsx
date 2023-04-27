@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Post.module.scss";
+import { useQuery } from "@apollo/client";
+import { GET_POST } from "../../graphql/queries";
+import { useParams } from "react-router-dom";
 
 function Post() {
+
+  const { postId } = useParams()
+
+  const  { loading, data, refetch } = useQuery<{ getPost: any }>(GET_POST, {
+    variables: {
+      postId,
+    },
+  });
+
+  const post = data?.getPost
+
+  useEffect(() => {
+    console.log(post)
+  }, [post])
   return (
     <main className={styles.postmain}>
       <h1>Du Côté de Chez Swann</h1>

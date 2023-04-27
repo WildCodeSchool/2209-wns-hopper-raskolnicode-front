@@ -86,3 +86,28 @@ export const GET_USERS = gql`
     }
   }
 `;
+
+export const GET_POST = gql`
+query GetPost($postId: ID!) {
+  getPost(postId: $postId) {
+    id
+    title
+    isArchived
+    picture {
+      link
+      name
+    }
+    comments {
+      id
+      text
+      user {
+        pseudo
+      }
+      created_at
+    }
+    content
+    created_at
+    summary
+    updated_at
+  }
+}`

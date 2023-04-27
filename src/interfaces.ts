@@ -12,7 +12,7 @@ export interface AlertInfo {
   // 'dark'(dark grey)
 }
 
-export type IBlog = {
+export interface IBlog {
   created_at: string
   description: string
   id: number
@@ -20,24 +20,25 @@ export type IBlog = {
   posts: IPost[]
   updated_at: string
   user: IUser
-};
+  picture: IPicture
+}
 
-export type IPost = {
+export interface IPost {
   blog: IBlog
-  comments: Comment[]
+  comments: IComment[]
   content: string
   created_at: string
   id: number
-  picture: Picture
+  picture: IPicture
   isArchived: boolean
   summary: string
   title: string
   updated_at: string
 }
 
-export type IUser = {
+export interface IUser {
   blogs: IBlog[]
-  comments: Comment[]
+  comments: IComment[]
   email: string
   id: number
   password: string
@@ -45,7 +46,7 @@ export type IUser = {
   role: string
 }
 
-export type Comment = {
+export interface IComment {
   created_at: string
   id: number
   post: IPost
@@ -53,27 +54,27 @@ export type Comment = {
   user: IUser
 }
 
-export type getBlog = {
-  id: number;
-  name: string;
-  description: string;
-  updated_at: string;
+export interface getBlog {
+  id: number
+  name: string
+  description: string
+  updated_at: string
   user: {
-    id: number;
-    email: string;
+    id: number
+    email: string
   };
   posts: {
-    id: number;
-    title: string;
-    summary: string;
-    content: string;
-    picture: Picture;
-    updated_at: string;
+    id: number
+    title: string
+    summary: string
+    content: string
+    picture: IPicture
+    updated_at: string
   }[];
 };
 
-export type Picture = {
-  id: number,
-  name: string,
+export interface IPicture {
+  id: number
+  name: string
   link: string
 }
