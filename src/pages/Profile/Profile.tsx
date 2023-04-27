@@ -13,6 +13,7 @@ function Profile() {
   const [doUpdateUserMutation] = useMutation(UPDATE_USER);
   const navigate = useNavigate();
   const [isEditable, setIsEditable] = useState(false);
+  const [alert, setAlert] = useState({ message: '', type: '' });
 
   async function doUpdtateUser(e: any) {
     e.preventDefault();
@@ -22,14 +23,18 @@ function Profile() {
           pseudo,
         },
       });
+      setAlert({ message: 'Informations mises à jour !', type: 'success' });
+      // window.location.reload();
 
-      window.location.reload();
     }
 
-    catch { }
+    catch { 
+      setAlert({ message: 'Une erreur est apparue', type: 'error' });
+
+    }
   }
 
-  const toggleEdit = (event: Event) => {
+  const toggleEdit = (event: any) => {
     event.preventDefault();
     setIsEditable(!isEditable);
   };
@@ -46,6 +51,14 @@ function Profile() {
     <div className={styles.main}>
       <h1>Mon compte</h1>
 
+      {
+        alert.message && (
+          <div className={`alert ${alert.type === 'success' ? styles.alertSuccess : styles.alertDanger}  ${styles.alert}`} role="alert">
+            {alert.message}
+          </div>
+        )
+      }
+
       <form onSubmit={(e) => doUpdtateUser(e)} className={styles.form}>
         <div className={styles.globalContainer}>
           <div className={styles.boxForm}>
@@ -53,9 +66,6 @@ function Profile() {
               <label>Email</label>
               <p>{data?.loggedUser.email}</p>
             </div>
-            {/* <div className={styles.editBox}>
-            <button className="btn btn-secondary">Editer</button>
-            </div> */}
           </div>
 
           <div className={styles.boxForm}>
@@ -87,15 +97,20 @@ function Profile() {
           {loading === true && "Chargement..."}
           {data?.loggedUser.blogs.map((blog: any) => {
             return (
-              <Card
-                title={blog.name}
-                description={blog.description}
-                image="futur lien image"
-                updated_at={blog.updated_at}
-                onClick={() => {
-                  navigate(`/blog/${blog.id}`);
-                }}
-              />
+              <div>
+                <Card
+                  title={blog.name}
+                  description={blog.description}
+                  updated_at={blog.updated_at}
+                  onClick={() => {
+                    navigate(`/blog/${blog.id}`);
+                  }}
+                />
+
+                <div>
+                  <button>Editer</button>
+                </div>
+              </div>
             );
           })}
         </section>

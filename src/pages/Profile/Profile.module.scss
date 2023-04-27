@@ -9,6 +9,29 @@
   position: relative;
   margin-top: 2rem;
 
+
+  .alert {
+    width: 80%;
+    width: 28%;
+    text-align: center;
+    letter-spacing: 0.4px;
+    min-width: 24rem;
+  }
+
+
+  .alertSuccess {
+    --bs-alert-color: #0f5132;
+    --bs-alert-bg: #d1e7dd;
+    --bs-alert-border-color: #badbcc;
+
+  }
+
+  .alertDanger {
+    --bs-alert-color: #842029;
+    --bs-alert-bg: #f8d7da;
+    --bs-alert-border-color: #f5c2c7;
+  }
+
   .form {
     margin-top: 4em;
     margin-bottom: 4em;
@@ -25,6 +48,7 @@
 
     label {
       letter-spacing: 0.7px;
+      padding-left: 4px;
     }
 
     p,

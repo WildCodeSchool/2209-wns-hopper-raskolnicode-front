@@ -25,9 +25,9 @@ function Navbar(props: { onTokenChange: () => void, handleAlert: (alertObj: Aler
             <Link className={styles.linknav} to={'/login'}>Connexion</Link>
             </>
           }
-
         </div>
     </nav>
+
 
   );
 }
