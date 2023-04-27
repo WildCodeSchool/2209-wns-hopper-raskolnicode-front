@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Card/Card";
 import { UPDATE_USER } from "../../graphql/mutations";
 import { GET_LOGGED_USER } from "../../graphql/queries";
+import BlogCard from "../../components/profilPage/BlogCard/BlogCard";
 
 import styles from "./Profile.module.scss";
 
@@ -28,11 +28,33 @@ function Profile() {
 
     }
 
-    catch { 
+    catch {
       setAlert({ message: 'Une erreur est apparue', type: 'error' });
 
     }
   }
+
+
+  // async function doUpdateBlog(e: any) {
+  //   e.preventDefault();
+  //   try {
+  //     await doUpdateUserMutation({
+  //       variables: {
+  //         pseudo,
+  //       },
+  //     });
+  //     setAlert({ message: 'Informations mises à jour !', type: 'success' });
+  //     // window.location.reload();
+
+  //   }
+
+  //   catch {
+  //     setAlert({ message: 'Une erreur est apparue', type: 'error' });
+
+  //   }
+  // }
+
+
 
   const toggleEdit = (event: any) => {
     event.preventDefault();
@@ -92,30 +114,32 @@ function Profile() {
         </div>
       </form>
       <div>
-        <h1>Mes blogs</h1>
-        <section className={styles.container}>
-          {loading === true && "Chargement..."}
-          {data?.loggedUser.blogs.map((blog: any) => {
-            return (
-              <div>
-                <Card
-                  title={blog.name}
-                  description={blog.description}
-                  updated_at={blog.updated_at}
-                  onClick={() => {
-                    navigate(`/blog/${blog.id}`);
-                  }}
-                />
 
+
+        <h1>Mes blogs</h1>
+        <section>
+          <div className={styles.blogContainer}>
+            {loading === true && "Chargement..."}
+            {data?.loggedUser.blogs.map((blog: any) => {
+              return (
                 <div>
-                  <button>Editer</button>
+                  <BlogCard
+                    title={blog.name}
+                    description={blog.description}
+                    updated_at={blog.updated_at}
+                    onClick={() => {
+                      navigate(`/blog/${blog.id}`);
+                    }}
+                  />
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </section>
+
       </div>
     </div>
+
   );
 }
 
