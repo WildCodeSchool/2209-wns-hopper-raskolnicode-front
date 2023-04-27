@@ -22,10 +22,15 @@ function Profile() {
           pseudo,
         },
       });
-    } catch { }
+
+      window.location.reload();
+    }
+
+    catch { }
   }
 
-  const toggleEdit = () => {
+  const toggleEdit = (event: Event) => {
+    event.preventDefault();
     setIsEditable(!isEditable);
   };
 
