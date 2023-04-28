@@ -8,6 +8,14 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation UpdateUser($pseudo: String!) {
+    updateUser(pseudo: $pseudo) {
+      pseudo
+    }
+  }
+`;
+
 export const CREATE_SUPERADMIN = gql`
   mutation CreateSuperAdmin($data: UserInput!) {
     createSuperAdmin(data: $data) {
@@ -55,6 +63,14 @@ export const CREATE_BLOG = gql`
         id
       }
     }
+  }
+`;
+
+export const UPDATE_BLOG = gql`
+  mutation updateBlog($date: updateBlogInput!) {
+    id
+    name
+    description
   }
 `;
 
