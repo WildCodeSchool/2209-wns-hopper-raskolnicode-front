@@ -1,12 +1,12 @@
 import React from 'react'
-import { Picture } from '../../../interfaces';
+import { IPicture } from '../../../interfaces';
 import styles from './BlogCard.module.scss';
 
 export type CardProps = {
   title: string;
   description: string;
   updated_at: string;
-  picture?: Picture;
+  picture?: IPicture;
   onClick?: () => void;
 };
 
