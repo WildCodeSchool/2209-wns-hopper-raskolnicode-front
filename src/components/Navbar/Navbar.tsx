@@ -6,7 +6,6 @@ import { AlertInfo } from "../../interfaces";
 
 function Navbar(props: { onTokenChange: () => void, handleAlert: (alertObj: AlertInfo) => void }) {
   const user = useContext(UserContext);
-  console.log('user Navbar', user)
 
   return (
     <nav className={styles.navbarmain}>
@@ -25,9 +24,9 @@ function Navbar(props: { onTokenChange: () => void, handleAlert: (alertObj: Aler
             <Link className={styles.linknav} to={'/login'}>Connexion</Link>
             </>
           }
-
         </div>
     </nav>
+
 
   );
 }

@@ -2,30 +2,31 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../styles/forms/forms.module.scss"
+import { useNavigate } from "react-router-dom";
 
 function CreateBlog() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+  const navigate = useNavigate();
 
   const [doCreateBlogMutation, { data, loading, error }] =
     useMutation(CREATE_BLOG);
 
   async function doCreateBlog(e: any) {
     e.preventDefault()
-
-    console.log('blog', { name, description })
-    try {
-      await doCreateBlogMutation({
-        variables: {
-          data: {
-            name,
-            description,
-          },
+    await doCreateBlogMutation({
+      variables: {
+        data: {
+          name,
+          description,
         },
-      });
-      setName("");
-      setDescription("");
-    } catch { }
+      },
+    }).then(res => {
+      const id = res.data.createBlog.id
+      navigate(`/blog/${id}`)
+    })
+
   }
 
   return (
