@@ -30,8 +30,6 @@ const httpLink = createHttpLink({
   uri: API_URL,
 });
 
-console.log("APIURL", API_URL);
-
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("token");
@@ -60,15 +58,11 @@ function Main() {
   }, [error]);
 
   async function onTokenChange(token?: string) {
-    // console.log(token)
     if (token) {
       localStorage.setItem("token", token);
-      console.log("logged in");
     } else {
       localStorage.removeItem("token");
-      console.log("logged out");
     }
-    console.log("refetching");
     try {
       const { data } = await refetch();
       setUser(data?.loggedUser);
@@ -80,7 +74,6 @@ function Main() {
   }
 
   useEffect(() => {
-    console.log("useEffect loggedUser", data?.loggedUser);
     setUser(data?.loggedUser);
   }, [data]);
 
@@ -109,14 +102,14 @@ function Main() {
             <Route path="/" element={<Home />} />
             {user && <Route path="/blog/create" element={<CreateBlog />} />}
             <Route path="/blog/:blogId" element={<Blog />} />
-            <Route path="/post" element={<Post />} />
             <Route
               path="/blog/:blogId/nouvel-article"
               element={<CreatePost />}
             />
-            <Route path="/upload" element={<UploadPicture />} />
+            <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/upload" element={<UploadPicture />} />
           </Route>
         </Routes>
       </BrowserRouter>

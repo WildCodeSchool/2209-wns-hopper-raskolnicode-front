@@ -1,44 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Post.module.scss";
+import { useQuery } from "@apollo/client";
+import { GET_POST } from "../../graphql/queries";
+import { useParams } from "react-router-dom";
+import moment from "moment";
+import 'moment/locale/fr';
+import { IPost } from "../../interfaces";
 
 function Post() {
+
+
+  const { postId } = useParams()
+
+  const { loading, data, refetch } = useQuery<{ getPost: any }>(GET_POST, {
+    variables: {
+      postId,
+    },
+  });
+
+  const post: IPost = data?.getPost
+
+  useEffect(() => {
+    console.log(post)
+  }, [post])
+
   return (
     <main className={styles.postmain}>
-      <h1>Du Côté de Chez Swann</h1>
-      <div className={styles.mainpicture}>
-        <img src="https://picsum.photos/1200/400?random=2" alt="photos" />
-        <p className="dateline">21 novembre 2023</p>
-        <p>
-          Longtemps, je me suis couché de bonne heure. Parfois, à peine ma
-          bougie éteinte, mes yeux se fermaient si vite que je n'avais pas le
-          temps de me dire : « Je m'endors. » Et, une demi-heure après, la
-          pensée qu'il était temps de chercher le sommeil m'éveillait ; je
-          voulais poser le volume que je croyais avoir encore dans les mains et
-          souffler ma lumière ; je n'avais pas cessé en dormant de faire des
-          réflexions sur ce que je venais de lire, mais ces réflexions avaient
-          pris un tour un peu particulier ; il me semblait que j'étais moi-même
-          ce dont parlait l'ouvrage : une église, un quatuor, la rivalité de
-          François Ier et de Charles Quint. Cette croyance survivait pendant
-          quelques secondes à mon réveil ; elle ne choquait pas ma raison mais
-          pesait comme des écailles sur mes yeux et les empêchait de se rendre
-          compte que le bougeoir n'était plus allumé. Puis elle commençait à me
-          devenir inintelligible, comme après la métempsycose les pensées d'une
-          existence antérieure ; le sujet du livre se détachait de moi, j'étais
-          libre de m'y appliquer ou non ; aussitôt je recouvrais la vue et
-          j'étais bien étonné de trouver autour de moi une obscurité, douce et
-          reposante pour mes yeux, mais peut-être plus encore pour mon esprit, à
-          qui elle apparaissait comme une chose sans cause, incompréhensible,
-          comme une chose vraiment obscure. Je me demandais quelle heure il
-          pouvait être ; j'entendais le sifflement des trains qui, plus ou moins
-          éloigné, comme le chant d'un oiseau dans une forêt, relevant les
-          distances, me décrivait l'étendue de la campagne déserte où le
-          voyageur se hâte vers la station prochaine ; et le petit chemin qu'il
-          suit va être gravé dans son souvenir par l'excitation qu'il doit à des
-          lieux nouveaux, à des actes inaccoutumés, à la causerie récente et aux
-          adieux sous la lampe étrangère qui le suivent encore dans le silence
-          de la nuit, à la douceur prochaine du retour.
-        </p>
-      </div>
+      {
+        post &&
+        <>
+          <h1>{post.title}</h1>
+          <div className={styles.mainpicture}>
+            {
+              post.picture ?
+                <img src={post.picture.link} alt={post.picture.name} />
+                :
+                <img src={'/default-post-img.png'} alt="Introuvable" />
+            }
+            <p className="dateline">{moment(post.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}</p>
+            <p>
+              {post.content}
+            </p>
+          </div>
+        </>
+      }
+
     </main>
   );
 }

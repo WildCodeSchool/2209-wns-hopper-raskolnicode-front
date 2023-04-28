@@ -31,7 +31,6 @@ const Faker = () => {
   const [message, setMessage] = useState<MessageProps>({});
 
   const updateFakerForm = (e: any) => {
-    console.log(e.target.value);
     const inputName = e.target.name;
     const inputValue = e.target.value;
     setFakerForm({ ...fakerForm, [inputName]: inputValue });
@@ -72,11 +71,9 @@ const Faker = () => {
             data = await createUser();
             break;
           case "blog":
-            console.log("its a blog");
             data = await createBlog();
             break;
         }
-        console.log("data", data);
         await mutations[entity]({
           variables: { data },
         });
