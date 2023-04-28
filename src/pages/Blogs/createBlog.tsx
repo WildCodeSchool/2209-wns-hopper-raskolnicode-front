@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
-import styles from "../../styles/forms/forms.module.scss"
+import styles from "../../styles/forms/forms.module.scss";
 import { useNavigate } from "react-router-dom";
 
 function CreateBlog() {
@@ -14,7 +14,7 @@ function CreateBlog() {
     useMutation(CREATE_BLOG);
 
   async function doCreateBlog(e: any) {
-    e.preventDefault()
+    e.preventDefault();
     await doCreateBlogMutation({
       variables: {
         data: {
@@ -22,16 +22,15 @@ function CreateBlog() {
           description,
         },
       },
-    }).then(res => {
-      const id = res.data.createBlog.id
-      navigate(`/blog/${id}`)
-    })
-
+    }).then((res) => {
+      const id = res.data.createBlog.id;
+      navigate(`/blog/${id}`);
+    });
   }
 
   return (
-    <main className={styles.main} >
-      <form onSubmit={e => doCreateBlog(e)} className={styles.form}>
+    <main className={styles.main}>
+      <form onSubmit={(e) => doCreateBlog(e)} className={styles.form}>
         <h3>Créer mon blog</h3>
         <input
           disabled={loading}
@@ -47,9 +46,7 @@ function CreateBlog() {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
         />
-        {error && (
-          <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
-        )}
+        {error && <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>}
         <div className={styles.buttonBox}>
           <button disabled={loading}>Créer</button>
         </div>
