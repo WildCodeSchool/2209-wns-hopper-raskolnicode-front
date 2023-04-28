@@ -9,13 +9,14 @@ import { Link } from "react-router-dom";
 import BlogCard from "../../components/Card/BlogCard";
 
 export type BlogProps = {
+  user: any;
   name: string;
   description: string;
   updated_at: string;
   id: number;
 };
 
-function Home () {
+function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
@@ -107,6 +108,6 @@ function Home () {
       </section>
     </main>
   );
-};
+}
 
 export default Home;

@@ -8,6 +8,12 @@ export const GET_LOGGED_USER = gql`
       password
       pseudo
       role
+      blogs {
+        id
+        name
+        description
+        updated_at
+      }
     }
   }
 `;
