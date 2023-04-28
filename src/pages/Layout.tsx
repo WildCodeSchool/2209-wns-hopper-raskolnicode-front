@@ -10,13 +10,19 @@ import { AlertInfo } from "../interfaces";
 const Layout = (props: { onTokenChange: () => void }) => {
 
   const user = useContext(UserContext);
-  
-  const [alert, setAlert] = useState<AlertInfo|null>(null)
-  
+
+  const [alert, setAlert] = useState<AlertInfo | null>(null)
+
+  // store alert in context
+ 
+
   useEffect(() => {
-    setTimeout(() => {
-      setAlert(null)
-    }, 3000)
+    // if multiple alerts starting before 3sec, make them all last 3sec
+    if (alert) {
+      setTimeout(() => {
+        setAlert(null)
+      }, 3000)
+    }
   }, [alert])
 
   const Message = () => {
