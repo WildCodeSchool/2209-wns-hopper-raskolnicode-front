@@ -1,9 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { UPDATE_USER } from "../../graphql/mutations";
 import { GET_LOGGED_USER } from "../../graphql/queries";
-import BlogCard from "../../components/profilPage/BlogCard/BlogCard";
+// import BlogCard from "../../components/profilPage/BlogCard/BlogCard";
 
 import styles from "./Profile.module.scss";
 
@@ -11,10 +11,14 @@ function Profile() {
   const [pseudo, setPseudo] = useState("");
   const { loading, data } = useQuery(GET_LOGGED_USER);
   const [doUpdateUserMutation] = useMutation(UPDATE_USER);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isEditable, setIsEditable] = useState(false);
   const [alert, setAlert] = useState({ message: '', type: '' });
 
+
+
+
+  
   async function doUpdtateUser(e: any) {
     e.preventDefault();
     try {
@@ -41,22 +45,26 @@ function Profile() {
     }
   }
 
+
+
+
   // async function doUpdateBlog(e: any) {
   //   e.preventDefault();
   //   try {
   //     await doUpdateUserMutation({
   //       variables: {
-  //         pseudo,
+  //         data: {
+  //           id,
+  //           name,
+  //           description,
+  //         },
   //       },
   //     });
   //     setAlert({ message: 'Informations mises à jour !', type: 'success' });
   //     // window.location.reload();
-
   //   }
-
   //   catch {
   //     setAlert({ message: 'Une erreur est apparue', type: 'error' });
-
   //   }
   // }
 
@@ -117,7 +125,7 @@ function Profile() {
           </div>
           <div className={styles.buttonBox}>
             <button disabled={loading} className={styles.button}>
-              <div>Sauvegarder</div>
+              <div onClick={doUpdtateUser}>Sauvegarder</div>
             </button>
           </div>
         </form>
@@ -126,11 +134,10 @@ function Profile() {
 
 
       <div>
-
-
-        <section className={styles.blogSection}>
+        {/* <section className={styles.blogSection}>
 
           <h1>Mes blogs</h1>
+          <form>
           <div className={styles.blogContainer}>
             {loading === true && "Chargement..."}
             {data?.loggedUser.blogs.map((blog: any) => {
@@ -148,10 +155,11 @@ function Profile() {
               );
             })}
           </div>
+          </form>
 
-        </section>
-
+        </section> */}
       </div>
+
     </div>
 
   );

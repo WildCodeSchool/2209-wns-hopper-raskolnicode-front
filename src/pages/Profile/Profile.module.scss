@@ -100,7 +100,7 @@
         grid-template-columns: 1fr;
         width: 54%;
         min-width: 8rem;
-        font-size: clamp(0.8rem, 0.8vw, 1.1rem);
+        font-size: clamp(0.8rem, 0.8vw, 0.9rem);
       }
 
       .pseudoLabel {
@@ -188,7 +188,7 @@
 @media (max-width: 1850px) {
 
   .main {
-    
+
     .blogContainer {
       grid-template-columns: repeat(3, 1fr);
 

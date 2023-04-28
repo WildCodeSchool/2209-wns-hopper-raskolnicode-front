@@ -47,9 +47,7 @@ export const UPDATE_BLOG = gql`
     id
     name
     description
-  }
-
-`
+  }`
 
 
 export const CREATE_USER_BY_ROLE = gql`
