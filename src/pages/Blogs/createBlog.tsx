@@ -3,10 +3,12 @@ import { useMutation } from "@apollo/client";
 import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../styles/forms/forms.module.scss";
 import { useNavigate } from "react-router-dom";
+import UploadPicture from "../../components/UploadPicture/UploadPicture";
 
 function CreateBlog() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [picture, setPicture] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,6 +34,7 @@ function CreateBlog() {
     <main className={styles.main}>
       <form onSubmit={(e) => doCreateBlog(e)} className={styles.form}>
         <h3>Créer mon blog</h3>
+        <UploadPicture setPictureInForm={setPicture} />
         <input
           disabled={loading}
           type="text"
@@ -41,7 +44,6 @@ function CreateBlog() {
         />
         <textarea
           disabled={loading}
-          // type="textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"

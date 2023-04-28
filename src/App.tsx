@@ -24,7 +24,6 @@ import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
 import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
-import UploadPicture from "./components/UploadPicture/UploadPicture";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -109,7 +108,6 @@ function Main() {
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/upload" element={<UploadPicture />} />
           </Route>
         </Routes>
       </BrowserRouter>

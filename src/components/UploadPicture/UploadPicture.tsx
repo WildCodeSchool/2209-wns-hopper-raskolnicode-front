@@ -1,13 +1,20 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { FormEvent, useState } from "react";
 import { CREATE_PICTURE } from "../../graphql/mutations";
+import { GET_LOGGED_USER } from "../../graphql/queries";
+import uploadStyles from "./uploadPicture.module.scss";
 
-const UploadPicture = () => {
+type uploadPictureProps = {
+  setPictureInForm: (string: string) => void;
+};
+
+const UploadPicture = ({ setPictureInForm }: uploadPictureProps) => {
   const [previewSource, setPreviewSource] = useState("");
   const [fileInputState, setFileInputState] = useState("");
-  const [image, setImage] = useState("");
+  const [picture, setPicture] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [doCreatePictureMutation] = useMutation(CREATE_PICTURE);
+  const { data } = useQuery(GET_LOGGED_USER);
 
   const cloudName = "felicie";
   const uploadPreset = "starblog";
@@ -18,7 +25,7 @@ const UploadPicture = () => {
     if (file) {
       previewFile(file);
       setFileInputState(e.target.value);
-      setImage(file);
+      setPicture(file);
     }
   };
   const previewFile = (file: File) => {
@@ -33,70 +40,67 @@ const UploadPicture = () => {
     e.preventDefault();
     setIsSending(true);
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-
     const formData = new FormData();
+
     formData.append("upload_preset", uploadPreset);
-    formData.append("tags", "test-uploads");
-    formData.append("file", image);
+    formData.append("tags", data?.loggedUser.pseudo);
+    formData.append("file", picture);
     try {
       const result = await fetch(url, {
         method: "POST",
         body: formData,
       });
-      const image = await result.json();
-      console.log(image.secure_url);
+      const pictureInfo = await result.json();
       await doCreatePictureMutation({
         variables: {
           data: {
-            name: image.secure_url,
-            link: image.secure_url,
+            name: pictureInfo.original_filename,
+            link: pictureInfo.secure_url,
           },
         },
       });
-
       setFileInputState("");
       setPreviewSource("");
-      setIsSending(false);
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsSending(false);
     }
   };
 
   return (
-    <main>
+    <main className={uploadStyles.upload_container}>
       <form onSubmit={(e) => handleOnSubmit(e)}>
-        <div>
-          <div>
-            {!previewSource ? (
-              <div>
-                <p>Upload Files</p>
-              </div>
-            ) : (
-              <div>
-                <img
-                  src={previewSource}
-                  alt="chosen"
-                  style={{ height: "300px" }}
-                />
-              </div>
-            )}
-
+        <div className={uploadStyles.description_box}>
+          {!previewSource ? (
             <div>
-              <input
-                type="file"
-                id="upload"
-                name="upload"
-                accept=".jpg, .jpeg, .png"
-                onChange={handleInputChange}
-                value={fileInputState}
-                disabled={isSending}
+              <p>Ajouter une photo</p>
+            </div>
+          ) : (
+            <div className={uploadStyles.uploaded_preview}>
+              <img
+                src={previewSource}
+                alt="chosen"
+                style={{ height: "300px" }}
               />
             </div>
-          </div>
-        </div>
+          )}
 
-        <div>
-          <button disabled={isSending}>Créer</button>
+          <div className={uploadStyles.buttonBox}>
+            <input
+              type="file"
+              id="upload"
+              name="upload"
+              accept=".jpg, .jpeg, .png"
+              onChange={handleInputChange}
+              value={fileInputState}
+              disabled={isSending}
+            />
+          </div>
+
+          <div className={uploadStyles.buttonBox}>
+            <button disabled={isSending}>Créer</button>
+          </div>
         </div>
       </form>
     </main>

@@ -1,0 +1,111 @@
+.box_actualiser_img,
+.uploaded_preview {
+  display: flex;
+  width: 80%;
+  margin: 1rem auto;
+  align-items: flex-end;
+  margin: 1rem auto auto 0;
+
+  img {
+    width: 60%;
+    aspect-ratio: 4 / 2;
+    max-height: 4rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// .uploaded_preview {
+
+//     height: 7rem;
+//     width: auto;
+//     max-height: 7rem;
+//     margin-bottom: 0.5rem;
+
+//     img {
+//         max-height: 7rem;
+//         height: auto;
+//         width: auto;
+//         object-fit: fill;
+//         margin-right: 2rem;
+//         margin-bottom: 2rem;
+//     }
+// }
+
+.upload_container {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 5rem;
+  padding: 0.5rem 0rem;
+  width: 80%;
+  margin: 0rem auto;
+
+  .description_box {
+    display: flex !important;
+    flex-direction: column;
+    height: 6rem;
+
+    input#Telecharher {
+      display: flex;
+      margin-left: 0;
+    }
+
+    .img_box {
+      display: flex;
+      flex-direction: row;
+      margin-left: 1rem;
+
+      img {
+        width: auto;
+        height: 100%;
+        max-height: 2rem;
+        height: 100%;
+      }
+
+      h2 {
+        font-size: 1rem;
+        margin: auto;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .buttonBox {
+    display: flex;
+    align-content: center;
+    max-width: 11rem;
+
+    button {
+      padding: 5px 13px;
+      border-radius: 5px;
+      border: 0.3px solid black;
+      color: white;
+      max-height: 3.1rem;
+      font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+      margin-left: 0;
+      background: linear-gradient(to right, blue, rgb(0, 173, 226));
+      letter-spacing: 0.8px;
+      min-width: 37%;
+    }
+  }
+}
+
+.buttonBox {
+  display: flex;
+  align-content: center;
+  align-items: flex-end;
+
+  button {
+    padding: 5px 13px;
+    border-radius: 5px;
+    border: 0.3px solid black;
+    color: white;
+    max-height: 3.1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    margin-right: auto;
+    margin-left: auto;
+    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    letter-spacing: 0.8px;
+    min-width: 37%;
+  }
+}
