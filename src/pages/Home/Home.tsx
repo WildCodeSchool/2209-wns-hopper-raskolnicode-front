@@ -3,10 +3,10 @@ import { UserContext } from "../../UserContext";
 import styles from "./Home.module.scss";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "../../components/Card/Card";
 import { GET_BLOGS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import BlogCard from "../../components/Card/BlogCard";
 
 export type BlogProps = {
   user: any;
@@ -20,7 +20,6 @@ function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
-  const navigate = useNavigate();
 
   return (
     <main className={styles.homeMain}>
@@ -103,14 +102,7 @@ function Home() {
         {loading === true && "Chargement..."}
         {data?.getBlogs.map((blog) => {
           return (
-            <Card
-              title={blog.name}
-              description={blog.description}
-              updated_at={blog.updated_at}
-              onClick={() => {
-                navigate(`/blog/${blog.id}`);
-              }}
-            />
+            <BlogCard blog={blog} />
           );
         })}
       </section>
