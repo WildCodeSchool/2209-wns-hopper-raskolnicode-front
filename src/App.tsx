@@ -102,7 +102,10 @@ function Main() {
             <Route path="/" element={<Home />} />
             {user && <Route path="/blog/create" element={<CreateBlog />} />}
             <Route path="/blog/:blogId" element={<Blog />} />
-            <Route path="/blog/:blogId/nouvel-article" element={<CreatePost />} />
+            <Route
+              path="/blog/:blogId/nouvel-article"
+              element={<CreatePost />}
+            />
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />

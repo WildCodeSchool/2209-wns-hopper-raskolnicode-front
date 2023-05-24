@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Card from "../../components/Card/PostCard";
 import { GET_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
 import AdBanner from "./AdBanner";
@@ -11,7 +10,6 @@ import { getBlog } from "../../interfaces";
 import PostCard from "../../components/Card/PostCard";
 
 function Blog() {
-
   const { blogId } = useParams();
   const user = useContext(UserContext);
 
@@ -22,24 +20,20 @@ function Blog() {
   });
 
   useEffect(() => {
-    refetch()
-  }, [])
+    refetch();
+  }, []);
 
-  const blog = data?.getBlog
+  const blog = data?.getBlog;
 
   return (
     <main className={styles.blogmain}>
       {/* place here condition if !user.isPremium */} <AdBanner />
-      {
-        blog?.user.id === user?.id && <Actions blogId={blogId} />
-      }
+      {blog?.user.id === user?.id && <Actions blogId={blogId} />}
       <h1>Bienvenue {blogId}</h1>
       <section className={styles.container}>
         {loading === true && "Chargement..."}
         {blog?.posts.map((post, idx) => {
-          return (
-            <PostCard key={idx} post={post} />
-          );
+          return <PostCard key={idx} post={post} />;
         })}
       </section>
     </main>
