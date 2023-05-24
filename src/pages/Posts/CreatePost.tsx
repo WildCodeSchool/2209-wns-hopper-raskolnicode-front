@@ -3,6 +3,8 @@ import { useMutation } from "@apollo/client";
 import styles from "../Posts/createPost.module.scss"
 import { useNavigate, useParams } from "react-router-dom";
 import { CREATE_POST } from "../../graphql/mutations";
+import UploadPicture from "../../components/UploadPicture/UploadPicture";
+import { uploadCloudinary } from "../../components/UploadPicture/uploadCloudinary";
 
 const CreatePost = () => {
   const { blogId } = useParams()
@@ -20,8 +22,8 @@ const CreatePost = () => {
   async function doCreatePost(e: any) {
     e.preventDefault()
 
-    /*** CLOUDINARY IMAGE UPLOAD ***/
-    // setPicture(link from cloudinary)
+    const cloudinaryPicture = await uploadCloudinary(picture);
+    console.log('*****', cloudinaryPicture)
 
     await doCreatePostMutation({
       variables: {
@@ -30,7 +32,10 @@ const CreatePost = () => {
           title,
           summary,
           content,
-          picture_link: picture,
+          picture: {
+            name: cloudinaryPicture?.original_filename,
+            link: cloudinaryPicture?.secure_url,
+          },
           isArchived,
         },
       },
@@ -44,6 +49,8 @@ const CreatePost = () => {
     <main className={styles.main} >
       <form onSubmit={e => doCreatePost(e)} className={styles.form}>
         <h3>Rédiger un article</h3>
+        <UploadPicture setPictureInForm={setPicture} />
+        <br />
         <input
           disabled={loading}
           type="text"
