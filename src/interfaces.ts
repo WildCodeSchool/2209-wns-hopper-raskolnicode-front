@@ -67,6 +67,7 @@ export interface getBlog {
     id: number;
     name: string;
     link: string;
+    updated_at: string;
   };
   posts: {
     id: number;

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Card.module.scss";
 import { getBlog } from "../../interfaces";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export type CardProps = {
   blog: Partial<getBlog>;
@@ -20,7 +21,11 @@ function BlogCard({ blog }: CardProps): JSX.Element {
             )}
             <h4>{blog.name}</h4>
             <p>{blog.description}</p>
-            <p className={styles.dateCreated}>{blog.updated_at}</p>
+            <p className={styles.dateCreated}>
+              {moment(blog.updated_at)
+                .locale("fr")
+                .format("dddd D MMMM YYYY [à] HH[h]mm")}
+            </p>
           </div>
         </Link>
       </div>

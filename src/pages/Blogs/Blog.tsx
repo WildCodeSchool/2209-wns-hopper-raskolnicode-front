@@ -8,6 +8,7 @@ import Actions from "./Actions";
 import { UserContext } from "../../UserContext";
 import { getBlog } from "../../interfaces";
 import PostCard from "../../components/Card/PostCard";
+import moment from "moment";
 
 function Blog() {
   const { blogId } = useParams();
@@ -41,10 +42,17 @@ function Blog() {
           {blog?.user.pseudo ? blog.user.pseudo : "anonyme"}
         </h1>
       )}
-      <section className={styles.container}>
-        {loading === true && "Chargement..."}
+      {loading === true && "Chargement..."}
+      <div className={styles.mainpicture}>
         {<img src={blog?.picture?.link} alt={blog?.picture?.name}></img>}
-        <p>{blog?.description}</p>
+        <p className="dateline">
+          {moment(blog?.picture?.updated_at)
+            .locale("fr")
+            .format("dddd D MMMM YYYY [à] HH[h]mm")}
+        </p>
+      </div>
+      <p>{blog?.description}</p>
+      <section className={styles.container}>
         {blog?.posts.map((post, idx) => {
           return <PostCard key={idx} post={post} />;
         })}
