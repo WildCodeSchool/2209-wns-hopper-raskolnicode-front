@@ -42,12 +42,18 @@ mutation CreateBlog($data: BlogInput!) {
 }`
 
 export const UPDATE_BLOG = gql`
-
-  mutation updateBlog($date: updateBlogInput!) {
+mutation Mutation($data: BlogInput!, $blogId: ID!) {
+  updateBlog(id: $blogId, data: $data) {
     id
     name
     description
-  }`
+    picture {
+      name
+      link
+    }
+  }
+}
+  `
 
 
 export const CREATE_USER_BY_ROLE = gql`

@@ -1,6 +1,8 @@
 import React from 'react'
 import { IPicture } from '../../../interfaces';
 import styles from './BlogCard.module.scss';
+import moment from "moment";
+
 
 export type CardProps = {
   title: string;
@@ -22,7 +24,9 @@ function BlogCard(props: CardProps): JSX.Element {
           <h4>{props.title}</h4>
           <p>{props.description}</p>
           <div className={styles.footerCard}>
-            <p className={styles.dateCreated}>{props.updated_at}</p>
+            {/* <p className={styles.dateCreated}>{props.updated_at}</p> */}
+            <p className="dateline">Last updated: {moment(props.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}</p>
+
             <button className={`${styles.editButton} btn btn-outline-secondary`} >Editer</button>
           </div>
         </div>

@@ -1,0 +1,53 @@
+.card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cardContent {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardContent > * {
+    width: 80%;
+    margin: auto;
+  }
+
+
+  
+  .editBlogTitle {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .blogName, .blogDescription {
+    padding: 5px 4px;
+  }
+
+  .blogName {
+    margin: 20px auto;
+  }
+  
+  .blogDescription {
+    margin: 20px auto;
+    width: 80%;
+  }
+  
+  .dateline {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .createdDate {
+    margin-bottom: 10px;
+  }
+  
+  .updatedDate {
+    margin-bottom: 30px;
+  }
+  
