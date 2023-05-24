@@ -109,6 +109,16 @@ export const GET_POST = gql`
       id
       title
       isArchived
+      content
+      created_at
+      summary
+      updated_at
+      blog {
+        id
+        user {
+          id
+        }
+      }
       picture {
         link
         name
@@ -121,10 +131,6 @@ export const GET_POST = gql`
         }
         created_at
       }
-      content
-      created_at
-      summary
-      updated_at
     }
   }
 `;

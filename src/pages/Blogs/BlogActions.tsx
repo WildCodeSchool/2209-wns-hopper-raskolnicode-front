@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-interface ActionsProps {
+interface BlogActionsProps {
   blogId?: string
 }
 
-const Actions = ({blogId}: ActionsProps) => {
+const BlogActions = ({blogId}: BlogActionsProps) => {
   return (
     <section className="actions text-center p-3 bg-dark">
       <p className='h3 mb-4 text-light'>Tableau de bord de mon blog</p>
@@ -20,4 +20,4 @@ const Actions = ({blogId}: ActionsProps) => {
   )
 }
 
-export default Actions
+export default BlogActions
