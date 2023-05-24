@@ -4,24 +4,36 @@ import { CREATE_BLOG } from "../../graphql/mutations";
 import styles from "../../styles/forms/forms.module.scss";
 import { useNavigate } from "react-router-dom";
 import UploadPicture from "../../components/UploadPicture/UploadPicture";
+import { uploadCloudinary } from "../../components/UploadPicture/uploadCloudinary";
+
+type PictureInfo = {
+  original_filename: string;
+  secure_url: string;
+};
 
 function CreateBlog() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [picture, setPicture] = useState("");
+  const [picture, setPicture] = useState<PictureInfo | null>(null);
 
   const navigate = useNavigate();
 
-  const [doCreateBlogMutation, { data, loading, error }] =
-    useMutation(CREATE_BLOG);
+  const [doCreateBlogMutation, { loading, error }] = useMutation(CREATE_BLOG);
 
   async function doCreateBlog(e: any) {
     e.preventDefault();
+
+    const cloudinaryPicture = await uploadCloudinary(picture);
+
     await doCreateBlogMutation({
       variables: {
         data: {
           name,
           description,
+          picture: {
+            name: cloudinaryPicture?.original_filename,
+            link: cloudinaryPicture?.secure_url,
+          },
         },
       },
     }).then((res) => {
@@ -35,6 +47,7 @@ function CreateBlog() {
       <form onSubmit={(e) => doCreateBlog(e)} className={styles.form}>
         <h3>Créer mon blog</h3>
         <UploadPicture setPictureInForm={setPicture} />
+        <br />
         <input
           disabled={loading}
           type="text"
@@ -50,7 +63,9 @@ function CreateBlog() {
         />
         {error && <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>}
         <div className={styles.buttonBox}>
-          <button disabled={loading}>Créer</button>
+          <button disabled={loading} type="submit">
+            Créer
+          </button>
         </div>
       </form>
     </main>

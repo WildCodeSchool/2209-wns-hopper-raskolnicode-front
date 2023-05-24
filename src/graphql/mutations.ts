@@ -59,7 +59,7 @@ export const CREATE_BLOG = gql`
   mutation CreateBlog($data: BlogInput!) {
     createBlog(data: $data) {
       id
-      pictur {
+      picture {
         id
       }
     }
