@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Post.module.scss";
 import { useQuery } from "@apollo/client";
 import { GET_POST } from "../../graphql/queries";
@@ -6,11 +6,15 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/fr";
 import { IPost } from "../../interfaces";
+import { UserContext } from "../../UserContext";
+import PostActions from "./PostActions";
 
 function Post() {
-  const { postId } = useParams();
 
-  const { loading, data, refetch } = useQuery<{ getPost: any }>(GET_POST, {
+  const { postId } = useParams()
+  const user = useContext(UserContext);
+
+  const { data } = useQuery<{ getPost: any }>(GET_POST, {
     variables: {
       postId,
     },
@@ -18,14 +22,13 @@ function Post() {
 
   const post: IPost = data?.getPost;
 
-  useEffect(() => {
-    console.log(post);
-  }, [post]);
-
   return (
     <main className={styles.postmain}>
       {post && (
         <>
+          {
+            post?.blog?.user.id === user?.id && <PostActions post={post} />
+          }
           <h1>{post.title}</h1>
           <div className={styles.mainpicture}>
             {post.picture ? (

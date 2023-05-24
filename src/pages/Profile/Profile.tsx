@@ -147,14 +147,7 @@ function Profile() {
                 return (
                   <div>
                     <BlogCard
-                      title={blog.name}
-                      description={blog.description}
-                      picture={blog.picture}
-                      
-                      updated_at={blog.updated_at}
-                      onClick={() => {
-                        navigate(`/updateblog/${blog.id}`);
-                      }}
+                      blog={blog}
                     />
                   </div>
                 );

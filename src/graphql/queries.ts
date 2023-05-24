@@ -150,6 +150,16 @@ query GetPost($postId: ID!) {
       password
       pseudo
     }
+    content
+    created_at
+    summary
+    updated_at
+    blog {
+      id
+      user {
+        id
+      }
+    }
     picture {
       link
       name
@@ -168,9 +178,5 @@ query GetPost($postId: ID!) {
       }
       created_at
     }
-    content
-    created_at
-    summary
-    updated_at
   }
 }`
