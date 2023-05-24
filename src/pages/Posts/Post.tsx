@@ -6,22 +6,21 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/fr";
 import { IPost } from "../../interfaces";
+import AddComment from "./AddComment";
 
 function Post() {
-  const { postId } = useParams();
-
+  const { postId } = useParams()
   const { loading, data, refetch } = useQuery<{ getPost: any }>(GET_POST, {
     variables: {
       postId,
     },
   });
-
-  const post: IPost = data?.getPost;
-
+  const post: IPost = data?.getPost
+  
   useEffect(() => {
-    console.log(post);
-  }, [post]);
-
+    refetch()
+  }, [])
+ 
   return (
     <main className={styles.postmain}>
       {post && (
@@ -42,6 +41,22 @@ function Post() {
           </div>
         </>
       )}
+      <div>
+        <h2>Commentaires</h2>
+        <div>
+        {post?.comments?.map((comment, idx) => {
+          return (
+            <div key={idx}>
+              <p>{comment?.text}</p>
+            </div>
+          );
+        })}
+        {
+        postId &&
+        <AddComment postId={postId} />
+        }
+        </div>
+      </div>
     </main>
   );
 }
