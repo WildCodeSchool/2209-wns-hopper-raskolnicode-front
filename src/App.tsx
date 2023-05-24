@@ -24,6 +24,7 @@ import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
 import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
+import EditBlog from "./pages/EditBlog/EditBlog";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -84,7 +85,7 @@ function Main() {
             {user ? (
               <>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/updateblog/:blogid" />
+                <Route path="/updateblog/:blogid" element={<EditBlog />}/>
               </>
             ) : (
               <>

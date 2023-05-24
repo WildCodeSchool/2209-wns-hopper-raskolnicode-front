@@ -61,11 +61,6 @@ export const GET_BLOG = gql`
       name
       description
       updated_at
-      user {
-        id
-        email
-        pseudo
-      }
       posts {
         id
         title
