@@ -97,6 +97,13 @@ mutation CreateComment($postId: ID!, $data: CommentInput!) {
     text
     user {
       pseudo
+      id
     }
+  }
+}`
+export const DELETE_COMMENT = gql`
+mutation DeleteComment($deleteCommentId: ID!) {
+  deleteComment(id: $deleteCommentId) {
+    text
   }
 }`

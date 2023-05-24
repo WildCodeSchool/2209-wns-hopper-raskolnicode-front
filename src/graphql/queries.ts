@@ -108,8 +108,14 @@ query GetPost($postId: ID!) {
       text
       user {
         pseudo
+        id
       }
       created_at
+    }
+    blog {
+      user {
+        id
+      }
     }
     content
     created_at

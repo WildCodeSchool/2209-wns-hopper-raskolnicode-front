@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_COMMENT } from "../../graphql/mutations";
 import { GET_POST } from '../../graphql/queries';
+import styles from "./Post.module.scss";
 
 const AddComment = ( props : {postId:string}) => {
   const [comment, setComment] = useState('');
@@ -27,15 +28,16 @@ const AddComment = ( props : {postId:string}) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form className={styles.formComment} onSubmit={handleFormSubmit}>
       <textarea
+        className={styles.textAreaComment}
         value={comment}
         onChange={handleCommentChange}
         placeholder="Ajouter un commentaire..."
         rows={4}
         cols={50}
       ></textarea>
-      <button type="submit">Ajouter</button>
+      <button className={styles.buttonComment} type="submit">Ajouter</button>
     </form>
   );
 };

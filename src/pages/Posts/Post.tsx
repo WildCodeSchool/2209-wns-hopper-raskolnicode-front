@@ -7,6 +7,7 @@ import moment from "moment";
 import "moment/locale/fr";
 import { IPost } from "../../interfaces";
 import AddComment from "./AddComment";
+import CommentCard from "../../components/Card/CommentCard";
 
 function Post() {
   const { postId } = useParams()
@@ -16,7 +17,7 @@ function Post() {
     },
   });
   const post: IPost = data?.getPost
-  
+  console.log(post)
   useEffect(() => {
     refetch()
   }, [])
@@ -41,14 +42,12 @@ function Post() {
           </div>
         </>
       )}
-      <div>
+      <div className={styles.listComment}>
         <h2>Commentaires</h2>
-        <div>
+        <div >
         {post?.comments?.map((comment, idx) => {
           return (
-            <div key={idx}>
-              <p>{comment?.text}</p>
-            </div>
+            <CommentCard comment={comment} post={post}/>
           );
         })}
         {
