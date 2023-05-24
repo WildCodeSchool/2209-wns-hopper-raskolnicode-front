@@ -80,7 +80,7 @@ function EditBlog() {
           <input className={styles.blogName} name="name" value={name} onChange={(e) => setName(e.target.value)} />
           <input className={styles.blogDescription} name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <img
-            src="https://picsum.photos/1200/400?random=2"
+            src={data.getBlog.picture.link}
             alt={data.getBlog.name}
           />
           <p className={`${styles.dateline} ${styles.createdDate}`}>

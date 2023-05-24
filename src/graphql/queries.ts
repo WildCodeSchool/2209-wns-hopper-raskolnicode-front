@@ -1,22 +1,31 @@
 import { gql } from "@apollo/client";
 
 export const GET_LOGGED_USER = gql`
-  query LoggedUser {
-    loggedUser {
+query LoggedUser {
+  loggedUser {
+    id
+    email
+    pseudo
+    blogs {
+      name
       id
-      email
-      password
-      pseudo
-      role
-      blogs {
+      description
+      created_at
+      updated_at
+      picture {
+        link
         id
         name
-        description
         updated_at
+        created_at
       }
     }
   }
-`;
+}`
+
+
+
+
 
 export const HAS_SUPERADMIN = gql`
   query HasSuperAdmin {
@@ -61,6 +70,11 @@ export const GET_BLOG = gql`
       name
       description
       updated_at
+      user {
+        id
+        email
+        pseudo
+      }
       posts {
         id
         title
@@ -76,6 +90,42 @@ export const GET_BLOG = gql`
     }
   }
 `;
+
+
+
+export const GET_BLOG_AND_POST = gql`
+  query GetBlog($getBlogId: ID!) {
+    getBlog(id: $getBlogId) {
+      id
+      name
+      description
+      updated_at
+      user {
+        id
+      }
+      picture { 
+        link
+        name
+        id
+        created_at
+        updated_at
+      }
+      posts {
+        id
+        title
+        summary
+        content
+        picture {
+          id
+          name
+          link
+        }
+        updated_at
+      }
+    }
+  }
+`;
+
 
 export const GET_USERS = gql`
   query Users {
@@ -94,9 +144,21 @@ query GetPost($postId: ID!) {
     id
     title
     isArchived
+    user {
+      id
+      email
+      password
+      pseudo
+    }
     picture {
       link
       name
+    }
+    user {
+      id
+      email
+      password
+      pseudo
     }
     comments {
       id
