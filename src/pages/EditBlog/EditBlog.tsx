@@ -77,22 +77,25 @@ function EditBlog() {
 
 
   return (
-    <div>
+    <div className={styles.pageEditBlog}>
       <h1 className={styles.editBlogTitle}>Edition du blog</h1>
-      <form onSubmit={onSubmit} className={styles.card}>
+      <form onSubmit={onSubmit} className={styles.form}>
         <div className={styles.cardContent}>
           <input className={styles.blogName} name="name" value={name} onChange={(e) => setName(e.target.value)} />
-          <input className={styles.blogDescription} name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea className={styles.blogDescription} name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <img
             src={data.getBlog.picture.link}
             alt={data.getBlog.name}
           />
+
+          <div className={styles.dateBox}>
           <p className={`${styles.dateline} ${styles.createdDate}`}>
             Created: {moment(data.getBlog.created_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
           </p>
           <p className={`${styles.dateline} ${styles.updatedDate}`}>
             Last updated: {moment(data.getBlog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
           </p>
+          </div>
           <button type="submit">Update Blog</button>
         </div>
       </form>
