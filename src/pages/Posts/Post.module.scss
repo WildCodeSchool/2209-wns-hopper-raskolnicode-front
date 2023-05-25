@@ -7,6 +7,14 @@
   }
   .listComment{
     width: 100%;
+    
+
+    .commentsUsersContainer {
+      display: flex;
+      flex-direction: column-reverse;
+
+    }
+
     .formComment{
       width: 100%;
       margin-right: auto;

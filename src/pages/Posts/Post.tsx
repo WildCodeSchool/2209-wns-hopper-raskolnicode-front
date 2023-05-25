@@ -52,7 +52,7 @@ function Post() {
       )}
       <div className={styles.listComment}>
         <h2>Commentaires</h2>
-        <div >
+        <div className={styles.commentsUsersContainer}>
         {post?.comments?.map((comment) => {
           return (
             <CommentCard comment={comment} post={post}/>
