@@ -4,6 +4,7 @@ import { GET_BLOG } from '../../graphql/queries';
 import { UPDATE_BLOG } from '../../graphql/mutations';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { uploadCloudinary } from '../../components/UploadPicture/uploadCloudinary';
 
 import { IBlog } from '../../interfaces';
 import moment from "moment";
