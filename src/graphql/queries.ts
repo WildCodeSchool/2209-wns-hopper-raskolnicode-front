@@ -99,6 +99,16 @@ query GetPost($postId: ID!) {
     id
     title
     isArchived
+    content
+    created_at
+    summary
+    updated_at
+    blog {
+      id
+      user {
+        id
+      }
+    }
     picture {
       link
       name
@@ -112,14 +122,5 @@ query GetPost($postId: ID!) {
       }
       created_at
     }
-    blog {
-      user {
-        id
-      }
-    }
-    content
-    created_at
-    summary
-    updated_at
   }
 }`

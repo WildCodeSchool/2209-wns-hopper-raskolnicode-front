@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import uploadStyles from "./uploadPicture.module.scss";
+import { IPicture } from "../../interfaces";
 
 type uploadPictureProps = {
   setPictureInForm: (pictureInfo: any) => void;
+  picture?: IPicture
 };
 
-const UploadPicture = ({ setPictureInForm }: uploadPictureProps) => {
+const UploadPicture = ({ setPictureInForm, picture }: uploadPictureProps) => {
+
   const [previewSource, setPreviewSource] = useState("");
   const [fileInputState, setFileInputState] = useState("");
   const [isSending, setIsSending] = useState(false);
+
+  useEffect(() => {
+    if (picture) {
+      setPreviewSource(picture.link)
+    }
+  }, [picture])
 
   const handleInputChange = (e: any) => {
     const file = e.target.files?.[0];
@@ -20,6 +29,7 @@ const UploadPicture = ({ setPictureInForm }: uploadPictureProps) => {
       setIsSending(false);
     }
   };
+  
   const previewFile = (file: File) => {
     const reader: any = new FileReader();
     reader.readAsDataURL(file);

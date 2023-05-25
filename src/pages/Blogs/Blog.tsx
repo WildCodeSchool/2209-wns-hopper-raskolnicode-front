@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { GET_BLOG } from "../../graphql/queries";
 import styles from "./Blog.module.scss";
 import AdBanner from "./AdBanner";
-import Actions from "./Actions";
+import Actions from "./BlogActions";
 import { UserContext } from "../../UserContext";
 import { getBlog } from "../../interfaces";
 import PostCard from "../../components/Card/PostCard";

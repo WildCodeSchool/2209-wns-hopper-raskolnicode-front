@@ -107,3 +107,33 @@ mutation DeleteComment($deleteCommentId: ID!) {
     text
   }
 }`
+export const UPDATE_POST = gql`
+  mutation UpdatePost($data: UpdatePostInput!, $postId: ID!) {
+    updatePost(data: $data, id: $postId) {
+      id
+      title
+      summary
+      isArchived
+      picture {
+        name
+        link
+      }
+    }
+  }
+`;
+
+export const TOGGLE_POST_IS_ARCHIVED = gql`
+mutation ToggleIsArchived($postId: ID!) {
+  toggleIsArchived(id: $postId) {
+    id
+    isArchived
+  }
+}
+`
+export const DELETE_POST = gql`
+mutation DeletePost($postId: ID!) {
+  deletePost(id: $postId) {
+    id
+  }
+}
+`

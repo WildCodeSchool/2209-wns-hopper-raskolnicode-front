@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import Blog from "./pages/Blogs/Blog";
-import CreateBlog from "./pages/Blogs/createBlog";
+import CreateBlog from "./pages/Blogs/CreateBlog";
 import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 import Login from "./pages/Login/Login";
@@ -24,6 +24,7 @@ import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
 import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
+import EditPost from "./pages/Posts/EditPost";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -105,6 +106,10 @@ function Main() {
             <Route
               path="/blog/:blogId/nouvel-article"
               element={<CreatePost />}
+            />
+            <Route
+              path="/blog/:blogId/articles/:postId/modifier"
+              element={<EditPost />}
             />
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
