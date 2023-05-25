@@ -1,14 +1,15 @@
 .comment{
-  background-color: rgba(218, 218, 218, 0.527);
-  border-radius: 20px;
-  padding: 0.8em;
-  margin: 1em;
+  padding: 1.5em;
+  margin-bottom: 1em;
   width: 40%;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto; 
+  position:relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
   .flexcontainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .commentText{
     color: black;
@@ -17,6 +18,19 @@
   .commentPseudo{
     font-weight: bold;
     font-size: 16px;
+  }
+  .commentDate{
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .buttonComment{
+    position: absolute;
+    top: 2.5%;
+    right: 2%;
+    border:none;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0);
+    font-weight: bold;
   }
 }
 
@@ -62,17 +76,6 @@
 }
 
 @media (max-width: 1650px) {
-  .comment{
-    margin: 1em;
-    margin-right: auto;
-    margin-left: auto;
-    .commentText{
-      font-size: 16px;
-    }
-    .commentPseudo{
-      font-size: 14px;
-    }
-  }
   section.articlelist {
     text-align: center;
     margin-top: 50px;
@@ -88,14 +91,9 @@
 
 @media (max-width: 1250px) {
   .comment{
-    margin: 1em;
-    margin-right: auto;
-    margin-left: auto;
-    .commentText{
-      font-size: 14px;
-    }
-    .commentPseudo{
-      font-size: 12px;
+    .flexcontainer{
+      display: flex;
+      flex-direction: column;
     }
   }
   section.articlelist {
@@ -129,17 +127,6 @@
 }
 
 @media (max-width: 700px) {
-  .comment{
-    margin: 1em;
-    margin-right: auto;
-    margin-left: auto;
-    .commentText{
-      font-size: 14px;
-    }
-    .commentPseudo{
-      font-size: 12px;
-    }
-  }
   section.articlelist {
     margin-bottom: 0;
 

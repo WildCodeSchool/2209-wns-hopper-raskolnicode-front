@@ -29,14 +29,12 @@ const AddComment = ( props : {postId:string}) => {
 
   return (
     <form className={styles.formComment} onSubmit={handleFormSubmit}>
-      <textarea
-        className={styles.textAreaComment}
+      <input
+        className={styles.inputComment}
         value={comment}
         onChange={handleCommentChange}
         placeholder="Ajouter un commentaire..."
-        rows={4}
-        cols={50}
-      ></textarea>
+      ></input>
       <button className={styles.buttonComment} type="submit">Ajouter</button>
     </form>
   );

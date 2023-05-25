@@ -1,10 +1,12 @@
 .postmain {
+  .content{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+  }
   .listComment{
-    margin: 3em;
     width: 100%;
-    h2{
-      text-align: center;
-    }
     .formComment{
       width: 100%;
       margin-right: auto;
@@ -17,15 +19,15 @@
       margin-top: 10px;
       margin-right: auto;
       margin-left: auto;
+      border-radius: 5px;
+      border: 1px solid black;
+      margin-bottom: 1em;
     }
-    .textAreaComment{
+    .inputComment{
       margin-right: auto;
       margin-left: auto;
       width: 40%;
     }
-  }
-  p{
-    width: 90%;
   }
   img {
     width: 100%;
@@ -37,5 +39,17 @@
   h1 {
     text-align: center;
     margin: 2em;
+  }
+  h2{
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  @media (max-width: 1250px) {
+    .content{
+      .contenttext{
+        font-size: 14px;
+      }
+    }
   }
 }
