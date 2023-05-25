@@ -46,6 +46,11 @@ export const GET_BLOGS = gql`
         email
         pseudo
       }
+      picture {
+        id
+        name
+        link
+      }
       updated_at
       posts {
         id
@@ -81,6 +86,11 @@ export const GET_BLOG = gql`
         id
         email
         pseudo
+      }
+      picture {
+        id
+        name
+        link
       }
       posts {
         id
@@ -145,45 +155,35 @@ export const GET_USERS = gql`
   }
 `;
 
+
 export const GET_POST = gql`
-query GetPost($postId: ID!) {
-  getPost(postId: $postId) {
-    id
-    title
-    isArchived
-    user {
+  query GetPost($postId: ID!) {
+    getPost(postId: $postId) {
       id
-      email
-      password
-      pseudo
-    }
-    content
-    created_at
-    summary
-    updated_at
-    blog {
-      id
-      user {
-        id
-      }
-    }
-    picture {
-      link
-      name
-    }
-    user {
-      id
-      email
-      password
-      pseudo
-    }
-    comments {
-      id
-      text
-      user {
-        pseudo
-      }
+      title
+      isArchived
+      content
       created_at
+      summary
+      updated_at
+      blog {
+        id
+        user {
+          id
+        }
+      }
+      picture {
+        link
+        name
+      }
+      comments {
+        id
+        text
+        user {
+          pseudo
+        }
+        created_at
+      }
     }
   }
-}`
+`;
