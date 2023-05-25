@@ -101,6 +101,23 @@ export const CREATE_PICTURE = gql`
   }
 `;
 
+export const CREATE_COMMENT = gql`
+mutation CreateComment($postId: ID!, $data: CommentInput!) {
+  createComment(postId: $postId, data: $data) {
+    id
+    text
+    user {
+      pseudo
+      id
+    }
+  }
+}`
+export const DELETE_COMMENT = gql`
+mutation DeleteComment($deleteCommentId: ID!) {
+  deleteComment(id: $deleteCommentId) {
+    text
+  }
+}`
 export const UPDATE_POST = gql`
   mutation UpdatePost($data: UpdatePostInput!, $postId: ID!) {
     updatePost(data: $data, id: $postId) {
