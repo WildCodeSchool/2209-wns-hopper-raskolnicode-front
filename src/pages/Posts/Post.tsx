@@ -8,6 +8,8 @@ import "moment/locale/fr";
 import { IPost } from "../../interfaces";
 import { UserContext } from "../../UserContext";
 import PostActions from "./PostActions";
+import CommentCard from "../../components/Card/CommentCard";
+import AddComment from "./AddComment";
 
 function Post() {
 
@@ -36,15 +38,32 @@ function Post() {
             ) : (
               <img src={"/default-post-img.png"} alt="Introuvable" />
             )}
+            <div className={styles.content}>
             <p className="dateline">
               {moment(post.updated_at)
                 .locale("fr")
                 .format("dddd D MMMM YYYY [à] HH[h]mm")}
             </p>
-            <p>{post.content}</p>
+            
+            <p className={styles.contenttext}>{post.content}</p>
+            </div>
           </div>
         </>
       )}
+      <div className={styles.listComment}>
+        <h2>Commentaires</h2>
+        <div className={styles.commentsUsersContainer}>
+        {post?.comments?.map((comment) => {
+          return (
+            <CommentCard comment={comment} post={post}/>
+          );
+        })}
+        {
+        postId &&
+        <AddComment postId={postId} />
+        }
+        </div>
+      </div>
     </main>
   );
 }
