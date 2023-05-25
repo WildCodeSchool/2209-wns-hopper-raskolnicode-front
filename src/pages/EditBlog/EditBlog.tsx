@@ -127,7 +127,7 @@ function EditBlog() {
               Last updated: {moment(data.getBlog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
             </p>
           </div>
-          <button type="submit">Mettre à jour</button>
+          <button className={styles.submitButton} type="submit">Mettre à jour</button>
         </div>
       </form>
 

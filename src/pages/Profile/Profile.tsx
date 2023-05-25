@@ -136,29 +136,23 @@ function Profile() {
 
 
 
-      <div>
-        <section className={styles.blogSection}>
+      <section className={styles.blogSection}>
 
-          <h1>Mes blogs</h1>
-          <form>
-            <div className={styles.blogContainer}>
-              {loading === true && "Chargement..."}
-              {data?.loggedUser.blogs.map((blog: any) => {
-                return (
-                  <div>
-                    <BlogCard
-                      blog={blog}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </form>
+        <h1>Mes blogs</h1>
+          <div className={styles.blogContainer}>
+            {loading === true && "Chargement..."}
+            {data?.loggedUser.blogs.map((blog: any) => {
+              return (
+                <BlogCard
+                  blog={blog}
+                />
+              );
+            })}
+          </div>
 
-        </section>
-      </div>
-
+      </section>
     </div>
+
 
   );
 }
