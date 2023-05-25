@@ -5,8 +5,10 @@ import { UPDATE_BLOG } from '../../graphql/mutations';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { uploadCloudinary } from '../../components/UploadPicture/uploadCloudinary';
+import UploadPicture from '../../components/UploadPicture/UploadPicture';
 
-import { IBlog } from '../../interfaces';
+
+import { IBlog, IPicture } from '../../interfaces';
 import moment from "moment";
 import styles from "./EditBlog.module.scss";
 
@@ -17,12 +19,14 @@ function EditBlog() {
   // console.log(paramss);
 
   const getBlogId = useParams().blogId;
-  
+
 
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
+  const [picture, setPicture] = useState<IPicture | undefined>(undefined);
+  const [pictureInForm, setPictureInForm] = useState<any>(undefined)
 
 
 
@@ -35,8 +39,12 @@ function EditBlog() {
   const [updateBlog, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_BLOG);
 
 
-  const onSubmit = (event: any) => {
-    event.preventDefault();
+
+
+
+  async function doUpdateBlog(e: any) {
+
+    e.preventDefault();
 
     if (data?.getBlog) {
       updateBlog({
@@ -51,11 +59,13 @@ function EditBlog() {
     }
   };
 
-  
+
   useEffect(() => {
     if (data?.getBlog) {
       setName(data.getBlog.name);
       setDescription(data.getBlog.description);
+      setPicture(data.getBlog.picture)
+
     }
   }, [data]);
 
@@ -74,30 +84,30 @@ function EditBlog() {
   if (!data?.getBlog) {
     return <div>No blog data found</div>;
   }
-  
+
 
 
   return (
     <div className={styles.pageEditBlog}>
       <h1 className={styles.editBlogTitle}>Edition du blog</h1>
-      <form onSubmit={onSubmit} className={styles.form}>
+      <form onSubmit={doUpdateBlog} className={styles.form}>
         <div className={styles.cardContent}>
+
+          <UploadPicture setPictureInForm={setPictureInForm} picture={picture} />
+
+
           <input className={styles.blogName} name="name" value={name} onChange={(e) => setName(e.target.value)} />
           <textarea className={styles.blogDescription} name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-          <img
-            src={data.getBlog.picture.link}
-            alt={data.getBlog.name}
-          />
 
           <div className={styles.dateBox}>
-          <p className={`${styles.dateline} ${styles.createdDate}`}>
-            Created: {moment(data.getBlog.created_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
-          </p>
-          <p className={`${styles.dateline} ${styles.updatedDate}`}>
-            Last updated: {moment(data.getBlog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
-          </p>
+            <p className={`${styles.dateline} ${styles.createdDate}`}>
+              Created: {moment(data.getBlog.created_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
+            </p>
+            <p className={`${styles.dateline} ${styles.updatedDate}`}>
+              Last updated: {moment(data.getBlog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
+            </p>
           </div>
-          <button type="submit">Update Blog</button>
+          <button type="submit">Mettre à jour</button>
         </div>
       </form>
 
