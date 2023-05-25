@@ -8,6 +8,8 @@ import "moment/locale/fr";
 import { IPost } from "../../interfaces";
 import { UserContext } from "../../UserContext";
 import PostActions from "./PostActions";
+import CommentCard from "../../components/Card/CommentCard";
+import AddComment from "./AddComment";
 
 function Post() {
 
