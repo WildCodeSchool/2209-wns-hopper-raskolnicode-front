@@ -36,28 +36,44 @@ function EditBlog() {
     },
   });
 
-  const [updateBlog, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_BLOG);
 
+  
+
+  const [doUpdateBlogMutation, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_BLOG);
 
 
 
 
   async function doUpdateBlog(e: any) {
-
     e.preventDefault();
+    let cloudinaryPicture = null
+    cloudinaryPicture = await uploadCloudinary(pictureInForm);
+
+
 
     if (data?.getBlog) {
-      updateBlog({
+      await doUpdateBlogMutation({
         variables: {
           blogId: getBlogId,
           data: {
             name: name,
             description: description,
+            picture: {
+              name: cloudinaryPicture?.original_filename,
+              link: cloudinaryPicture?.secure_url,
+            },
           },
         },
       }).then(() => refetch());
+      
     }
+    
   };
+
+
+
+
+
 
 
   useEffect(() => {
