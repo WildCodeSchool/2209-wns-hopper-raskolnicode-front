@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_BLOG } from '../../graphql/queries';
 import { UPDATE_BLOG } from '../../graphql/mutations';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { uploadCloudinary } from '../../components/UploadPicture/uploadCloudinary';
 import UploadPicture from '../../components/UploadPicture/UploadPicture';
@@ -20,6 +20,7 @@ function EditBlog() {
 
   const getBlogId = useParams().blogId;
 
+  const navigate = useNavigate();
 
 
   const [name, setName] = useState('');
@@ -64,7 +65,10 @@ function EditBlog() {
             },
           },
         },
-      }).then(() => refetch());
+      }).then(res => {
+      navigate(`/blog/${getBlogId}/`)
+    })
+  
       
     }
     
