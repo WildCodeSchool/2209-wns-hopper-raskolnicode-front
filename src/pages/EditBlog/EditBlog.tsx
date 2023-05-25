@@ -12,8 +12,12 @@ import styles from "./EditBlog.module.scss";
 function EditBlog() {
 
 
+  // const paramss = useParams();
+  // console.log(paramss);
 
-  const getBlogId = useParams().blogid;
+  const getBlogId = useParams().blogId;
+  
+
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');

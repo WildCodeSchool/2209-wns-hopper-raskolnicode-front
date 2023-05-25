@@ -70,6 +70,13 @@ export const GET_BLOG = gql`
       name
       description
       updated_at
+      picture {
+        created_at
+        id
+        link
+        name
+        updated_at
+      }  
       user {
         id
         email

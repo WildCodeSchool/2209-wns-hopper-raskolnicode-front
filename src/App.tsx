@@ -86,7 +86,7 @@ function Main() {
             {user ? (
               <>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/updateblog/:blogid" element={<EditBlog />}/>
+                {/* <Route path="/updateblog/:blogid" element={<EditBlog />} /> */}
               </>
             ) : (
               <>
@@ -112,6 +112,12 @@ function Main() {
               path="/blog/:blogId/articles/:postId/modifier"
               element={<EditPost />}
             />
+
+            <Route
+              path="/blog/:blogId/modifier"
+              element={<EditBlog />}
+            />
+
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
