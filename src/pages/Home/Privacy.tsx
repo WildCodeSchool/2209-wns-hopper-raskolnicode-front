@@ -5,7 +5,7 @@ function Privacy() {
   return (
     <main className={styles.homeMain}>
       <div className={styles.bodyPrivacy}>
-        <h1>Politique de confidentialité</h1>
+        <h1><strong>Politique de confidentialité</strong></h1>
         <p>
           <strong>Starblog</strong>, en sa qualité de responsable du traitement
           de vos données, attache une grande importance à la protection et au
