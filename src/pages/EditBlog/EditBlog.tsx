@@ -45,6 +45,9 @@ function EditBlog() {
     if (pictureInForm) {
       cloudinaryPicture = await uploadCloudinary(pictureInForm);
     }
+
+    console.log("cloudin", cloudinaryPicture);
+
     if (data?.getBlog) {
       await doUpdateBlogMutation({
         variables: {
@@ -58,10 +61,10 @@ function EditBlog() {
                   link: cloudinaryPicture?.secure_url,
                 }
               : {
-                  // exclude __typename from picture data
+                 
                   link: data.getBlog.picture.link,
                   name: data.getBlog.picture.name,
-                }, // If no new picture is selected, use the existing picture
+                }, 
           },
         },
       }).then(res => {
