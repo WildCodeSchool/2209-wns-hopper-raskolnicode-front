@@ -24,6 +24,7 @@ import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
 import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
+import EditBlog from "./pages/EditBlog/EditBlog";
 import EditPost from "./pages/Posts/EditPost";
 
 const httpLink = createHttpLink({
@@ -85,7 +86,7 @@ function Main() {
             {user ? (
               <>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/updateblog/:blogid" />
+                {/* <Route path="/updateblog/:blogid" element={<EditBlog />} /> */}
               </>
             ) : (
               <>
@@ -111,6 +112,12 @@ function Main() {
               path="/blog/:blogId/articles/:postId/modifier"
               element={<EditPost />}
             />
+
+            <Route
+              path="/blog/:blogId/modifier"
+              element={<EditBlog />}
+            />
+
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />

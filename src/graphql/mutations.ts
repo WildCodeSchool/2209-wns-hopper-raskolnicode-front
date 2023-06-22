@@ -41,6 +41,10 @@ export const CREATE_USER_BY_ROLE = gql`
   }
 `;
 
+
+
+
+
 export const CREATE_BLOG_BY_USER = gql`
   mutation CreateBlogByUser($data: BlogInput!) {
     createBlogByUser(data: $data) {
@@ -67,12 +71,19 @@ export const CREATE_BLOG = gql`
 `;
 
 export const UPDATE_BLOG = gql`
-  mutation updateBlog($date: updateBlogInput!) {
+mutation Mutation($data: BlogInput!, $blogId: ID!) {
+  updateBlog(id: $blogId, data: $data) {
     id
     name
     description
+    picture {
+      name
+      link
+    }
   }
-`;
+}
+  `
+
 
 export const CREATE_POST = gql`
   mutation CreatePost($blogId: ID!, $data: PostInput!) {

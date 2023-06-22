@@ -1,0 +1,89 @@
+.pageEditBlog {
+  min-height: 78vh;
+}
+
+
+.form {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  max-width: 100rem;
+
+  .submitButton {
+    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    width: 8rem;
+    height: 4rem;
+    border-radius: 5px;
+  }
+
+
+}
+
+.cardContent {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    max-width: 20rem;
+  }
+
+}
+
+.cardContent>* {
+  width: 80%;
+  margin: auto;
+  max-width: 80rem;
+}
+
+
+
+.editBlogTitle {
+  font-size: 24px;
+  font-weight: bold;
+
+}
+
+.blogName,
+.blogDescription {
+  padding: 5px 4px;
+}
+
+.blogName {
+  margin: 20px auto;
+}
+
+.blogDescription {
+  margin: 20px auto;
+  min-height: 10rem;
+  width: 80%;
+}
+
+.dateline {
+  font-size: 14px;
+  color: gray;
+}
+
+.dateBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding-right: 15px;
+
+  .createdDate {
+    margin-bottom: 10px;
+  }
+
+  .updatedDate {
+    margin-bottom: 30px;
+  }
+
+
+}

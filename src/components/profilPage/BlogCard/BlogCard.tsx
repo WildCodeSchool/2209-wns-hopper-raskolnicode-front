@@ -1,35 +1,43 @@
 import React from 'react'
-import { IPicture } from '../../../interfaces';
+import { IBlog, IPicture } from '../../../interfaces';
 import styles from './BlogCard.module.scss';
+import moment from "moment";
+import { Link } from 'react-router-dom';
+
 
 export type CardProps = {
-  title: string;
-  description: string;
-  updated_at: string;
-  picture?: IPicture;
-  onClick?: () => void;
+  blog: IBlog
 };
 
-function BlogCard(props: CardProps): JSX.Element {
-  return (
-    <div className={styles.articlelist}>
-      <div className={styles.listCard}>
-        <div className={styles.card} onClick={props.onClick}>
-          <img
-            src="https://picsum.photos/1200/400?random=2"
-            alt={props.title}
-          />
-          <h4>{props.title}</h4>
-          <p>{props.description}</p>
-          <div className={styles.footerCard}>
-            <p className={styles.dateCreated}>{props.updated_at}</p>
-            <button className={`${styles.editButton} btn btn-outline-secondary`} >Editer</button>
-          </div>
-        </div>
 
+function BlogCard({
+  blog }: CardProps): JSX.Element {
+  return (
+    <div className={styles.card}>
+      <Link to={`/blog/${blog.id}`}>
+        <img  className={styles.blogCardImg} src={blog.picture ? blog.picture.link : "https://picsum.photos/1200/400?random=2"}
+          alt={blog.name}
+        />
+      </Link>
+      <div>
+        <div className={styles.boxCardContent}>
+          <h4>{blog.name}</h4>
+          <p>{blog.description}</p>
+        </div>
+        <div className={styles.footerCard}>
+          <p className="dateline">
+            Last updated: {moment(blog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
+          </p>
+        </div>
+        <div className={styles.editeBox}>
+          <Link to={`/blog/${blog.id}/modifier`}>
+            <button className={`${styles.editButton} btn btn-outline-secondary`}>Editer</button>
+          </Link>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default BlogCard
+
+export default BlogCard;
