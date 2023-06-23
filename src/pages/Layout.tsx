@@ -8,43 +8,44 @@ import { Alert, Fade } from "react-bootstrap";
 import { AlertInfo } from "../interfaces";
 
 const Layout = (props: { onTokenChange: () => void }) => {
-
   const user = useContext(UserContext);
 
-  const [alert, setAlert] = useState<AlertInfo | null>(null)
+  const [alert, setAlert] = useState<AlertInfo | null>(null);
 
   // store alert in context
- 
 
   useEffect(() => {
     // if multiple alerts starting before 3sec, make them all last 3sec
     if (alert) {
       setTimeout(() => {
-        setAlert(null)
-      }, 3000)
+        setAlert(null);
+      }, 3000);
     }
-  }, [alert])
+  }, [alert]);
 
   const Message = () => {
-    return alert && <Alert variant={alert.variant} className="text-center" transition={Fade}>
-      {alert.message}
-    </Alert>
-  }
+    return (
+      alert && (
+        <Alert
+          variant={alert.variant}
+          className="text-center"
+          transition={Fade}
+        >
+          {alert.message}
+        </Alert>
+      )
+    );
+  };
 
   const handleAlert = (alertInfo: AlertInfo) => {
-    setAlert(alertInfo)
-  }
+    setAlert(alertInfo);
+  };
 
   return (
     <>
       <Navbar onTokenChange={props.onTokenChange} handleAlert={handleAlert} />
-      <hr className="mb-0" style={{ margin: "0" }} />
-      {
-        user?.role === "SUPERADMIN" && <Faker />
-      }
-      {
-        alert && <Message />
-      }
+      {user?.role === "SUPERADMIN" && <Faker />}
+      {alert && <Message />}
       <Outlet />
       <Footer />
     </>

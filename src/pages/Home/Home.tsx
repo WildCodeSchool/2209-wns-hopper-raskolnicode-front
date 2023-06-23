@@ -8,18 +8,67 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import BlogCard from "../../components/Card/BlogCard";
 
+export type PictureProps = {
+  id: number;
+  name: string;
+  link: string;
+  updated_at: string;
+};
+
+
 export type BlogProps = {
   user: any;
   name: string;
   description: string;
   updated_at: string;
   id: number;
+  picture?: PictureProps;
 };
+
+
+
+
 
 function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
+
+
+  let blogsSorted: BlogProps[] = [];
+
+  let lastBlogs: BlogProps[] = [];
+
+  if (data?.getBlogs) {
+    blogsSorted = [...data.getBlogs].sort((a, b) => {
+      return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+    });
+
+    const usersBlogs: { [key: string]: BlogProps } = {};
+
+
+
+
+    
+    let getBlogReversed = Object.keys(data.getBlogs).reverse();
+
+    getBlogReversed.forEach(key => {
+      let index = parseInt(key);
+      console.log(index, data.getBlogs[index]);
+    }); 
+    
+    for (const blog of data.getBlogs) {
+      lastBlogs.push(blog);
+      if (lastBlogs.length === 3) {
+        break;
+      }
+    }
+
+  }
+
+
+
+
 
   return (
     <main className={styles.homeMain}>
@@ -37,74 +86,42 @@ function Home() {
         </div>
       </section>
       <section className={styles.carroussel}>
-        <h2>Les blogs les plus aimés</h2>
+        <h2>Les derniers blogs</h2>
 
         <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block"
-              src="https://picsum.photos/1200/400?random=3"
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <h3>Alan's Blog</h3>
-              <p className={styles.carrousselDescription}>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block "
-              src="https://picsum.photos/1200/400?random=2"
-              alt="Second slide"
-            />
 
-            <Carousel.Caption>
-              <h3>Félicie's Blog</h3>
-              <p className={styles.carrousselDescription}>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block "
-              src="https://picsum.photos/1200/400?random=2"
-              alt="Third slide"
-            />
 
-            <Carousel.Caption>
-              <h3>Soufiane's Blog</h3>
-              <p className={styles.carrousselDescription}>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block "
-              src="https://picsum.photos/1200/400?random=5"
-              alt="Third slide"
-            />
+          {!loading && lastBlogs.map((blog, index) => (
+            <Carousel.Item key={index}>
+              {blog.picture && (
+                <img
+                  className={`d-block w-100 ${styles.imageStyle}`}
+                  src={blog.picture.link}
+                  alt={blog.name}
+                />
+              )}
+              <Carousel.Caption>
+                <h3>{blog.user.pseudo}</h3>
+                <p className={styles.carrousselDescription}>
+                  {blog.description.slice(0, 35)}
+                </p>
+              </Carousel.Caption>
+            </Carousel.Item>
 
-            <Carousel.Caption>
-              <h3>Clément's Blog</h3>
-              <p className={styles.carrousselDescription}>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
-          </Carousel.Item>
+          ))}
+
+
+
         </Carousel>
+
+
       </section>
       <h1>Parcourir les blogs</h1>
       <section className={styles.container}>
-        {loading === true && "Chargement..."}
-        {data?.getBlogs.map((blog) => {
-          return (
-            <BlogCard blog={blog} />
-          );
-        })}
+        {loading && <div>Chargement...</div>}
+        {!loading && blogsSorted.map((blog, index) => (
+          <BlogCard key={index} blog={blog} />
+        ))}
       </section>
     </main>
   );

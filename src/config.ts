@@ -9,3 +9,4 @@ if (window.location.href.includes("staging.hopper2")) {
 }
 
 export default API_URL;
+
