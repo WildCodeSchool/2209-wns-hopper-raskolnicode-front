@@ -21,6 +21,17 @@ function Home() {
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
 
+
+
+  let blogsSorted: BlogProps[] = [];
+  
+  if (data?.getBlogs) {
+    blogsSorted = [...data.getBlogs].sort((a, b) => {
+      return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+    });
+  }
+  
+
   return (
     <main className={styles.homeMain}>
       <section className={styles.banniere}>
@@ -99,12 +110,10 @@ function Home() {
       </section>
       <h1>Parcourir les blogs</h1>
       <section className={styles.container}>
-        {loading === true && "Chargement..."}
-        {data?.getBlogs.map((blog) => {
-          return (
-            <BlogCard blog={blog} />
-          );
-        })}
+      {loading && <div>Chargement...</div>}
+        {!loading && blogsSorted.map((blog, index) => (
+            <BlogCard key={index} blog={blog} />
+        ))}
       </section>
     </main>
   );
