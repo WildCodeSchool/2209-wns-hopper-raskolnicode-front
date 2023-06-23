@@ -1,9 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 import { UPDATE_USER } from "../../graphql/mutations";
 import { GET_LOGGED_USER } from "../../graphql/queries";
-// import BlogCard from "../../components/profilPage/BlogCard/BlogCard";
+import BlogCard from "../../components/profilPage/BlogCard/BlogCard";
 
 import styles from "./Profile.module.scss";
 
@@ -15,10 +16,10 @@ function Profile() {
   const [isEditable, setIsEditable] = useState(false);
   const [alert, setAlert] = useState({ message: '', type: '' });
 
+  const navigate = useNavigate();
 
 
 
-  
   async function doUpdtateUser(e: any) {
     e.preventDefault();
     try {
@@ -27,8 +28,8 @@ function Profile() {
           pseudo,
         },
       });
-      
-      
+
+
       setAlert({ message: 'Informations mises à jour !', type: 'success' });
       setTimeout(() => {
         setAlert({ message: '', type: '' });
@@ -82,6 +83,8 @@ function Profile() {
     }
   }, [data]);
 
+  console.log("datouille ", data)
+
 
   return (
     <div className={styles.main}>
@@ -133,34 +136,23 @@ function Profile() {
 
 
 
-      <div>
-        {/* <section className={styles.blogSection}>
+      <section className={styles.blogSection}>
 
-          <h1>Mes blogs</h1>
-          <form>
+        <h1>Mes blogs</h1>
           <div className={styles.blogContainer}>
             {loading === true && "Chargement..."}
             {data?.loggedUser.blogs.map((blog: any) => {
               return (
-                <div>
-                  <BlogCard
-                    title={blog.name}
-                    description={blog.description}
-                    updated_at={blog.updated_at}
-                    onClick={() => {
-                      navigate(`/blog/${blog.id}`);
-                    }}
-                  />
-                </div>
+                <BlogCard
+                  blog={blog}
+                />
               );
             })}
           </div>
-          </form>
 
-        </section> */}
-      </div>
-
+      </section>
     </div>
+
 
   );
 }

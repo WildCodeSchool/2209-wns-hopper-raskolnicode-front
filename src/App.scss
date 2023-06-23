@@ -1,16 +1,23 @@
-$textcolor: #000001;
-$textcolorwhite: #fef6c9;
-$textcolorgrey: #4f4346;
-$primarycolor: #345995;
-$secondarycolor: #8eb8e5;
+
+
+:root {
+  --secondarycolor: #8eb8e5;
+  --textcolor: #000001;
+  --textcolorwhite: #fef6c9;
+  --textcolorgrey: #4f4346;
+  --primarycolor: #345995;
+  --secondarycolor: #8eb8e5;
+}
+
 
 a {
-  text-decoration: none !important; /* no underline */
+  text-decoration: none !important;
+  /* no underline */
 }
 
 body {
   font-family: "IBM Plex Sans", sans-serif;
-  color: $textcolor;
+  color: var(--textcolor);
   margin: 0;
   text-decoration: none;
 }

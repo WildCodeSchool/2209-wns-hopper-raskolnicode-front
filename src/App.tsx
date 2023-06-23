@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
 import Blog from "./pages/Blogs/Blog";
-import CreateBlog from "./pages/Blogs/createBlog";
+import CreateBlog from "./pages/Blogs/CreateBlog";
 import Post from "./pages/Posts/Post";
 import { GET_LOGGED_USER } from "./graphql/queries";
 import Login from "./pages/Login/Login";
@@ -24,6 +24,10 @@ import SuperAdminSignup from "./pages/Signup/SuperAdmin";
 import Profile from "./pages/Profile/Profile";
 import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
+import EditBlog from "./pages/EditBlog/EditBlog";
+import EditPost from "./pages/Posts/EditPost";
+import ConditionGeneral from "./pages/Home/ConditionGeneral";
+import Mentions from "./pages/Home/Mentions";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -84,7 +88,7 @@ function Main() {
             {user ? (
               <>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/updateblog/:blogid" />
+                {/* <Route path="/updateblog/:blogid" element={<EditBlog />} /> */}
               </>
             ) : (
               <>
@@ -102,9 +106,21 @@ function Main() {
             <Route path="/" element={<Home />} />
             {user && <Route path="/blog/create" element={<CreateBlog />} />}
             <Route path="/blog/:blogId" element={<Blog />} />
-            <Route path="/blog/:blogId/nouvel-article" element={<CreatePost />} />
+            <Route
+              path="/blog/:blogId/nouvel-article"
+              element={<CreatePost />}
+            />
+            <Route
+              path="/blog/:blogId/articles/:postId/modifier"
+              element={<EditPost />}
+            />
+
+            <Route path="/blog/:blogId/modifier" element={<EditBlog />} />
+
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/condition" element={<ConditionGeneral />} />
+            <Route path="/mentions" element={<Mentions />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

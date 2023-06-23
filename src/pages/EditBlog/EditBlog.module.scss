@@ -1,0 +1,104 @@
+.pageEditBlog {
+  min-height: 78vh;
+}
+
+
+textarea:focus, input:focus {
+  border: 1px solid var(--primarycolor);
+  outline: none;
+}
+
+
+.form {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.65);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto auto 3rem auto;
+  max-width: 50rem;
+
+  
+
+  .submitButton {
+    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    width: 8rem;
+    height: 3.5rem;
+    border-radius: 7px;
+    color: white;
+  }
+
+
+}
+
+.cardContent {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  
+
+  img {
+    max-width: 80%;
+    max-height: 20rem;
+  }
+
+}
+
+.cardContent> * {
+  width: 80%;
+  margin: auto;
+  max-width: 80rem;
+  min-width: 15rem;
+}
+
+
+
+.editBlogTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 2rem auto;
+
+}
+
+.blogName,
+.blogDescription {
+  padding: 5px 4px;
+}
+
+.blogName {
+  margin: 40px auto 20px auto;
+}
+
+.blogDescription {
+  margin: 20px auto;
+  min-height: 10rem;
+  width: 80%;
+}
+
+.dateline {
+  font-size: 14px;
+  color: #000;
+  font-style: italic;
+}
+
+.dateBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding-right: 15px;
+
+  .createdDate {
+    margin-bottom: 5px;
+  }
+
+  .updatedDate {
+    margin-bottom: 30px;
+  }
+
+
+}
