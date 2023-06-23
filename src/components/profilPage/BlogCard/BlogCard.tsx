@@ -26,7 +26,7 @@ function BlogCard({
         </div>
         <div className={styles.footerCard}>
           <p className="dateline">
-            Last updated: {moment(blog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
+            Dernière édition: {moment(blog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
           </p>
         </div>
         <div className={styles.editeBox}>

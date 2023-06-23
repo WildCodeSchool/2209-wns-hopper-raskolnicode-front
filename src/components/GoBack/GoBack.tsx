@@ -10,7 +10,12 @@ function GoBack(): JSX.Element {
 
   return (
     <div className={styles.goback}>
-      <img src="/arrow.png" alt="back" onClick={goBack}></img>
+      <img
+        className={styles.arrowimage}
+        src="/arrow.png"
+        alt="back"
+        onClick={goBack}
+      ></img>
     </div>
   );
 }

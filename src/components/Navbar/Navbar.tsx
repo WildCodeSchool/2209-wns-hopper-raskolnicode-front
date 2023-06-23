@@ -13,24 +13,29 @@ function Navbar(props: {
   return (
     <nav className={styles.navbarmain}>
       <Link className={styles.linklogo} to={"/"}>
-        <img className={styles.logo} src="/logo.png" alt="" />
+        <img className={styles.logo} src="/logo.png" alt="logo starBlog" />
       </Link>
 
       <div className={styles.link}>
         {user ? (
-          <Link
-            className={styles.linknav}
-            to={""}
-            onClick={() => {
-              props.onTokenChange();
-              props.handleAlert({
-                message: "Vous êtes déconnecté(e)",
-                variant: "warning",
-              });
-            }}
-          >
-            Déconnexion
-          </Link>
+          <div className={styles.linknav_box}>
+            <Link
+              className={styles.linknav}
+              to={""}
+              onClick={() => {
+                props.onTokenChange();
+                props.handleAlert({
+                  message: "Vous êtes déconnecté(e)",
+                  variant: "warning",
+                });
+              }}
+            >
+              Déconnexion
+            </Link>
+            <Link className={styles.linknav} to={"/profile"}>
+              Mon Profile
+            </Link>
+          </div>
         ) : (
           <>
             <Link className={styles.linknav} to={"/signup"}>

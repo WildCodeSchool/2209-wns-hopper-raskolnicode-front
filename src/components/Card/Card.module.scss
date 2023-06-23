@@ -50,17 +50,28 @@
     text-align: left;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
+    min-height: 28rem;
+    position: relative;
+
+
+
 
     p {
-      padding: 10px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      padding: 0 10px;
     }
 
     .dateCreated {
       border: 1px solid black;
       border-style: inset;
       display: inline-block;
-      position: relative;
-      margin-left: 3%;
+      position: absolute;
+      padding: 10px;
+      bottom: 3px;
+      left: 3%;
     }
 
     h4 {
@@ -110,9 +121,9 @@
       text-align: left;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-      p {
-        padding: 10px;
-      }
+      // p {
+      //   padding: 10px;
+      // }
       h4 {
         padding: 10px;
       }

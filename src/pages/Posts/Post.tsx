@@ -33,7 +33,11 @@ function Post() {
           <h1>{post.title}</h1>
           <div className={styles.mainpicture}>
             {post.picture ? (
-              <img src={post.picture.link} alt={post.picture.name} />
+              <img
+                className={styles.mainimage}
+                src={post.picture.link}
+                alt={post.picture.name}
+              />
             ) : (
               <img src={"/default-post-img.png"} alt="Introuvable" />
             )}
