@@ -17,7 +17,7 @@ a {
 
 body {
   font-family: "IBM Plex Sans", sans-serif;
-  color: $textcolor;
+  color: var(--textcolor);
   margin: 0;
   text-decoration: none;
 }
