@@ -33,7 +33,7 @@ function Navbar(props: {
               Déconnexion
             </Link>
             <Link className={styles.linknav} to={"/profile"}>
-              Mon Profile
+              Mon profil
             </Link>
           </div>
         ) : (
