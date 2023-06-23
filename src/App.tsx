@@ -115,10 +115,7 @@ function Main() {
               element={<EditPost />}
             />
 
-            <Route
-              path="/blog/:blogId/modifier"
-              element={<EditBlog />}
-            />
+            <Route path="/blog/:blogId/modifier" element={<EditBlog />} />
 
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
