@@ -24,8 +24,9 @@ function Blog() {
     refetch();
   });
 
+
+
   const blog = data?.getBlog;
-  console.log(blog);
 
   return (
     <main className={styles.blogmain}>
@@ -45,13 +46,13 @@ function Blog() {
       {loading === true && "Chargement..."}
       <div className={styles.mainpicture}>
         {<img src={blog?.picture?.link} alt={blog?.picture?.name}></img>}
-        <p className="dateline">
+        <p className="dateline">Créer le : &nbsp;
           {moment(blog?.picture?.updated_at)
             .locale("fr")
             .format("dddd D MMMM YYYY [à] HH[h]mm")}
         </p>
       </div>
-      <p>{blog?.description}</p>
+      <p>Description : {blog?.description}</p>
       <section className={styles.container}>
         {blog?.posts.map((post, idx) => {
           return <PostCard key={idx} post={post} />;
