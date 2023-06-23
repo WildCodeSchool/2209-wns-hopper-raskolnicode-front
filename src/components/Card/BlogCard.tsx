@@ -24,7 +24,8 @@ function BlogCard({ blog }: CardProps): JSX.Element {
             <p className={styles.dateCreated}>
               {moment(blog.updated_at)
                 .locale("fr")
-                .format("dddd D MMMM YYYY [à] HH[h]mm")}
+                .format("dddd D MMMM YYYY  [à] HH[h]mm")}
+
             </p>
           </div>
         </Link>

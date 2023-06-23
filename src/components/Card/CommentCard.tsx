@@ -35,8 +35,8 @@ function CommentCard({ comment,post }:any): JSX.Element {
         <div className={styles.flexcontainer}>
         <p className={styles.commentPseudo}>@{comment?.user?.pseudo}</p>
         <p className={styles.commentDate}>publié le {moment(comment?.created_at)
-                .locale("fr")
-                .format("dddd D MMMM YYYY [à] HH[h]mm")}</p>
+                  .locale("fr")
+                  .format("dddd D MMMM YYYY [à] HH[h]mm")}</p>
         </div>
         {user?.id === comment.user.id || user?.id === post.blog.user.id ? 
         <button className={styles.buttonComment} onClick={handleDelete}>X</button>
