@@ -26,6 +26,8 @@ import API_URL from "./config";
 import CreatePost from "./pages/Posts/CreatePost";
 import EditBlog from "./pages/EditBlog/EditBlog";
 import EditPost from "./pages/Posts/EditPost";
+import ConditionGeneral from "./pages/Home/ConditionGeneral";
+import Mentions from "./pages/Home/Mentions";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -120,6 +122,8 @@ function Main() {
 
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/condition" element={<ConditionGeneral />} />
+            <Route path="/mentions" element={<Mentions />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
