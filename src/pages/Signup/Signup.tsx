@@ -26,7 +26,7 @@ function Signup() {
       setEmail("");
       setPassword("");
       setPseudo("");
-    } catch { }
+    } catch {}
   }
 
   return (
@@ -61,9 +61,7 @@ function Signup() {
               placeholder="Votre mot de passe"
             />
           </div>
-          {error && (
-            <p className="text-danger">Une erreur s'est produite</p>
-          )}
+          {error && <p className="text-danger">Une erreur s'est produite</p>}
           <div className={styles.buttonBox}>
             <button type="button" disabled={loading} onClick={doSignup}>
               Inscription
@@ -81,7 +79,6 @@ function Signup() {
       )}
     </>
   );
-
 }
 
 export default Signup;

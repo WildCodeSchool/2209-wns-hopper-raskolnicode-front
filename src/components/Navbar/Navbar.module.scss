@@ -1,4 +1,10 @@
 .navbarmain {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  z-index: 1000;
   padding: 10px;
   display: flex;
   justify-content: space-between;

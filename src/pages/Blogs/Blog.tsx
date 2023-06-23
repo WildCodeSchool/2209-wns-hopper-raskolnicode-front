@@ -9,6 +9,7 @@ import { UserContext } from "../../UserContext";
 import { getBlog } from "../../interfaces";
 import PostCard from "../../components/Card/PostCard";
 import moment from "moment";
+import GoBack from "../../components/GoBack/GoBack";
 
 function Blog() {
   const { blogId } = useParams();
@@ -31,6 +32,7 @@ function Blog() {
     <main className={styles.blogmain}>
       {/* place here condition if !user.isPremium */} <AdBanner />
       {blog?.user.id === user?.id && <Actions blogId={blogId} />}
+      <GoBack />
       {blog?.user.id === user?.id ? (
         <h1>
           Bienvenue sur ton blog,{" "}
