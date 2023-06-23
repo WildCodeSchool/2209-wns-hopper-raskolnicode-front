@@ -29,7 +29,7 @@ const UploadPicture = ({ setPictureInForm, picture }: uploadPictureProps) => {
       setIsSending(false);
     }
   };
-  
+
   const previewFile = (file: File) => {
     const reader: any = new FileReader();
     reader.readAsDataURL(file);
@@ -41,10 +41,8 @@ const UploadPicture = ({ setPictureInForm, picture }: uploadPictureProps) => {
   return (
     <div className={uploadStyles.description_box}>
       {!previewSource ? (
-        <div>
-          <div className={uploadStyles.uploaded_preview}>
-            <img src="/default-card-img.png" alt="Exemple" />
-          </div>
+        <div className={uploadStyles.uploaded_preview}>
+          <img src="/default-card-img.png" alt="Exemple" />
         </div>
       ) : (
         <div className={uploadStyles.uploaded_preview}>

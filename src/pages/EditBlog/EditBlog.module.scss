@@ -12,13 +12,13 @@ textarea:focus, input:focus {
 .form {
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.65);
   padding: 20px;
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: auto;
-  max-width: 100rem;
+  margin: auto auto 3rem auto;
+  max-width: 50rem;
 
   
 
@@ -38,8 +38,11 @@ textarea:focus, input:focus {
   display: flex;
   flex-direction: column;
 
+  
+
   img {
-    max-width: 20rem;
+    max-width: 80%;
+    max-height: 20rem;
   }
 
 }
@@ -48,6 +51,7 @@ textarea:focus, input:focus {
   width: 80%;
   margin: auto;
   max-width: 80rem;
+  min-width: 15rem;
 }
 
 
@@ -55,6 +59,7 @@ textarea:focus, input:focus {
 .editBlogTitle {
   font-size: 24px;
   font-weight: bold;
+  margin: 2rem auto;
 
 }
 
@@ -64,7 +69,7 @@ textarea:focus, input:focus {
 }
 
 .blogName {
-  margin: 20px auto;
+  margin: 40px auto 20px auto;
 }
 
 .blogDescription {
