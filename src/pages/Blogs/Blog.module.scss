@@ -13,12 +13,18 @@
   }
 
   .goback {
-    position: absolute;
+    position: absolute!important;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .blog_header {
+    height: 3rem;
   }
 
   .title_blog {
-    font-size: clamp(1.3rem, 2vw, 2rem);
-    width: 80%;
+    font-size: clamp(1.2rem, 1.4vw, 2rem);
+    width: 70%;
     margin: 10px auto;
   }
 

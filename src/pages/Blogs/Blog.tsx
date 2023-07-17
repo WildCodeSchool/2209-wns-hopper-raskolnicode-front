@@ -31,19 +31,21 @@ function Blog() {
     <main className={styles.blogmain}>
       {/* place here condition if !user.isPremium */} <AdBanner />
       {blog?.user.id === user?.id && <Actions blogId={blogId} />}
-      <GoBack />
-      {blog?.user.id === user?.id ? (
-        <h1 className={styles.title_blog}>
-          Bienvenue sur ton blog,{" "}
-          {blog?.user.pseudo ? blog.user.pseudo : "anonyme"} !
-        </h1>
-      ) : (
-        <h1>
-          Bienvenue sur le blog de{" "}
-          {blog?.user.pseudo ? blog.user.pseudo : "anonyme"}
-        </h1>
-      )}
-      {loading === true && "Chargement..."}
+      <div className={styles.blog_header}>
+        <GoBack />
+        {blog?.user.id === user?.id ? (
+          <h1 className={styles.title_blog}>
+            Bienvenue sur ton blog,{" "}
+            {blog?.user.pseudo ? blog.user.pseudo : "anonyme"} !
+          </h1>
+        ) : (
+          <h1>
+            Bienvenue sur le blog de{" "}
+            {blog?.user.pseudo ? blog.user.pseudo : "anonyme"}
+          </h1>
+        )}
+        {loading === true && "Chargement..."}
+      </div>
       <div className={styles.mainpicture}>
         {<img src={blog?.picture?.link} alt={blog?.picture?.name}></img>}
 
@@ -55,7 +57,8 @@ function Blog() {
               .format("dddd D MMMM YYYY [à] HH[h]mm")}
           </p>
           <div className={styles.blog_description}>
-          <h3 className={styles.blog_description_title}>Description :</h3> <p>{blog?.description}</p>
+            <h3 className={styles.blog_description_title}>Description :</h3>{" "}
+            <p>{blog?.description}</p>
           </div>
         </div>
       </div>
