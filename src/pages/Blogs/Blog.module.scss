@@ -12,9 +12,45 @@
     margin: auto;
   }
 
+  .goback {
+    position: absolute !important;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .blog_header {
+    height: 3rem;
+  }
+
+  .title_blog {
+    font-size: clamp(1.2rem, 1.4vw, 2rem);
+    width: 70%;
+    margin: 10px auto;
+  }
+
+  .blog_information_container {
+    margin: 2rem 1rem;
+
+    .blog_description_title {
+      text-decoration: underline;
+      text-underline-offset: 2.1px;
+      font-size: clamp(1.2rem, 1vw, 1.5rem);
+    }
+
+    .blog_description p::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
   .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .dateline {
+    font-size: 14px;
+    color: #000;
+    font-style: italic;
   }
 
   @media (max-width: 1650px) {

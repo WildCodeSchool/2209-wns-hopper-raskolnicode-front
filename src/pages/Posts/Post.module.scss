@@ -1,4 +1,17 @@
 .postmain {
+
+
+  .title {
+    font-size: clamp(1.2rem, 1.4vw, 2rem);
+    width: 70%;
+    margin: 10px auto;
+  }
+
+  .post_header {
+    height: 3rem;
+  }
+
+
   .content {
     width: 80%;
     margin-right: auto;
@@ -23,24 +36,25 @@
     .buttonBox {
       display: flex;
       align-content: center;
-      padding: 2rem;
+      margin: 2rem 0;
       button {
-        padding: 5px 13px;
+        padding: 7px 15px;
         border-radius: 5px;
         border: 0.3px solid black;
         color: white;
         max-height: 3.1rem;
         font-size: clamp(0.9rem, 2.2vw, 1.2rem);
-        margin-right: auto;
-        margin-left: auto;
+        margin-left: 10%;
+
         background: linear-gradient(to right, blue, rgb(0, 173, 226));
         letter-spacing: 0.8px;
       }
     }
     .inputComment {
-      margin-right: auto;
-      margin-left: auto;
-      width: 40%;
+      margin-left: 10%;
+      width: 60%;
+      padding: 5px;
+      border-radius: 3px;
     }
   }
   .mainimage {
@@ -50,19 +64,21 @@
     object-position: center;
     margin: auto;
   }
-  h1 {
-    text-align: center;
-    margin: 2em;
-  }
+
+
   h2 {
-    margin-bottom: 1em;
+    margin-top: 2.4rem;
+    margin-bottom: 0.8rem;
     text-align: center;
+    text-align: left;
+    margin-left: 10%;
   }
 
   @media (max-width: 1250px) {
     .content {
       .contenttext {
         font-size: 14px;
+        line-height: 25px;
       }
     }
   }
