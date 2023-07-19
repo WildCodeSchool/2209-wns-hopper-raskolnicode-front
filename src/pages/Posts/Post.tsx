@@ -29,8 +29,12 @@ function Post() {
       {post && (
         <>
           {post?.blog?.user.id === user?.id && <PostActions post={post} />}
-          <GoBack />
-          <h1>{post.title}</h1>
+
+          <div className={styles.post_header}>
+            <GoBack />
+            <h1>{post.title}</h1>
+          </div>
+
           <div className={styles.mainpicture}>
             {post.picture ? (
               <img
