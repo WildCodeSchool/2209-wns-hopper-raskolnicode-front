@@ -47,7 +47,7 @@
 .articlelist {
   text-align: center;
   width: 90%;
-  margin: 50px auto;
+  margin: 10px auto;
 
   .listCard {
     margin-right: auto;
@@ -61,6 +61,7 @@
     cursor: pointer;
     min-height: 28rem;
     position: relative;
+    max-width: 360px;
 
 
     
@@ -96,8 +97,8 @@
 @media (max-width: 1650px) {
   section.articlelist {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     .listCard {
       margin: 1.5rem;
@@ -116,8 +117,8 @@
   }
   section.articlelist {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     .listCard {
       margin-bottom: 2rem;
