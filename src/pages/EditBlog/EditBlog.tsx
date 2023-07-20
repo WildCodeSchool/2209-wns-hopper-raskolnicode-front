@@ -46,8 +46,6 @@ function EditBlog() {
       cloudinaryPicture = await uploadCloudinary(pictureInForm);
     }
 
-    console.log("cloudin", cloudinaryPicture);
-
     if (data?.getBlog) {
       await doUpdateBlogMutation({
         variables: {
