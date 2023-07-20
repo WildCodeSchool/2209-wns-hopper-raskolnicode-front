@@ -42,7 +42,6 @@ const Layout = (props: { onTokenChange: () => void }) => {
     setAlert(alertInfo);
   };
 
-  console.log('user', user)
   return (
     <>
       <Navbar onTokenChange={props.onTokenChange} handleAlert={handleAlert} />
