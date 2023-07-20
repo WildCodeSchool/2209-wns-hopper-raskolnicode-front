@@ -68,6 +68,7 @@ const CreatePost = () => {
           disabled={loading}
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          
           style={{ height: '20rem' }}
           placeholder="Contenu"
         />
@@ -76,7 +77,7 @@ const CreatePost = () => {
           <p style={{ color: "red" }}>Quelque chose s'est mal passé</p>
         )}
         <div className="d-flex justify-content-center p-3 gap-3">
-          <button type="submit" disabled={loading} className="btn btn-success" style={{ height: 'fit-content' }}>Créer</button>
+          <button type="submit" disabled={loading}  className={`btn btn-success ${styles.validation}`} style={{ height: 'fit-content' }}>Créer</button>
           <button className="btn btn-secondary" style={{ height: 'fit-content' }} onClick={(e) => {
             setIsArchived(true)
             doCreatePost(e)
@@ -86,5 +87,7 @@ const CreatePost = () => {
     </main>
   );
 }
+
+
 
 export default CreatePost

@@ -6,6 +6,7 @@ import Footer from "../components/Footer/Footer";
 import { UserContext } from "../UserContext";
 import { Alert, Fade } from "react-bootstrap";
 import { AlertInfo } from "../interfaces";
+import { SubscribeBanner } from "../components/Premium/SubscribeBanner";
 
 const Layout = (props: { onTokenChange: () => void }) => {
   const user = useContext(UserContext);
@@ -45,6 +46,7 @@ const Layout = (props: { onTokenChange: () => void }) => {
     <>
       <Navbar onTokenChange={props.onTokenChange} handleAlert={handleAlert} />
       {user?.role === "SUPERADMIN" && <Faker />}
+      {user && !user?.isPremium && <SubscribeBanner />}
       {alert && <Message />}
       <Outlet />
       <Footer />

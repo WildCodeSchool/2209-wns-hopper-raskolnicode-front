@@ -11,7 +11,7 @@ export type CardProps = {
 
 function PostCard({ post }: CardProps): JSX.Element {
   return (
-    <section className={styles.articlelist}>
+    <div className={styles.articlelist}>
       <div className={styles.listCard}>
         <Link to={`articles/${post.id}`}>
           <div className={styles.card}>
@@ -27,19 +27,21 @@ function PostCard({ post }: CardProps): JSX.Element {
                   alt='Introuvable'
                 />
             }
-            <h4>{post.title}</h4>
+            <h3>{post.title}</h3>
             <p>{post.summary}</p>
 
             <p className={styles.dateCreated}>
               {moment(post.updated_at)
                 .locale("fr")
-                .format("dddd D MMMM YYYY [à] HH[h]mm")}
+                .format("dddd D MMMM YYYY")}
+                {/* .format("dddd D MMMM YYYY [à] HH[h]mm")} */}
+
             </p>
 
           </div>
         </Link>
       </div>
-    </section>
+    </div>
   );
 }
 

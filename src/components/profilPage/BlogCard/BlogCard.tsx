@@ -21,7 +21,7 @@ function BlogCard({
       </Link>
       <div>
         <div className={styles.boxCardContent}>
-          <h4>{blog.name}</h4>
+          <h3>{blog.name}</h3>
           <p>{blog.description}</p>
         </div>
         <div className={styles.footerCard}>

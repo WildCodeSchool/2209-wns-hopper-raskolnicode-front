@@ -22,6 +22,7 @@ describe("Homepage", () => {
       email: "jane@mail.fr",
       password: "supersecret",
       role: "USER",
+      isPremium: false
     };
     render(
       <UserContext.Provider value={user}>
