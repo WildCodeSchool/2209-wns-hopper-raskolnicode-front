@@ -1,4 +1,6 @@
 .blogmain {
+
+
   h1 {
     text-align: center;
     margin: 2em;
@@ -6,10 +8,12 @@
 
   img {
     width: 100%;
-    height: 30em;
     object-fit: cover;
     object-position: center;
     margin: auto;
+    height: 40rem;
+    // height: 60vh;
+
   }
 
   .goback {
@@ -50,14 +54,14 @@
     flex-direction: row;
     width: 98%;
     margin: auto;
-  
+
   }
 
 
 
-    width: 98%;
-    padding: 3rem 0;
-  
+  width: 98%;
+  padding: 3rem 0;
+
 
   .dateline {
     font-size: 14px;
@@ -82,10 +86,10 @@
 
   @media (max-width: 740px) {
     .container {
-    flex-direction: column;
-    width: 100%;
+      flex-direction: column;
+      width: 100%;
 
-    
+
     }
   }
 
@@ -104,4 +108,3 @@
     }
   }
 }
-

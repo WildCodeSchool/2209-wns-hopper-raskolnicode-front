@@ -35,8 +35,10 @@ function Blog() {
         <GoBack />
         {blog?.user.id === user?.id ? (
           <h1 className={styles.title_blog}>
-            Bienvenue sur ton blog,{" "}
-            {blog?.user.pseudo ? blog.user.pseudo : "anonyme"} !
+            {blog?.name}
+            {/* Bienvenue sur ton blog,{" "} */}
+            
+            {/* {blog?.user.pseudo ? blog.user.pseudo : "anonyme"} ! */}
           </h1>
         ) : (
           <h1>
@@ -52,9 +54,12 @@ function Blog() {
         <div className={styles.blog_information_container}>
           <p className={styles.dateline}>
             Créer le : &nbsp;
+            
             {moment(blog?.picture?.updated_at)
               .locale("fr")
-              .format("dddd D MMMM YYYY [à] HH[h]mm")}
+              .format("dddd D MMMM YYYY")}
+              {/* // .format("dddd D MMMM YYYY [à] HH[h]mm")} */}
+
           </p>
           <div className={styles.blog_description}>
             <h3 className={styles.blog_description_title}>Description :</h3>{" "}
