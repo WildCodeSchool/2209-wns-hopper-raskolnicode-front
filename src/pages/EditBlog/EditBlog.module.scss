@@ -78,6 +78,10 @@ textarea:focus, input:focus {
   width: 80%;
 }
 
+.dateline::first-letter {
+  text-transform: uppercase;
+}
+
 .dateline {
   font-size: 14px;
   color: #000;

@@ -11,6 +11,7 @@
   // }
 }
 
+
 .blogContainer {
   width: 90%;
   margin: auto;
@@ -28,6 +29,8 @@
     padding: 10px;
   }
 
+
+
   .dateCreated {
     border: 1px solid black;
     border-style: inset;
@@ -37,6 +40,8 @@
     word-spacing: 5px;
   }
 
+
+  
   h3 {
     padding: 10px;
   }
@@ -57,10 +62,11 @@
   .editButton {
     margin-right: 0rem;
     height: 3rem;
-    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    // background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
     padding: 3px 8px;
     padding: 3px 22px;
-    color: white;
+    color: rgb(0, 0, 0);
     letter-spacing: 0.7px;
     position: absolute;
     bottom: 1rem;

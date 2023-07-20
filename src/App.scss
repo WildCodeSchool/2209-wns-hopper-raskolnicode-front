@@ -57,6 +57,11 @@ p {
   font-size: 1em;
 }
 
+
+.dateline::first-letter {
+  text-transform: uppercase;
+}
+
 .dateline {
   font-style: italic;
   font-size: 0.8em;
