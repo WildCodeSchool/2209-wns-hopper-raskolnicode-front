@@ -30,7 +30,6 @@ const EditPost = () => {
   useEffect(() => {
     console.log(post)
     if (post) {
-      console.log('useEffect isArchived', isArchived)
       setTitle(post.title)
       setSummary(post.summary)
       setContent(post.content)
@@ -107,7 +106,6 @@ const EditPost = () => {
           <button type="submit" disabled={loading} className="btn btn-success" style={{ height: 'fit-content' }}>Sauvegarder</button>
           <button className="btn btn-secondary" style={{ height: 'fit-content' }} onClick={(e) => {
             setIsArchived(true)
-            console.log('isArchived: true')
             doUpdatePost(e)
           }}>Archiver</button>
         </div>
