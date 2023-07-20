@@ -35,13 +35,17 @@ export function CheckoutForm() {
   const [clientSecret, setClientSecret] = useState();
 
   const { data, refetch } = useQuery(GET_STRIPE_CLIENT_SECRET);
-  // const clientSecret = data && data.createPaymentIntent.clientSecret
 
   useEffect(() => {
-    if (data) {
+    if (data && !clientSecret) {
       setClientSecret(data.createPaymentIntent.clientSecret);
     }
   }, [data]);
+
+
+  useEffect(() => {
+  }, [clientSecret]);
+
 
   useEffect(() => {
     if (errorMessage) {
@@ -68,6 +72,10 @@ export function CheckoutForm() {
       return;
     }
 
+
+    console.log("stripe ", stripe); 
+    console.log("client secret ", clientSecret); 
+
     if (stripe && clientSecret) {
       const { paymentIntent, error } = await stripe.confirmPayment({
         //`Elements` instance that was used to create the Payment Element
@@ -79,6 +87,7 @@ export function CheckoutForm() {
         redirect: "if_required",
       });
 
+      
       if (error) {
         setErrorMessage(error.message);
       } else {

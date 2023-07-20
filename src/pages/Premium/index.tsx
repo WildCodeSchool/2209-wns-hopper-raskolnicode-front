@@ -15,7 +15,7 @@ export function Premium() {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
+      // console.log(data)
       setPublicKey(data.getStripePublicKey.publicKey)
     }
   }, [data])
