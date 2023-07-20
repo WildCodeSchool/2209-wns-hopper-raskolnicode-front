@@ -1,53 +1,66 @@
-.comment{
+.comment {
   padding: 1.5em;
   margin-bottom: 1em;
-  width: 40%;
+  width: 100%;
   margin-right: auto;
-  margin-left: auto; 
-  position:relative;
+  margin-left: auto;
+  position: relative;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-  .flexcontainer{
+  .flexcontainer {
     display: flex;
     justify-content: space-between;
   }
-  .commentText{
+
+  .commentText {
     color: black;
-    font-size: 18px;
+    font-size: clamp(12px, 1.8vw, 14px);
   }
-  .commentPseudo{
+
+  .commentPseudo {
     font-weight: bold;
     font-size: 16px;
+    // text-decoration: underline;
+    // text-underline-offset: 1.4px;
+    // text-decoration-thickness: 1px;
+
   }
-  .commentDate{
-    font-weight: bold;
+
+  .commentDate {
     font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
   }
-  .buttonComment{
+
+  .buttonComment {
     position: absolute;
     top: 2.5%;
     right: 2%;
-    border:none;
+    border: none;
     font-size: 18px;
     background-color: rgba(255, 255, 255, 0);
     font-weight: bold;
   }
-
-  
-
- 
 }
+
+
+
+
+
 
 
 .articlelist {
   text-align: center;
   width: 90%;
-  margin: 50px auto;
+  margin: 10px 0;
+  width: 22rem;
+
 
   .listCard {
     margin-right: auto;
     margin-left: auto;
   }
+
   .card {
     color: black;
     width: 100%;
@@ -56,9 +69,14 @@
     cursor: pointer;
     min-height: 28rem;
     position: relative;
+    width: 360px;
+    min-height: 550px;
+    flex-wrap: wrap;
 
+    h3 {
+      font-size: clamp(1rem, 1.7vw, 1.1rem);
+    }
 
-    
     p {
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -77,12 +95,13 @@
       left: 3%;
     }
 
-    h4 {
+    h3 {
       padding: 10px;
     }
+
     img {
       width: 100%;
-      height: 15em;
+      height: 19em;
       object-fit: cover;
     }
   }
@@ -91,8 +110,8 @@
 @media (max-width: 1650px) {
   section.articlelist {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     .listCard {
       margin: 1.5rem;
@@ -103,22 +122,29 @@
 }
 
 @media (max-width: 1250px) {
-  .comment{
-    .flexcontainer{
+  .comment {
+    .flexcontainer {
       display: flex;
       flex-direction: column;
     }
   }
+
   section.articlelist {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 26rem;
 
     .listCard {
       margin-bottom: 2rem;
       margin-right: auto;
       margin-left: auto;
     }
+
+
+  }
+
+  .articlelist {
     .card {
       width: 100%;
       text-align: left;
@@ -127,38 +153,67 @@
       // p {
       //   padding: 10px;
       // }
-      h4 {
+      h3 {
         padding: 10px;
       }
+
       img {
         width: 100%;
-        height: 15em;
+        height: 19rem;
         object-fit: cover;
       }
     }
+
   }
+
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   section.articlelist {
     margin-bottom: 0;
+  }
 
-    .listCard {
+  .articlelist {
+    width: 95%;
+    margin: auto;
+
+    section.articlelist .listCard {
       margin: 3rem auto;
-    }
-
-    .listCard:last-child {
-      margin-bottom: 0;
     }
 
     .card {
       margin-bottom: 1rem;
+      width: 100%;
+      min-height: 675px;
+
+      img {
+        height: 27rem;
+      }
     }
+  }
+
+  .listCard:last-child {
+    margin-bottom: 0;
   }
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 600px) {
   section.articlelist .listCard {
     margin: 0.5rem;
+  }
+
+
+  .articlelist {
+
+    .card {
+      min-height: 560px;
+
+      img {
+        height: 20rem;
+      }
+    }
+
+
   }
 }

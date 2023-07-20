@@ -10,7 +10,7 @@ export type CardProps = {
 
 function BlogCard({ blog }: CardProps): JSX.Element {
   return (
-    <section className={styles.articlelist}>
+    <div className={styles.articlelist}>
       <div className={styles.listCard}>
         <Link to={`/blog/${blog.id}`}>
           <div className={styles.card}>
@@ -19,7 +19,7 @@ function BlogCard({ blog }: CardProps): JSX.Element {
             ) : (
               <img src="/default-card-img.png" alt="Introuvable" />
             )}
-            <h4>{blog.name}</h4>
+            <h3 className={styles.blogName}>{blog.name}</h3>
             <p>{blog.description}</p>
             <p className={styles.dateCreated}>
               {moment(blog.updated_at)
@@ -30,7 +30,7 @@ function BlogCard({ blog }: CardProps): JSX.Element {
           </div>
         </Link>
       </div>
-    </section>
+    </div>
   );
 }
 

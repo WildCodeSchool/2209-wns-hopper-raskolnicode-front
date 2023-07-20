@@ -3,7 +3,9 @@
   margin: auto;
 
   img {
-    max-height: 9rem;
+    max-height: 15rem;
+    max-width: 50%;
+    min-width: 20rem;
     display: block;
     object-fit: cover;
     margin-bottom: 1rem;

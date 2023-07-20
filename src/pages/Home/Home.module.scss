@@ -1,9 +1,21 @@
 .homeMain {
   padding-bottom: 3rem;
 
+  .heightZero {
+    height: 0 !important;
+    width: 360px;
+
+  }
+
   .container {
-    display: grid;
+    display: flex;
+    gap: 1rem 2rem;
+    width: 98%;
+    margin: auto;
     grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    // justify-content: space-evenly;
+    justify-content: center;
   }
 
   h1 {
@@ -113,8 +125,8 @@
 @media (max-width: 1650px) {
   .homeMain {
     .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+
     }
 
     .contentBanniere {
@@ -143,7 +155,6 @@
 
 @media (max-width: 1250px) {
   .homeMain {
-    margin-bottom: 7rem;
 
     .banniere .banniere_box_img {
       height: 22rem;
@@ -199,7 +210,7 @@
     }
 
     .container {
-      display: grid;
+      display: flex;
       grid-template-columns: repeat(2, 1fr);
     }
   }

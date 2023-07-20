@@ -5,6 +5,7 @@
     // align-content: center;
     align-items: center;
     align-self: center;
+    padding: 2rem 0 4rem 0;
 
     .form {
         display: grid;
@@ -12,6 +13,7 @@
         margin-top: 40px;
         width: 80%;
         min-height: 550px;
+        max-width: 65rem;
         margin-right: auto;
         margin-left: auto;
         border-radius: 20px;
@@ -53,16 +55,22 @@
         }
 
         input {
-            height: 20px;
+            height: 30px;
             border-left: hidden;
             border-right: hidden;
             border-top: hidden;
         }
 
+        .validation {
+            width: 6rem;
+        }
+
+
         .buttonBox {
             display: flex;
             align-content: center;
             padding: 2rem;
+
 
             button {
                 padding: 5px 13px;
