@@ -103,9 +103,9 @@ export function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="p-5">
       <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements}>
+      <button className="btn btn-info mt-3" type="submit" disabled={!stripe || !elements}>
         Démarrer mon abonnement
       </button>
       {/* Show error message to your customers */}
