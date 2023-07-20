@@ -190,3 +190,10 @@ export const GET_STRIPE_CLIENT_SECRET= gql`
     }
   }
 `;
+
+export const GET_STRIPE_PUBLIC_KEY = gql`
+query GetStripePublicKey {
+  getStripePublicKey {
+    publicKey
+  }
+}`

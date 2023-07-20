@@ -46,7 +46,7 @@ const Layout = (props: { onTokenChange: () => void }) => {
     <>
       <Navbar onTokenChange={props.onTokenChange} handleAlert={handleAlert} />
       {user?.role === "SUPERADMIN" && <Faker />}
-      {!user?.isPremium && <SubscribeBanner />}
+      {user && !user?.isPremium && <SubscribeBanner />}
       {alert && <Message />}
       <Outlet />
       <Footer />
