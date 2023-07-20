@@ -26,9 +26,6 @@ export type BlogProps = {
 };
 
 
-
-
-
 function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
@@ -49,14 +46,14 @@ function Home() {
 
 
 
-    
+
     let getBlogReversed = Object.keys(data.getBlogs).reverse();
 
     getBlogReversed.forEach(key => {
       let index = parseInt(key);
       console.log(index, data.getBlogs[index]);
-    }); 
-    
+    });
+
     for (const blog of data.getBlogs) {
       lastBlogs.push(blog);
       if (lastBlogs.length === 3) {
@@ -65,9 +62,6 @@ function Home() {
     }
 
   }
-
-
-
 
 
   return (
@@ -122,6 +116,12 @@ function Home() {
         {!loading && blogsSorted.map((blog, index) => (
           <BlogCard key={index} blog={blog} />
         ))}
+
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+
+
       </section>
     </main>
   );
