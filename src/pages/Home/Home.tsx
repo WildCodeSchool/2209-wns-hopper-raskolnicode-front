@@ -25,6 +25,17 @@ export type BlogProps = {
   picture?: PictureProps;
 };
 
+function TruncateTitle(props: any) {
+  const words = props.title.split(/\s+/);
+  let truncatedTitle = words.slice(0, 5).join(' ');
+
+  if (words.length > 8) {
+    truncatedTitle += '...';
+  }
+
+  return <h3>{truncatedTitle}</h3>;
+}
+
 
 function Home() {
   // Getting current user from context
@@ -95,7 +106,7 @@ function Home() {
                 />
               )}
               <Carousel.Caption>
-                <h3>{blog.user.pseudo}</h3>
+                <TruncateTitle title={blog.name} />
                 <p className={styles.carrousselDescription}>
                   {blog.description.slice(0, 35)}
                 </p>
