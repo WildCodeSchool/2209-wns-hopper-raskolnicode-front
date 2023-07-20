@@ -148,3 +148,12 @@ mutation DeletePost($postId: ID!) {
   }
 }
 `
+
+export const BECOME_PREMIUM = gql`
+mutation BecomePremium($paymentIntent: String!, $userId: Float!) {
+  becomePremium(paymentIntent: $paymentIntent, id: $userId) {
+    id
+    isPremium
+    email
+  }
+}`

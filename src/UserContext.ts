@@ -5,6 +5,7 @@ interface UserContextInterface {
   email: string;
   password: string;
   role: string;
+  isPremium: boolean;
 }
 
 export const UserContext = createContext<UserContextInterface | null>(null) 

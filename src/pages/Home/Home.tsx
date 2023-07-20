@@ -25,15 +25,21 @@ export type BlogProps = {
   picture?: PictureProps;
 };
 
+function TruncateTitle(props: any) {
+  const words = props.title.split(/\s+/);
+  let truncatedTitle = words.slice(0, 5).join(' ');
 
+  if (words.length > 8) {
+    truncatedTitle += '...';
+  }
 
-
+  return <h3>{truncatedTitle}</h3>;
+}
 
 function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
-
 
   let blogsSorted: BlogProps[] = [];
 
@@ -45,30 +51,20 @@ function Home() {
     });
 
     const usersBlogs: { [key: string]: BlogProps } = {};
-
-
-
-
-    
     let getBlogReversed = Object.keys(data.getBlogs).reverse();
 
     getBlogReversed.forEach(key => {
       let index = parseInt(key);
       console.log(index, data.getBlogs[index]);
-    }); 
-    
+    });
+
     for (const blog of data.getBlogs) {
       lastBlogs.push(blog);
       if (lastBlogs.length === 3) {
         break;
       }
     }
-
   }
-
-
-
-
 
   return (
     <main className={styles.homeMain}>
@@ -83,14 +79,12 @@ function Home() {
           <Link to={user ? "/blog/create" : "/login"}>
             <button>Commencer mon blog</button>
           </Link>
-        </div>
+        </div>  
       </section>
       <section className={styles.carroussel}>
-        <h2>Les derniers blogs</h2>
+        <h2 className={styles.titleBlogList}>Les derniers blogs</h2>
 
         <Carousel>
-
-
           {!loading && lastBlogs.map((blog, index) => (
             <Carousel.Item key={index}>
               {blog.picture && (
@@ -101,19 +95,14 @@ function Home() {
                 />
               )}
               <Carousel.Caption>
-                <h3>{blog.user.pseudo}</h3>
+                <TruncateTitle title={blog.name} />
                 <p className={styles.carrousselDescription}>
                   {blog.description.slice(0, 35)}
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
-
           ))}
-
-
-
         </Carousel>
-
 
       </section>
       <h1>Parcourir les blogs</h1>
@@ -122,6 +111,11 @@ function Home() {
         {!loading && blogsSorted.map((blog, index) => (
           <BlogCard key={index} blog={blog} />
         ))}
+
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+        <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
+
       </section>
     </main>
   );

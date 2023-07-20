@@ -3,7 +3,9 @@
   margin: auto;
 
   img {
-    max-height: 9rem;
+    max-height: 15rem;
+    max-width: 50%;
+    min-width: 20rem;
     display: block;
     object-fit: cover;
     margin-bottom: 1rem;
@@ -21,9 +23,22 @@
     // padding: 5px 13px;
     border-radius: 5px;
     border: 0.3px solid black;
-    color: white;
+    color: rgb(0, 0, 0);
 
     font-size: 1em;
-    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  .uploaded_preview {
+
+    img {
+      min-width: 15rem;
+    }
+
+
   }
 }

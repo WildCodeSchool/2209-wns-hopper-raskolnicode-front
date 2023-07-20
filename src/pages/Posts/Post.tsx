@@ -29,8 +29,12 @@ function Post() {
       {post && (
         <>
           {post?.blog?.user.id === user?.id && <PostActions post={post} />}
-          <GoBack />
-          <h1>{post.title}</h1>
+
+          <div className={styles.post_header}>
+            <GoBack />
+            <h1 className={styles.title}>{post.title}</h1>
+          </div>
+
           <div className={styles.mainpicture}>
             {post.picture ? (
               <img
@@ -41,6 +45,9 @@ function Post() {
             ) : (
               <img src={"/default-post-img.png"} alt="Introuvable" />
             )}
+
+
+         
             <div className={styles.content}>
               <p className="dateline">
                 {moment(post.updated_at)

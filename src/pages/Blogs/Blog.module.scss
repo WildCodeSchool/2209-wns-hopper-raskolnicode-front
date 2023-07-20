@@ -1,4 +1,6 @@
 .blogmain {
+
+
   h1 {
     text-align: center;
     margin: 2em;
@@ -6,36 +8,112 @@
 
   img {
     width: 100%;
-    height: 30em;
     object-fit: cover;
     object-position: center;
+    margin: auto;
+    height: 40rem;
+    // height: 60vh;
+
+  }
+
+  .sectionArticle,
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .goback {
+    position: absolute !important;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .blog_header {
+    height: 3rem;
+  }
+
+  .title_blog {
+    font-size: clamp(1.2rem, 1.4vw, 2rem);
+    width: 70%;
+    margin: 10px auto;
+    position: relative;
+    top: 0.5rem;
+  }
+
+  .blog_information_container {
+    margin: 4rem 1rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+
+
+    .blog_description_title {
+      text-decoration: underline;
+      text-underline-offset: 2.1px;
+      font-size: clamp(1.2rem, 1vw, 1.5rem);
+    }
+
+    .blog_description p::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+
+  .sectionArticle {
+    width: 90%;
     margin: auto;
   }
 
   .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 72%;
+  }
+
+  padding: 3rem 0;
+
+
+  .dateline {
+    font-size: 14px;
+    color: #000;
+    font-style: italic;
   }
 
   @media (max-width: 1650px) {
     .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      justify-content: flex-start;
+      margin: auto;
     }
   }
 
   @media (max-width: 1250px) {
+    // .container {
+    //   display: grid;
+    // }
+  }
+
+  @media (max-width: 740px) {
     .container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      flex-direction: column;
+      width: 100%;
+
+
     }
   }
 
-  @media (max-width: 700px) {
-    .container {
-      grid-template-columns: repeat(1, 1fr);
+  @media (max-width: 500px) {
+
+    .blog_information_container {
+      margin: 4rem 1rem;
+      width: 100%;
+      margin: auto;
+      margin-top: 2rem;
     }
   }
+
 
   .ad_banner {
     background-color: rgb(64, 138, 248);
