@@ -76,12 +76,13 @@
                 padding: 5px 13px;
                 border-radius: 5px;
                 border: 0.3px solid black;
-                color: white;
+                color: rgb(0, 0, 0);
                 max-height: 3.1rem;
                 font-size: clamp(0.9rem, 2.2vw, 1.2rem);
                 margin-right: auto;
                 margin-left: auto;
-                background: linear-gradient(to right, blue, rgb(0, 173, 226));
+                background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
+                
                 letter-spacing: 0.8px;
             }
         }

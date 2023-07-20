@@ -74,7 +74,7 @@
     flex-wrap: wrap;
 
     h3 {
-      font-size: clamp(1rem, 1.7vw, 1.1rem);
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
     }
 
     p {
@@ -85,6 +85,11 @@
       padding: 0 10px;
     }
 
+    .dateCreated::first-letter {
+      text-transform: uppercase;
+    }
+
+    
     .dateCreated {
       border: 1px solid black;
       border-style: inset;

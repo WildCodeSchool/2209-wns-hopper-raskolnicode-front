@@ -74,7 +74,7 @@ export function CheckoutForm() {
 
 
     console.log("stripe ", stripe); 
-    console.log("client secret ", clientSecret); 
+    console.log("client secret ", clientSecret);  
 
     if (stripe && clientSecret) {
       const { paymentIntent, error } = await stripe.confirmPayment({

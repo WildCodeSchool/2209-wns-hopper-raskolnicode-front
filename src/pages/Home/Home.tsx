@@ -36,12 +36,10 @@ function TruncateTitle(props: any) {
   return <h3>{truncatedTitle}</h3>;
 }
 
-
 function Home() {
   // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
-
 
   let blogsSorted: BlogProps[] = [];
 
@@ -53,11 +51,6 @@ function Home() {
     });
 
     const usersBlogs: { [key: string]: BlogProps } = {};
-
-
-
-
-
     let getBlogReversed = Object.keys(data.getBlogs).reverse();
 
     getBlogReversed.forEach(key => {
@@ -71,9 +64,7 @@ function Home() {
         break;
       }
     }
-
   }
-
 
   return (
     <main className={styles.homeMain}>
@@ -88,14 +79,12 @@ function Home() {
           <Link to={user ? "/blog/create" : "/login"}>
             <button>Commencer mon blog</button>
           </Link>
-        </div>
+        </div>  
       </section>
       <section className={styles.carroussel}>
-        <h2>Les derniers blogs</h2>
+        <h2 className={styles.titleBlogList}>Les derniers blogs</h2>
 
         <Carousel>
-
-
           {!loading && lastBlogs.map((blog, index) => (
             <Carousel.Item key={index}>
               {blog.picture && (
@@ -112,13 +101,8 @@ function Home() {
                 </p>
               </Carousel.Caption>
             </Carousel.Item>
-
           ))}
-
-
-
         </Carousel>
-
 
       </section>
       <h1>Parcourir les blogs</h1>
@@ -131,7 +115,6 @@ function Home() {
         <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
         <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
         <div className={`${styles.articlelist} ${styles.heightZero}`}></div>
-
 
       </section>
     </main>

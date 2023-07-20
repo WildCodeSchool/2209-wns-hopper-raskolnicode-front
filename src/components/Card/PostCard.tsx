@@ -33,7 +33,9 @@ function PostCard({ post }: CardProps): JSX.Element {
             <p className={styles.dateCreated}>
               {moment(post.updated_at)
                 .locale("fr")
-                .format("dddd D MMMM YYYY [à] HH[h]mm")}
+                .format("dddd D MMMM YYYY")}
+                {/* .format("dddd D MMMM YYYY [à] HH[h]mm")} */}
+
             </p>
 
           </div>
