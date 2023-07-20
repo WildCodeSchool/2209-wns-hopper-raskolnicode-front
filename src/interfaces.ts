@@ -43,6 +43,7 @@ export interface IUser {
   password: string;
   pseudo: string;
   role: string;
+  isPremium: boolean;
 }
 
 export interface IComment {
@@ -62,6 +63,7 @@ export interface getBlog {
     id: number;
     email: string;
     pseudo: string;
+    isPremium: boolean;
   };
   picture: {
     id: number;

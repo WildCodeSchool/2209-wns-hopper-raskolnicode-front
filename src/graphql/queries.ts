@@ -1,31 +1,29 @@
 import { gql } from "@apollo/client";
 
 export const GET_LOGGED_USER = gql`
-query LoggedUser {
-  loggedUser {
-    id
-    email
-    pseudo
-    blogs {
-      name
+  query LoggedUser {
+    loggedUser {
       id
-      description
-      created_at
-      updated_at
-      picture {
-        link
-        id
+      email
+      pseudo
+      isPremium
+      blogs {
         name
-        updated_at
+        id
+        description
         created_at
+        updated_at
+        picture {
+          link
+          id
+          name
+          updated_at
+          created_at
+        }
       }
     }
   }
-}`
-
-
-
-
+`;
 
 export const HAS_SUPERADMIN = gql`
   query HasSuperAdmin {
@@ -81,11 +79,12 @@ export const GET_BLOG = gql`
         link
         name
         updated_at
-      }  
+      }
       user {
         id
         email
         pseudo
+        isPremium
       }
       picture {
         id
@@ -108,8 +107,6 @@ export const GET_BLOG = gql`
   }
 `;
 
-
-
 export const GET_BLOG_AND_POST = gql`
   query GetBlog($getBlogId: ID!) {
     getBlog(id: $getBlogId) {
@@ -120,7 +117,7 @@ export const GET_BLOG_AND_POST = gql`
       user {
         id
       }
-      picture { 
+      picture {
         link
         name
         id
@@ -143,7 +140,6 @@ export const GET_BLOG_AND_POST = gql`
   }
 `;
 
-
 export const GET_USERS = gql`
   query Users {
     getUsers {
@@ -154,7 +150,6 @@ export const GET_USERS = gql`
     }
   }
 `;
-
 
 export const GET_POST = gql`
   query GetPost($postId: ID!) {
@@ -184,6 +179,14 @@ export const GET_POST = gql`
         }
         created_at
       }
+    }
+  }
+`;
+
+export const GET_STRIPE_CLIENT_SECRET= gql`
+  query CreatePaymentIntent {
+    createPaymentIntent {
+      clientSecret
     }
   }
 `;

@@ -29,7 +29,7 @@ function Blog() {
 
   return (
     <main className={styles.blogmain}>
-      {/* place here condition if !user.isPremium */} <AdBanner />
+      { !blog?.user.isPremium && <AdBanner /> } 
       {blog?.user.id === user?.id && <Actions blogId={blogId} />}
       <div className={styles.blog_header}>
         <GoBack />

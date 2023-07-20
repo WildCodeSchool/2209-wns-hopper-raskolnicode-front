@@ -83,9 +83,6 @@ function Profile() {
     }
   }, [data]);
 
-  console.log("datouille ", data)
-
-
   return (
     <div className={styles.main}>
 
