@@ -4,11 +4,21 @@ import {
 import styles from "./Premium.module.scss";
 import { StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import { CheckoutForm } from "./CheckoutForm";
+import { useQuery } from "@apollo/client";
+import { GET_STRIPE_PUBLIC_KEY } from "../../graphql/queries";
+import { useEffect, useState } from "react";
 
 export function Premium() {
-  const stripePromise = loadStripe(
-    "pk_test_51NBaCOCySemsTPW1ZI3EU69Uvb65QY51AiOB7Xlr5Fyd9jTD4Ng6zNwZ42Qfe3LlsXbDBF1AUo6yP5EFGGKoiEpS00PRoPdut6"
-  );
+
+  const { data } = useQuery(GET_STRIPE_PUBLIC_KEY)
+  const [publicKey, setPublicKey] = useState()
+
+  useEffect(() => {
+    if (data) {
+      console.log(data)
+      setPublicKey(data.getStripePublicKey.publicKey)
+    }
+  }, [data])
 
   const options = {
     mode: "payment",
@@ -24,12 +34,15 @@ export function Premium() {
     <section className={styles.premium}>
       <h1 className="px-5">Deviens premium en une seule et simple étape</h1>
       <h3>Change ton expérience Sarblog avec un paiement unique de 29,90€</h3>
-      <Elements
-        stripe={stripePromise}
-        options={options as StripeElementsOptions}
-      >
-        <CheckoutForm />
-      </Elements>
+      {
+        publicKey &&  <Elements
+          stripe={loadStripe(publicKey)}
+          options={options as StripeElementsOptions}
+        >
+          <CheckoutForm />
+        </Elements>
+      }
+
     </section>
   );
 }
