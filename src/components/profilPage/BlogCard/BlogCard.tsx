@@ -33,6 +33,9 @@ function BlogCard({
           <Link to={`/blog/${blog.id}/modifier`}>
             <button className={`${styles.editButton} btn btn-outline-secondary`}>Editer</button>
           </Link>
+          <div>
+          <button className={`${styles.deleteButton} btn btn-outline-secondary`}>Supprimer</button>
+          </div>
         </div>
       </div>
     </div>

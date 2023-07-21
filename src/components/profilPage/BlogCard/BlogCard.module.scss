@@ -41,7 +41,7 @@
   }
 
 
-  
+
   h3 {
     padding: 10px;
   }
@@ -54,9 +54,28 @@
 
   .editeBox {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 1rem;
-    margin-top: 2rem;
+    justify-content: space-around;
+    margin: auto;
+    width: 100%;
+  }
+
+
+  .editeBox a {
+    position: absolute;
+    bottom: 0.5rem;
+  }
+
+  .editeBox div {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+
+  }
+
+  .editeBox a>*,
+  .editeBox div>* {
+    margin: 0 0.5rem;
+
   }
 
   .editButton {
@@ -64,18 +83,31 @@
     height: 3rem;
     // background: linear-gradient(to right, blue, rgb(0, 173, 226));
     background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
-    padding: 3px 8px;
     padding: 3px 22px;
     color: rgb(0, 0, 0);
     letter-spacing: 0.7px;
-    position: absolute;
-    bottom: 1rem;
-    right: 38%;
+    position: relative;
+    // bottom: 1rem;
     width: 8rem;
   }
 
 
-  
+  .deleteButton {
+    margin-right: 0rem;
+    height: 3rem;
+    // background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    background: rgb(187, 1, 1);
+    padding: 3px 8px;
+    padding: 3px 22px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 0.7px;
+    // position: absolute;
+    // bottom: 1rem;
+    width: 8rem;
+
+  }
+
+
   .footerCard {
     display: flex;
     flex-direction: column;
@@ -95,23 +127,34 @@
       margin-right: auto;
       margin-left: auto;
 
-      
+
     }
 
- 
+
   }
 
 
 
   .editeBox {
-    .editButton {
-     right: 34%;
-    }
-   }
+    // .editButton {
+    //  right: 1%;
+    // }
+  }
 
 
 
 }
+
+
+
+@media (max-width: 1500px) {
+
+
+
+
+
+}
+
 
 @media (max-width: 1250px) {
   section.articlelist {
@@ -165,15 +208,13 @@
     }
   }
 
-  .card {
+  // .card {
 
-    .editButton {
-      position: absolute;
-      bottom: 1rem;
-      right: 36%;
-
-    }
-  }
+  //   .editButton {
+  //     // position: absolute;
+  //     // bottom: 1rem;
+  //   }
+  // }
 
 }
 
@@ -183,10 +224,10 @@
   }
 
   .card {
-    .editButton {
-      right: 34%;
+    // .editButton {
+    //   right: 34%;
 
-    }
+    // }
   }
 
 }
