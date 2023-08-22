@@ -61,11 +61,6 @@ function Login(props: { onTokenChange: (token?: string) => void }) {
             Me connecter
           </button>
         </div>
-        {/* <div>
-          <p className={styles.forbidenMdpLink}>
-            Avez-vous déja un <a href="X">compte?</a>
-          </p>
-        </div> */}
       </form>
     </main>
   );

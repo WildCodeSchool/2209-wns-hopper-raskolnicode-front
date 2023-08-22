@@ -27,7 +27,6 @@ export type BlogProps = {
 
 
 function Home() {
-  // Getting current user from context
   const user = useContext(UserContext);
   const { loading, data } = useQuery<{ getBlogs: BlogProps[] }>(GET_BLOGS);
 
@@ -42,10 +41,6 @@ function Home() {
     });
 
     const usersBlogs: { [key: string]: BlogProps } = {};
-
-
-
-
 
     let getBlogReversed = Object.keys(data.getBlogs).reverse();
 
@@ -110,6 +105,7 @@ function Home() {
 
 
       </section>
+
       <h1>Parcourir les blogs</h1>
       <section className={styles.container}>
         {loading && <div>Chargement...</div>}

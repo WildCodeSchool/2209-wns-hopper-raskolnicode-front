@@ -87,9 +87,7 @@ function Main() {
           <Route element={<Layout onTokenChange={onTokenChange} />}>
             {user ? (
               <>
-                <Route path="/profile" element={<Profile />} />
-                {/* <Route path="/updateblog/:blogid" element={<EditBlog />} /> */}
-              </>
+                <Route path="/profile" element={<Profile />} />              </>
             ) : (
               <>
                 <Route
@@ -116,7 +114,6 @@ function Main() {
             />
 
             <Route path="/blog/:blogId/modifier" element={<EditBlog />} />
-
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/condition" element={<ConditionGeneral />} />
