@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import Home from "./Home";
+import Home from "../../pages/Home/Home";
 import { MockedProvider } from "@apollo/client/testing";
 import { BrowserRouter } from "react-router-dom";
 import { UserContext } from "../../UserContext";
@@ -30,7 +30,7 @@ describe("Homepage", () => {
         </MockedProvider>
       </UserContext.Provider>,
       { wrapper: BrowserRouter }
-    );
+    );  
 
     const createBlogButton = screen.getByText(/Commencer mon blog/);
     fireEvent.click(createBlogButton);
