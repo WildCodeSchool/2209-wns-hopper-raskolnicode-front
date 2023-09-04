@@ -1,21 +1,24 @@
-import React from 'react'
-import { IBlog, IPicture } from '../../../interfaces';
-import styles from './BlogCard.module.scss';
+import React from "react";
+import { IBlog, IPicture } from "../../../interfaces";
+import styles from "./BlogCard.module.scss";
 import moment from "moment";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 export type CardProps = {
-  blog: IBlog
+  blog: IBlog;
 };
 
-
-function BlogCard({
-  blog }: CardProps): JSX.Element {
+function BlogCard({ blog }: CardProps): JSX.Element {
   return (
     <div className={styles.card}>
       <Link to={`/blog/${blog.id}`}>
-        <img  className={styles.blogCardImg} src={blog.picture ? blog.picture.link : "https://picsum.photos/1200/400?random=2"}
+        <img
+          className={styles.blogCardImg}
+          src={
+            blog.picture
+              ? blog.picture.link
+              : "https://picsum.photos/1200/400?random=2"
+          }
           alt={blog.name}
         />
       </Link>
@@ -26,18 +29,33 @@ function BlogCard({
         </div>
         <div className={styles.footerCard}>
           <p className="dateline">
-            Dernière édition: {moment(blog.updated_at).locale('fr').format('dddd D MMMM YYYY [à] HH[h]mm')}
+            Dernière édition:{" "}
+            {moment(blog.updated_at)
+              .locale("fr")
+              .format("dddd D MMMM YYYY [à] HH[h]mm")}
           </p>
         </div>
-        <div className={styles.editeBox}>
-          <Link to={`/blog/${blog.id}/modifier`}>
-            <button className={`${styles.editButton} btn btn-outline-secondary`}>Editer</button>
-          </Link>
+        <div>
+          <div className={styles.editeBox}>
+            <Link to={`/blog/${blog.id}/modifier`}>
+              <button
+                className={`${styles.editButton} btn btn-outline-secondary`}
+              >
+                Editer
+              </button>
+            </Link>
+          </div>
+          <div className={styles.editeBox}>
+            <button
+              className={`${styles.deleteButton} btn btn-outline-secondary`}
+            >
+              Supprimer
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
 
 export default BlogCard;

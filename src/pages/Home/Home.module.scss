@@ -26,6 +26,7 @@
   h2 {
     font-size: 2em;
     font-weight: 200;
+    letter-spacing: 1.5px;
   }
 
   .introConditions{
@@ -37,6 +38,7 @@
     justify-content: center;
     width: 100%;
     margin-top: 3rem;
+    margin-bottom: 3rem;
 
     .contentBanniere {
       display: flex;
@@ -47,12 +49,13 @@
       margin-top: 2vw;
     }
 
-
     h1 {
       margin-bottom: 0;
       font-size: 2.5rem;
-      font-weight: 900;
+      font-weight: 700;
       width: 320px;
+      font-style: italic;
+      letter-spacing: 0.7px;
       // margin: 4rem auto 3rem auto;
     }
 
@@ -63,6 +66,12 @@
 
     a button {
       margin-left: 1rem;
+    }
+
+    .titleBlogList {
+      font-style: italic;
+      letter-spacing: 1.2px;
+      // margin-bottom: 2rem;
     }
 
     button {
@@ -148,9 +157,6 @@
 
   }
 
-
-
-
 }
 
 @media (max-width: 1250px) {
@@ -232,7 +238,6 @@
         margin-left: 10%;
       }
 
-
       .contentBanniere {
 
 
@@ -274,7 +279,7 @@
       }
 
       .contentBanniere {
-        margin: 0 auto 3rem auto;
+        margin: 0 auto 3rem auto;      
 
         h2 {
           text-align: center;

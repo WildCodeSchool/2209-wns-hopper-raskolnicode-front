@@ -11,6 +11,7 @@
   // }
 }
 
+
 .blogContainer {
   width: 90%;
   margin: auto;
@@ -28,6 +29,8 @@
     padding: 10px;
   }
 
+
+
   .dateCreated {
     border: 1px solid black;
     border-style: inset;
@@ -37,13 +40,15 @@
     word-spacing: 5px;
   }
 
+
+  
   h3 {
     padding: 10px;
   }
 
   img {
     width: 100%;
-    height: 15em;
+    height: 24rem;
     object-fit: cover;
   }
 
@@ -57,17 +62,33 @@
   .editButton {
     margin-right: 0rem;
     height: 3rem;
-    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    // background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
     padding: 3px 8px;
     padding: 3px 22px;
-    color: white;
+    color: rgb(0, 0, 0);
     letter-spacing: 0.7px;
     position: absolute;
     bottom: 1rem;
-    right: 37%;
-
+    left: 5%;
+    width: 8rem;
   }
 
+  .deleteButton {
+    height: 3rem;
+    background: rgb(134, 0, 0);
+    padding: 3px 8px;
+    padding: 3px 22px;
+    color: #fff;
+    letter-spacing: 0.7px;
+    position: absolute;
+    bottom: 1rem;
+    right: 5%;
+    width: 8rem;
+  }
+
+
+  
   .footerCard {
     display: flex;
     flex-direction: column;
@@ -86,8 +107,23 @@
       margin: 1.5rem;
       margin-right: auto;
       margin-left: auto;
+
+      
     }
+
+ 
   }
+
+
+
+  .editeBox {
+    .editButton {
+     right: 34%;
+    }
+   }
+
+
+
 }
 
 @media (max-width: 1250px) {
@@ -147,7 +183,7 @@
     .editButton {
       position: absolute;
       bottom: 1rem;
-      right: 40%;
+      right: 36%;
 
     }
   }
@@ -161,7 +197,7 @@
 
   .card {
     .editButton {
-      right: 38%;
+      right: 34%;
 
     }
   }

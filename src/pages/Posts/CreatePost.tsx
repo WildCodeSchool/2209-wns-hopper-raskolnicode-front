@@ -16,8 +16,7 @@ const CreatePost = () => {
 
   const navigate = useNavigate();
 
-  const [doCreatePostMutation, { data, loading, error }] =
-    useMutation(CREATE_POST);
+  const [doCreatePostMutation, { data, loading, error }] = useMutation(CREATE_POST);
 
   async function doCreatePost(e: any) {
     e.preventDefault()

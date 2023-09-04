@@ -22,7 +22,8 @@ describe("Navbar", () => {
       id: 1,
       email: "jane@mail.fr",
       password: "supersecret",
-      role: "USER"
+      role: "USER",
+      isPremium: false
     }
     render(
       <UserContext.Provider value={user}>

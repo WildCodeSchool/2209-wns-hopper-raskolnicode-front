@@ -23,11 +23,11 @@ textarea:focus, input:focus {
   
 
   .submitButton {
-    background: linear-gradient(to right, blue, rgb(0, 173, 226));
+    background: linear-gradient(to right, #dfe9ff, rgb(243, 249, 255));
     width: 8rem;
     height: 3.5rem;
     border-radius: 7px;
-    color: white;
+    color: rgb(0, 0, 0);
   }
 
 
@@ -76,6 +76,10 @@ textarea:focus, input:focus {
   margin: 20px auto;
   min-height: 10rem;
   width: 80%;
+}
+
+.dateline::first-letter {
+  text-transform: uppercase;
 }
 
 .dateline {

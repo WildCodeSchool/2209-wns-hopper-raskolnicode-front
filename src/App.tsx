@@ -28,6 +28,9 @@ import EditBlog from "./pages/EditBlog/EditBlog";
 import EditPost from "./pages/Posts/EditPost";
 import ConditionGeneral from "./pages/Home/ConditionGeneral";
 import Mentions from "./pages/Home/Mentions";
+import { Premium } from "./pages/Premium";
+import { IUser } from "./interfaces";
+import { PremiumThankYou } from "./pages/Premium/PremiumThankYou";
 
 const httpLink = createHttpLink({
   uri: API_URL,
@@ -51,7 +54,7 @@ const client = new ApolloClient({
 });
 
 function Main() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<IUser|null>(null);
   const { data, refetch, error } = useQuery(GET_LOGGED_USER);
 
   useEffect(() => {
@@ -68,6 +71,7 @@ function Main() {
     }
     try {
       const { data } = await refetch();
+      console.log('refetch user', user)
       setUser(data?.loggedUser);
     } catch (err: any) {
       if (err.message.includes("Access denied!")) {
@@ -113,8 +117,12 @@ function Main() {
               element={<EditPost />}
             />
 
+            <Route path="/merci-pour-votre-paiement" element={<PremiumThankYou />} />
+
             <Route path="/blog/:blogId/modifier" element={<EditBlog />} />
             <Route path="/blog/:blogId/articles/:postId" element={<Post />} />
+
+            <Route path="/devenir-premium" element={<Premium />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/condition" element={<ConditionGeneral />} />
             <Route path="/mentions" element={<Mentions />} />
